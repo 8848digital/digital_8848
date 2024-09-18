@@ -27,6 +27,7 @@ def create_contact_us(**kwargs):
         contact_us.company_name = company_name
         contact_us.how_can_we_help = how_can_we_help
         contact_us.i_want_to_receive_news_and_updates = i_want_to_receive_news_and_updates
+
         for value in email_ids:  
             contact_us.append(
                 "email_ids",  
@@ -48,7 +49,7 @@ def create_contact_us(**kwargs):
         return success_response(
             {
                 "message": "Contact created successfully.",
-                "contact_name": contact_us.name, 
+                "email": contact_us.email_id, 
             }
         )
 
