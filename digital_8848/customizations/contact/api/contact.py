@@ -1,13 +1,14 @@
 import frappe
 
 @frappe.whitelist(allow_guest=True)
-def create_contact_us(**kwargs):
+def create_contact(**kwargs):
     print("Processing contact creation")
     try:
-        full_names = kwargs.get("full_name")
+        full_name = kwargs.get("full_name")
         email_id = kwargs.get("email")
         phone_no = kwargs.get('phone_no')
-        company_name = kwargs.get("company_name")
+        # company_name = kwargs.get("company_name")
+        custom_company_name = kwargs.get("company_name")
         how_can_we_help = kwargs.get("how_can_we_help")
         i_want_to_receive_news_and_updates = kwargs.get("i_want_to_receive_news_and_updates")
         if i_want_to_receive_news_and_updates == "True":
@@ -24,11 +25,11 @@ def create_contact_us(**kwargs):
         )
         
         if existing_contact:
-            return error_response("User with this email already exists.")
+            return error_response("User already exists.")
 
         contact_us = frappe.new_doc("Contact")
-        contact_us.full_name = full_names
-        contact_us.company_name = company_name
+        contact_us.full_names = full_name
+        contact_us.custom_company_name = custom_company_name
         contact_us.how_can_we_help = how_can_we_help
         contact_us.i_want_to_receive_news_and_updates = i_want_to_receive_news_and_updates
 
@@ -75,3 +76,4 @@ def success_response(data=None, id=None):
 
 def error_response(err_msg):
     return {"status": "error", "error": err_msg}
+
