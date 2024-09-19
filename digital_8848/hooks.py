@@ -248,5 +248,10 @@ fixtures = [
         [
             "module", "=", "digital_8848"
         ]
+    ]},
+    {"dt": "Property Setter", "filters": [
+        [
+            "module", "=", "digital_8848"
+        ]
     ]}
 ]
