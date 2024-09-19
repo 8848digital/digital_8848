@@ -4,7 +4,7 @@ import frappe
 def create_contact(**kwargs):
     print("Processing contact creation")
     try:
-        full_name = kwargs.get("full_name")
+        custom_full_names = kwargs.get("full_name")
         email_id = kwargs.get("email")
         phone_no = kwargs.get('phone_no')
         custom_company_name = kwargs.get("company_name")
@@ -27,7 +27,7 @@ def create_contact(**kwargs):
             return error_response("User already exists.")
 
         contact_us = frappe.new_doc("Contact")
-        contact_us.full_names = full_name
+        contact_us.custom_full_names = custom_full_names
         contact_us.custom_company_name = custom_company_name
         contact_us.how_can_we_help = how_can_we_help
         contact_us.i_want_to_receive_news_and_updates = i_want_to_receive_news_and_updates
