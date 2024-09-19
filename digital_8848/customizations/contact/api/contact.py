@@ -7,7 +7,6 @@ def create_contact(**kwargs):
         full_name = kwargs.get("full_name")
         email_id = kwargs.get("email")
         phone_no = kwargs.get('phone_no')
-        # company_name = kwargs.get("company_name")
         custom_company_name = kwargs.get("company_name")
         how_can_we_help = kwargs.get("how_can_we_help")
         i_want_to_receive_news_and_updates = kwargs.get("i_want_to_receive_news_and_updates")
