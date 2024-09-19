@@ -53,7 +53,7 @@ def create_contact(**kwargs):
 
         return success_response(
             {
-                "message": "Contact created successfully.",
+                "message": "We have successfully received your request and will get back to you shortly.",
                 "email": contact_us.email_id, 
             }
         )
