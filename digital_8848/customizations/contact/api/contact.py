@@ -56,7 +56,7 @@ def create_contact(**kwargs):
         return success_response(
             {
                 "message": "We have successfully received your request and will get back to you shortly.",
-                "email": email_id_from_child  # Email from child table
+                "email": email_id_from_child
             }
         )
 
