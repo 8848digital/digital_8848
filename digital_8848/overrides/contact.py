@@ -5,5 +5,3 @@ class CustomContact(Contact):
     def autoname(self):
         if self.custom_full_names:
             self.name = self.custom_full_names
-        # if self.company_name:
-        #     self.name = self.company_name

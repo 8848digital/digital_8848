@@ -14,7 +14,6 @@
   "middle_name",
   "last_name",
   "full_name",
-  "full_names",
   "email_id",
   "user",
   "address",
@@ -55,6 +54,7 @@
   {
    "fieldname": "first_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "in_global_search": 1,
    "label": "First Name",
    "oldfieldname": "first_name",
@@ -63,12 +63,14 @@
   {
    "fieldname": "middle_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Middle Name"
   },
   {
    "bold": 1,
    "fieldname": "last_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Last Name",
    "oldfieldname": "last_name",
    "oldfieldtype": "Data"
@@ -76,11 +78,7 @@
   {
    "fieldname": "full_name",
    "fieldtype": "Data",
-   "label": "Full Name"
-  },
-  {
-   "fieldname": "full_names",
-   "fieldtype": "Data",
+   "hidden": 1,
    "label": "Full Name"
   },
   {
@@ -88,12 +86,10 @@
    "fieldname": "email_id",
    "fieldtype": "Data",
    "in_global_search": 1,
-   "in_list_view": 1,
    "label": "Email Address",
    "oldfieldname": "email_id",
    "oldfieldtype": "Data",
    "options": "Email",
-   "read_only": 1,
    "search_index": 1
   },
   {
@@ -177,6 +173,7 @@
   {
    "fieldname": "company_name",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Company Name"
   },
   {
@@ -281,7 +278,7 @@
  "image_field": "image",
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-19 12:09:54.132968",
+ "modified": "2024-09-19 12:43:53.073651",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Contact",
