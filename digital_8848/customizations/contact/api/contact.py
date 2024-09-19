@@ -51,10 +51,12 @@ def create_contact(**kwargs):
 
         contact_us.insert(ignore_permissions=True)
 
+        email_id_from_child = contact_us.email_ids[0].email_id if contact_us.email_ids else None
+
         return success_response(
             {
                 "message": "We have successfully received your request and will get back to you shortly.",
-                "email": contact_us.email_id, 
+                "email": email_id_from_child  # Email from child table
             }
         )
 
