@@ -246,7 +246,7 @@ override_doctype_class = {
 fixtures = [
     {"dt": "Custom Field", "filters": [
         [
-            "module", "=", "Contacts"
+            "module", "=", "digital_8848"
         ]
     ]}
 ]
