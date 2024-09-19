@@ -46,8 +46,8 @@ def create_contact_us_detail(custom_full_names,custom_company_name,how_can_we_he
     contact_us = frappe.new_doc("Contact")
     contact_us.custom_full_names = custom_full_names
     contact_us.custom_company_name = custom_company_name
-    contact_us.how_can_we_help = how_can_we_help
-    contact_us.i_want_to_receive_news_and_updates = i_want_to_receive_news_and_updates
+    contact_us.custom_how_can_we_help = how_can_we_help
+    contact_us.custom_i_want_to_receive_news_and_updates = i_want_to_receive_news_and_updates
 
     for value in email_ids:  
         contact_us.append("email_ids",  
