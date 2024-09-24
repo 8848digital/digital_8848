@@ -1,7 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:title",
+ "autoname": "format:{title}",
  "creation": "2024-09-23 18:03:49.976526",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -137,11 +137,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 16:28:34.722660",
+ "modified": "2024-09-24 16:36:59.722240",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
