@@ -17,7 +17,9 @@
   "banner_title",
   "banner_image",
   "banner_description",
+  "industry_detail_sub_title",
   "industry_detail",
+  "advantages_sub_title",
   "advantages"
  ],
  "fields": [
@@ -87,11 +89,21 @@
    "fieldtype": "Table",
    "label": "Advantages",
    "options": "Advantages"
+  },
+  {
+   "fieldname": "industry_detail_sub_title",
+   "fieldtype": "Data",
+   "label": "Industry Detail Sub Title"
+  },
+  {
+   "fieldname": "advantages_sub_title",
+   "fieldtype": "Data",
+   "label": "Advantages Sub Title"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-23 18:28:11.413780",
+ "modified": "2024-09-24 11:27:31.124858",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",
