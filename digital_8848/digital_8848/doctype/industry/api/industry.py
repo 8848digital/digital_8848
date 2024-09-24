@@ -25,7 +25,7 @@ def get_industry_details(**kwargs):
 def get_industry_list(**kwargs):
     try:
         industry_banner = frappe.get_value("Banner", "Industry", ["name", "title", "slug"], as_dict = 1) or {}
-        industry_banner_details = frappe.get_value("Banner Detail", {"parent": industry_banner.name}, ["title", "short_description", "banner_image"], as_dict = 1) or {}
+        industry_banner_details = frappe.get_value("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"], as_dict = 1) or {}
         industries = frappe.get_all("Industry", fields = ["banner_title", "banner_image", "banner_description", "slug", "sequence"])
         industry_banner.update(industry_banner_details)
         industry_banner.update({"industries": industries})
