@@ -1,11 +1,12 @@
 {
  "actions": [],
  "allow_rename": 1,
- "autoname": "field:title",
+ "autoname": "format:{title}",
  "creation": "2024-09-23 18:03:49.976526",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "title",
   "url",
   "slug",
@@ -14,11 +15,16 @@
   "image",
   "section_break_jt0k",
   "short_description",
+  "banner_details_tab",
   "banner_title",
+  "column_break_jmhq",
   "banner_image",
+  "section_break_bspp",
   "banner_description",
+  "industry_details",
   "industry_detail_sub_title",
   "industry_detail",
+  "advantages_tab",
   "advantages_sub_title",
   "advantages"
  ],
@@ -99,15 +105,43 @@
    "fieldname": "advantages_sub_title",
    "fieldtype": "Data",
    "label": "Advantages Sub Title"
+  },
+  {
+   "fieldname": "banner_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Banner Details"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "industry_details",
+   "fieldtype": "Tab Break",
+   "label": "Industry Details"
+  },
+  {
+   "fieldname": "advantages_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advantages"
+  },
+  {
+   "fieldname": "column_break_jmhq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_bspp",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 11:27:31.124858",
+ "modified": "2024-09-24 16:36:59.722240",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",
- "naming_rule": "By fieldname",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
