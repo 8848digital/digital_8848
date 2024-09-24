@@ -10,8 +10,11 @@
   "title",
   "type",
   "column_break_bfev",
+  "logo",
   "slug",
+  "column_break_wbs0",
   "url",
+  "sequence",
   "section_break_s6uf",
   "subtitle",
   "expertise_detail",
@@ -211,11 +214,25 @@
    "fieldname": "subtitle",
    "fieldtype": "Data",
    "label": "SubTitle"
+  },
+  {
+   "fieldname": "logo",
+   "fieldtype": "Attach",
+   "label": "Logo"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
+  },
+  {
+   "fieldname": "column_break_wbs0",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 18:32:00.742097",
+ "modified": "2024-09-24 19:09:03.100736",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
