@@ -1,0 +1,163 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-24 14:52:16.506499",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "details_tab",
+  "title",
+  "type",
+  "expertise_detail",
+  "banner_details_tab",
+  "banner_title",
+  "banner_image",
+  "banner_description",
+  "services_details_tab",
+  "service_title",
+  "services_detail",
+  "process_details_tab",
+  "process_title",
+  "process_details",
+  "why_choose_8848_tab",
+  "why_choose_8848_title",
+  "why_choose_8848",
+  "advantages_tab",
+  "advantages_title",
+  "advantages"
+ ],
+ "fields": [
+  {
+   "fieldname": "banner_title",
+   "fieldtype": "Data",
+   "label": "Banner Title"
+  },
+  {
+   "fieldname": "banner_image",
+   "fieldtype": "Attach",
+   "label": "Banner Image"
+  },
+  {
+   "fieldname": "banner_description",
+   "fieldtype": "Small Text",
+   "label": "Banner Description"
+  },
+  {
+   "fieldname": "banner_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Banner Details"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "expertise_detail",
+   "fieldtype": "Table",
+   "label": "Expertise Detail",
+   "options": "Expertise Detail"
+  },
+  {
+   "fieldname": "services_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Services Details"
+  },
+  {
+   "fieldname": "service_title",
+   "fieldtype": "Data",
+   "label": "Service Title"
+  },
+  {
+   "fieldname": "services_detail",
+   "fieldtype": "Table",
+   "label": "Services Detail",
+   "options": "Services Detail"
+  },
+  {
+   "fieldname": "process_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Process Details"
+  },
+  {
+   "fieldname": "process_title",
+   "fieldtype": "Data",
+   "label": "Process Title"
+  },
+  {
+   "fieldname": "process_details",
+   "fieldtype": "Table",
+   "label": "Process Details",
+   "options": "Process Detail"
+  },
+  {
+   "depends_on": "eval: doc.type == \"Services\" || doc.type == \"Technology\";",
+   "fieldname": "why_choose_8848_tab",
+   "fieldtype": "Tab Break",
+   "label": "Why Choose 8848"
+  },
+  {
+   "fieldname": "why_choose_8848_title",
+   "fieldtype": "Data",
+   "label": "Why Choose 8848 Title"
+  },
+  {
+   "fieldname": "why_choose_8848",
+   "fieldtype": "Table",
+   "label": "Why Choose 8848",
+   "options": "Why Choose 8848"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "Services\nTechnology\nSolutions"
+  },
+  {
+   "depends_on": "eval: doc.type == \"Solutions\";",
+   "fieldname": "advantages_tab",
+   "fieldtype": "Tab Break",
+   "label": "Advantages"
+  },
+  {
+   "fieldname": "advantages_title",
+   "fieldtype": "Data",
+   "label": "Advantages Title"
+  },
+  {
+   "fieldname": "advantages",
+   "fieldtype": "Table",
+   "label": "Advantages",
+   "options": "Advantages"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-24 15:42:42.427749",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Expertise",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
