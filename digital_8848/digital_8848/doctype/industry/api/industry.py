@@ -29,7 +29,7 @@ def get_industry_list(**kwargs):
         industries = frappe.get_all("Industry", fields = ["banner_title", "banner_image", "banner_description", "slug", "sequence"])
         industry_banner.update(industry_banner_details)
         industry_banner.update({"industries": industries})
-        industry_banner.pop("name")
+        industry_banner.pop("name", None)
         return success_response(industry_banner)
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
