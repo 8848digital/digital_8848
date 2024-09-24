@@ -11,21 +11,22 @@ def get_banner_list(**kwargs):
 
         banner_data = frappe.qb.from_(
             banner
-        ).select(
-            banner_detail.idx.as_("id"),
-            banner_detail.banner_image.as_("image"),
-            banner_detail.title.as_("heading"),
-            banner_detail.short_description.as_("text"),
-            banner_detail.btn_text,
-            banner_detail.btn_url
         ).left_join(
             banner_detail
         ).on(
             banner_detail.parent == banner.name
+        ).select(
+            banner_detail.sequence,
+            banner_detail.banner_image.as_("image"),
+            banner_detail.title.as_("heading"),
+            banner_detail.short_description.as_("text"),
+            banner_detail.btn_text,
+            banner_detail.btn_url,
+            banner_detail.interval
         ).where(
             (banner.title == title)
         ).orderby(
-            banner_detail.idx, order=Order.asc
+            banner_detail.sequence, order=Order.asc
         ).run(as_dict=True)
 
         return success_response(data=banner_data)

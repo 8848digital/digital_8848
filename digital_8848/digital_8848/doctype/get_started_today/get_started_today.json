@@ -1,18 +1,17 @@
 {
  "actions": [],
  "allow_rename": 1,
- "creation": "2024-09-23 16:12:10.713496",
+ "creation": "2024-09-23 16:06:44.417553",
  "doctype": "DocType",
- "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "sequence",
   "title",
   "short_description",
-  "banner_image",
+  "background_image",
+  "section_break_0yyj",
   "btn_text",
-  "btn_url",
-  "interval"
+  "column_break_xcx1",
+  "btn_url"
  ],
  "fields": [
   {
@@ -26,9 +25,9 @@
    "label": "Short Description"
   },
   {
-   "fieldname": "banner_image",
+   "fieldname": "background_image",
    "fieldtype": "Attach Image",
-   "label": "Banner Image"
+   "label": "Background Image"
   },
   {
    "fieldname": "btn_text",
@@ -41,25 +40,34 @@
    "label": "Btn URL"
   },
   {
-   "fieldname": "sequence",
-   "fieldtype": "Int",
-   "label": "Sequence"
+   "fieldname": "section_break_0yyj",
+   "fieldtype": "Section Break"
   },
   {
-   "fieldname": "interval",
-   "fieldtype": "Data",
-   "label": "Interval"
+   "fieldname": "column_break_xcx1",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
- "istable": 1,
+ "issingle": 1,
  "links": [],
- "modified": "2024-09-24 13:34:53.778090",
+ "modified": "2024-09-23 16:08:46.960011",
  "modified_by": "Administrator",
  "module": "digital_8848",
- "name": "Banner Detail",
+ "name": "Get Started Today",
  "owner": "Administrator",
- "permissions": [],
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
  "sort_field": "modified",
  "sort_order": "DESC",
  "states": []
