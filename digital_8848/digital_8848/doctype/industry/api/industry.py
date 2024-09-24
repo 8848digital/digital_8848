@@ -6,6 +6,8 @@ def get_industry_details(**kwargs):
         filters = {}
         if kwargs.get("title"):
             filters["title"] = kwargs.get("title")
+        else:
+            return error_response("Please Provide title")
         industries = frappe.get_all("Industry", filters = filters, fields = ["name","title", "url", "slug", "sequence", "image", "short_description", "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", "advantages_sub_title"])
         industry_names = [industry.name for industry in industries]
         industry_details = frappe.get_all("Industry Detail", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "description"])
@@ -24,10 +26,10 @@ def get_industry_details(**kwargs):
 @frappe.whitelist(allow_guest=True)
 def get_industry_list(**kwargs):
     try:
-        industry_banner = frappe.get_value("Banner", "Industry", ["name", "title", "slug"], as_dict = 1) or {}
-        industry_banner_details = frappe.get_value("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"], as_dict = 1) or {}
-        industries = frappe.get_all("Industry", fields = ["banner_title", "banner_image", "banner_description", "slug", "sequence"])
-        industry_banner.update(industry_banner_details)
+        industry_banner = frappe.get_value("Banner", "Industry", ["name"], as_dict = 1) or {}
+        industry_banner_details = frappe.get_all("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"]) or []            
+        industry_banner.update({"banner_details": industry_banner_details})
+        industries = frappe.get_all("Industry", fields = ["title", "image", "short_description", "slug", "sequence", "url"])
         industry_banner.update({"industries": industries})
         industry_banner.pop("name", None)
         return success_response(industry_banner)
