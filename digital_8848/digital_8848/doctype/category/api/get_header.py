@@ -1,8 +1,5 @@
 import frappe
 
-#from digital_8848.digital_8848.u
-
-
 @frappe.whitelist(allow_guest=True)
 def get_header(**kwargs):
 	try:

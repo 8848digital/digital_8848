@@ -1,9 +1,8 @@
 # Copyright (c) 2024, digital_8848 and Contributors
 # See license.txt
 
-# import frappe
+import frappe
 from frappe.tests.utils import FrappeTestCase
-
 
 class TestCategory(FrappeTestCase):
 	pass
