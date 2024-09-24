@@ -1,0 +1,81 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{leader_name}",
+ "creation": "2024-09-23 19:17:43.196174",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "leader_name",
+  "designaton",
+  "short_description",
+  "leader_image",
+  "btn_text",
+  "btn_icon",
+  "btn_url"
+ ],
+ "fields": [
+  {
+   "fieldname": "leader_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Leader Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "designaton",
+   "fieldtype": "Data",
+   "label": "Designaton"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description"
+  },
+  {
+   "fieldname": "leader_image",
+   "fieldtype": "Attach Image",
+   "label": "Leader Image"
+  },
+  {
+   "fieldname": "btn_text",
+   "fieldtype": "Data",
+   "label": "Btn Text"
+  },
+  {
+   "fieldname": "btn_icon",
+   "fieldtype": "Attach Image",
+   "label": "Btn Icon"
+  },
+  {
+   "fieldname": "btn_url",
+   "fieldtype": "Data",
+   "label": "Btn URL"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2024-09-23 19:23:07.512592",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Leadership",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
