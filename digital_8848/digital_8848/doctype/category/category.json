@@ -1,0 +1,145 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:{category_name}",
+ "creation": "2024-09-23 19:00:43.343399",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "enable_category",
+  "category_name",
+  "label",
+  "slug",
+  "lft",
+  "rgt",
+  "column_break_nvad",
+  "is_group",
+  "old_parent",
+  "parent_category",
+  "icon",
+  "sequence",
+  "column_break_cujc",
+  "url",
+  "image",
+  "short_description"
+ ],
+ "fields": [
+  {
+   "fieldname": "lft",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Left",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "rgt",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Right",
+   "no_copy": 1,
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "is_group",
+   "fieldtype": "Check",
+   "label": "Is Group"
+  },
+  {
+   "fieldname": "old_parent",
+   "fieldtype": "Link",
+   "label": "Old Parent",
+   "options": "Category"
+  },
+  {
+   "fieldname": "parent_category",
+   "fieldtype": "Link",
+   "ignore_user_permissions": 1,
+   "label": "Parent Category",
+   "options": "Category"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_category",
+   "fieldtype": "Check",
+   "label": "Enable Category"
+  },
+  {
+   "fieldname": "category_name",
+   "fieldtype": "Data",
+   "label": "Category Name"
+  },
+  {
+   "fieldname": "label",
+   "fieldtype": "Data",
+   "label": "Label"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug"
+  },
+  {
+   "fieldname": "column_break_nvad",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "icon",
+   "fieldtype": "Attach",
+   "label": "Icon"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach",
+   "label": "Image"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description"
+  },
+  {
+   "fieldname": "column_break_cujc",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_tree": 1,
+ "links": [],
+ "modified": "2024-09-23 19:08:18.597150",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Category",
+ "naming_rule": "Expression",
+ "nsm_parent_field": "parent_category",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+  
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
