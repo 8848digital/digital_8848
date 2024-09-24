@@ -1,6 +1,7 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "format:{title}",
  "creation": "2024-09-24 14:52:16.506499",
  "doctype": "DocType",
  "engine": "InnoDB",
@@ -138,10 +139,11 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 15:42:42.427749",
+ "modified": "2024-09-24 16:32:36.691629",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
+ "naming_rule": "Expression",
  "owner": "Administrator",
  "permissions": [
   {
