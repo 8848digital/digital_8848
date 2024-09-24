@@ -9,6 +9,10 @@
   "details_tab",
   "title",
   "type",
+  "column_break_bfev",
+  "slug",
+  "url",
+  "section_break_s6uf",
   "expertise_detail",
   "banner_details_tab",
   "banner_title",
@@ -25,7 +29,15 @@
   "why_choose_8848",
   "advantages_tab",
   "advantages_title",
-  "advantages"
+  "advantages",
+  "case_study_tab",
+  "case_study_title",
+  "case_study_description",
+  "column_break_vezs",
+  "case_study_image",
+  "case_study_short_description",
+  "faqs_tab",
+  "faqs_detail"
  ],
  "fields": [
   {
@@ -135,11 +147,69 @@
    "fieldtype": "Table",
    "label": "Advantages",
    "options": "Advantages"
+  },
+  {
+   "fieldname": "case_study_tab",
+   "fieldtype": "Tab Break",
+   "label": "Case Study"
+  },
+  {
+   "fieldname": "case_study_title",
+   "fieldtype": "Data",
+   "label": "Case Study Title"
+  },
+  {
+   "fieldname": "case_study_description",
+   "fieldtype": "Small Text",
+   "label": "Case Study Description"
+  },
+  {
+   "fieldname": "column_break_vezs",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "case_study_image",
+   "fieldtype": "Attach",
+   "label": "Case Study Image"
+  },
+  {
+   "fieldname": "case_study_short_description",
+   "fieldtype": "Small Text",
+   "label": "Case Study Short Description"
+  },
+  {
+   "fieldname": "faqs_tab",
+   "fieldtype": "Tab Break",
+   "label": "FAQs"
+  },
+  {
+   "fieldname": "faqs_detail",
+   "fieldtype": "Table",
+   "label": "FAQs Detail",
+   "options": "FAQs"
+  },
+  {
+   "fieldname": "column_break_bfev",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL"
+  },
+  {
+   "fieldname": "section_break_s6uf",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 16:32:36.691629",
+ "modified": "2024-09-24 17:37:45.798064",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
