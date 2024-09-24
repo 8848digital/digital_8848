@@ -13,6 +13,7 @@
   "slug",
   "url",
   "section_break_s6uf",
+  "subtitle",
   "expertise_detail",
   "banner_details_tab",
   "banner_title",
@@ -205,11 +206,16 @@
   {
    "fieldname": "section_break_s6uf",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "subtitle",
+   "fieldtype": "Data",
+   "label": "SubTitle"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 17:37:45.798064",
+ "modified": "2024-09-24 18:32:00.742097",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
