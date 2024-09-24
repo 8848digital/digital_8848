@@ -9,6 +9,7 @@
   "city",
   "description",
   "section_break_szg6",
+  "sequence",
   "email_id",
   "column_break_66el",
   "contact_no",
@@ -58,11 +59,17 @@
   {
    "fieldname": "section_break_07bn",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence",
+   "unique": 1
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-23 17:54:56.066532",
+ "modified": "2024-09-24 17:42:29.697854",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Our Presence",

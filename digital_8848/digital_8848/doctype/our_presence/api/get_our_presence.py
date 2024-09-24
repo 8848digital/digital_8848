@@ -1,4 +1,5 @@
 import frappe
+from pypika.terms import Order
 
 @frappe.whitelist(allow_guest=True)
 def get_our_presence(**kwargs):
@@ -8,12 +9,15 @@ def get_our_presence(**kwargs):
         our_presence_details = frappe.qb.from_(
             our_presence
         ).select(
+            our_presence.sequence,
             our_presence.city,
             our_presence.description.as_("content_text"),
             our_presence.contact_no,
             our_presence.email_id,
             our_presence.redirect_icon,
             our_presence.redirect_url
+        ).orderby(
+            our_presence.sequence, order=Order.asc
         ).run(as_dict=True)
 
         our_presence_header_doc = frappe.get_doc("Our Presence Heading")
