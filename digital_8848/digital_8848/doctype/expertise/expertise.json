@@ -17,6 +17,9 @@
   "sequence",
   "section_break_s6uf",
   "subtitle",
+  "column_break_hdmz",
+  "short_description",
+  "section_break_301e",
   "expertise_detail",
   "banner_details_tab",
   "banner_title",
@@ -228,11 +231,24 @@
   {
    "fieldname": "column_break_wbs0",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_hdmz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "short_description",
+   "fieldtype": "Small Text",
+   "label": "Short Description"
+  },
+  {
+   "fieldname": "section_break_301e",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 19:09:03.100736",
+ "modified": "2024-09-25 15:32:18.125231",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
