@@ -4,32 +4,95 @@ import frappe
 def get_case_study_details(**kwargs):
     try:
         response = []
-        title = kwargs.get("title")
         slug = kwargs.get("slug")
+        if not slug:
+            return error_response("Please provide a slug")
+        
+        case_study_doctype_title = frappe.db.get_value("Case Study",{'slug': kwargs.get("slug")})
+        if not case_study_doctype_title:
+            return error_response("No case study found with the given slug")
+        case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
 
-        if not title and not slug:
-            return error_response("Please provide a title or slug")
-        if title:
-            case_study_doctype = frappe.get_doc("Case Study",kwargs.get("title"))
-        if slug:
-            case_study_doctype_title = frappe.db.get_value("Case Study",{'slug': kwargs.get("slug")})
-            if not case_study_doctype_title:
-                return error_response("No case study found with the given slug")
-            case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
+        case_study_doctype_details = get_details(case_study_doctype)
+        banner_details = get_banner_details(case_study_doctype)
+        overview_details = get_overview_details(case_study_doctype)
+        challenge_details = get_challenge_details(case_study_doctype)
+        objective_details = get_objective_details(case_study_doctype)
+        solution_details = get_solution_details(case_study_doctype)
+        impact_details = get_impact_details(case_study_doctype)
 
-        response.append({
-            "title": case_study_doctype.get("title"),
-            "url": case_study_doctype.get("url"),
-            "type": case_study_doctype.get("type"),
-            "slug": case_study_doctype.get("slug"),
-            "short_description": case_study_doctype.get("short_description"),
-            "image": case_study_doctype.get("image")
-        })
+        combined_details = { **case_study_doctype_details,**banner_details,**overview_details,**challenge_details,
+                                **objective_details,**solution_details,**impact_details }
+        
+        response.append(combined_details)
         return success_response(data=response)
           
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
     
+def get_details(case_study_doctype):
+    case_study_doctype_details = {}
+    case_study_doctype_details.update({
+            "title": case_study_doctype.get("title") or None,
+            "url": case_study_doctype.get("url") or None,
+            "type": case_study_doctype.get("type") or None,
+            "slug": case_study_doctype.get("slug") or None,
+            "short_description": case_study_doctype.get("short_description") or None,
+            "image": case_study_doctype.get("image") or None
+        })
+    return case_study_doctype_details
+
+def get_banner_details(case_study_doctype):
+    banner_details = {}
+    banner_details.update({
+        "banner_title": case_study_doctype.get("banner_title") or None,
+        "banner_image": case_study_doctype.get("banner_image") or None,
+        "banner_description": case_study_doctype.get("banner_description") or None
+    })
+    return banner_details
+
+def get_overview_details(case_study_doctype):
+    overview_details = {}
+    overview_details.update({
+        "overview_title": case_study_doctype.get("overview_title") or None,
+        "overview_description": case_study_doctype.get("overview_description") or None
+    })
+    return overview_details
+
+def get_challenge_details(case_study_doctype):
+    challenge_details = {}
+    challenge_details.update({
+        "challenge_title": case_study_doctype.get("challenge_title") or None,
+        "challenge_short_description": case_study_doctype.get("challenge_short_description") or None,
+        "challenge_description": case_study_doctype.get("challenge_description") or None
+    })
+    return challenge_details
+
+def get_objective_details(case_study_doctype):
+    objective_details = {}
+    objective_details.update({
+        "objective_title": case_study_doctype.get("objective_title") or None,
+        "objective_description": case_study_doctype.get("objective_description") or None
+    })
+    return objective_details
+
+def get_solution_details(case_study_doctype):
+    solution_details = {}
+    solution_details.update({
+        "solution_title": case_study_doctype.get("solution_title") or None,
+        "solution_description": case_study_doctype.get("solution_description") or None
+    })
+    return solution_details
+
+def get_impact_details(case_study_doctype):
+    impact_details = {}
+    impact_details.update({
+        "impact_title": case_study_doctype.get("impact_title") or None,
+        "impact_short_description": case_study_doctype.get("impact_short_description") or None,
+        "impact_description": case_study_doctype.get("impact_description") or None
+    })
+    return impact_details
+
 def success_response(data=None, id=None):
     response = {"status": "success"}
     response["data"] = data
