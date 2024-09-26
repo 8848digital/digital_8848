@@ -1,0 +1,30 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-25 16:11:15.174554",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "certified_partner_logo"
+ ],
+ "fields": [
+  {
+   "fieldname": "certified_partner_logo",
+   "fieldtype": "Attach Image",
+   "label": "Certified Partner Logo"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-09-25 16:11:38.599971",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Certified Partner Table",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -1,0 +1,287 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-09-25 13:37:42.309277",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "main_tab",
+  "heading",
+  "banner",
+  "about_section_tab",
+  "about_section_title",
+  "about_description",
+  "section_break_n743",
+  "about_btn_text",
+  "column_break_lotj",
+  "about_btn_url",
+  "section_break_odpm",
+  "certified_partners",
+  "home_page_tab",
+  "home_page_description",
+  "section_break_mujx",
+  "home_page_btn_text",
+  "column_break_cqgi",
+  "home_page_btn_url",
+  "section_break_drkc",
+  "certified_partners_table",
+  "our_mission_tab",
+  "our_mission_section_title",
+  "our_mission_description",
+  "founder_tab",
+  "founder_name",
+  "column_break_9uw8",
+  "founder_image",
+  "section_break_jakx",
+  "founder_description",
+  "section_break_dwg2",
+  "founder_quote",
+  "column_break_42jy",
+  "founder_quote_icon",
+  "clients_tab",
+  "client_details",
+  "global_delivery_tab",
+  "global_delivery_section_title",
+  "global_delivery_description",
+  "global_delivery_counts",
+  "our_values_tab",
+  "our_values_section_title",
+  "background_image",
+  "our_values_details"
+ ],
+ "fields": [
+  {
+   "fieldname": "main_tab",
+   "fieldtype": "Tab Break",
+   "label": "Main"
+  },
+  {
+   "fieldname": "heading",
+   "fieldtype": "Data",
+   "label": "Heading"
+  },
+  {
+   "fieldname": "banner",
+   "fieldtype": "Attach Image",
+   "label": "Banner Image"
+  },
+  {
+   "fieldname": "about_section_tab",
+   "fieldtype": "Tab Break",
+   "label": "About Section"
+  },
+  {
+   "fieldname": "about_section_title",
+   "fieldtype": "Data",
+   "label": "Section Title"
+  },
+  {
+   "fieldname": "about_description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "about_btn_text",
+   "fieldtype": "Data",
+   "label": "Btn Text"
+  },
+  {
+   "fieldname": "about_btn_url",
+   "fieldtype": "Data",
+   "label": "Btn URL"
+  },
+  {
+   "fieldname": "certified_partners",
+   "fieldtype": "Table",
+   "label": "Certified Partners",
+   "options": "Certified Partners"
+  },
+  {
+   "fieldname": "section_break_n743",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_lotj",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_odpm",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "home_page_tab",
+   "fieldtype": "Tab Break",
+   "label": "Home Page"
+  },
+  {
+   "fieldname": "home_page_description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "home_page_btn_text",
+   "fieldtype": "Data",
+   "label": "Btn text"
+  },
+  {
+   "fieldname": "home_page_btn_url",
+   "fieldtype": "Data",
+   "label": "Btn URL"
+  },
+  {
+   "fieldname": "section_break_mujx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_cqgi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_drkc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "our_mission_tab",
+   "fieldtype": "Tab Break",
+   "label": "Our Mission"
+  },
+  {
+   "fieldname": "our_mission_section_title",
+   "fieldtype": "Data",
+   "label": "Section Title"
+  },
+  {
+   "fieldname": "our_mission_description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "founder_tab",
+   "fieldtype": "Tab Break",
+   "label": "Founder"
+  },
+  {
+   "fieldname": "founder_name",
+   "fieldtype": "Data",
+   "label": "Founder Name"
+  },
+  {
+   "fieldname": "founder_description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "founder_image",
+   "fieldtype": "Attach Image",
+   "label": "Founder Image"
+  },
+  {
+   "fieldname": "founder_quote",
+   "fieldtype": "Small Text",
+   "label": "Quote"
+  },
+  {
+   "fieldname": "founder_quote_icon",
+   "fieldtype": "Attach Image",
+   "label": "Quote Icon"
+  },
+  {
+   "fieldname": "column_break_9uw8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_jakx",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_dwg2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_42jy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "clients_tab",
+   "fieldtype": "Tab Break",
+   "label": "Clients"
+  },
+  {
+   "fieldname": "client_details",
+   "fieldtype": "Table",
+   "label": "Client Details",
+   "options": "Client Details"
+  },
+  {
+   "fieldname": "global_delivery_tab",
+   "fieldtype": "Tab Break",
+   "label": "Global Delivery"
+  },
+  {
+   "fieldname": "global_delivery_section_title",
+   "fieldtype": "Data",
+   "label": "Section Title"
+  },
+  {
+   "fieldname": "global_delivery_description",
+   "fieldtype": "Small Text",
+   "label": "Description"
+  },
+  {
+   "fieldname": "global_delivery_counts",
+   "fieldtype": "Table",
+   "label": "Global Delivery Counts",
+   "options": "Global Delivery Details"
+  },
+  {
+   "fieldname": "our_values_tab",
+   "fieldtype": "Tab Break",
+   "label": "Our Values"
+  },
+  {
+   "fieldname": "our_values_section_title",
+   "fieldtype": "Data",
+   "label": "Section Title"
+  },
+  {
+   "fieldname": "our_values_details",
+   "fieldtype": "Table",
+   "label": "Our Values Details",
+   "options": "Our Value Details"
+  },
+  {
+   "fieldname": "certified_partners_table",
+   "fieldtype": "Table",
+   "label": "Certified Partners",
+   "options": "Certified Partner Table"
+  },
+  {
+   "fieldname": "background_image",
+   "fieldtype": "Attach Image",
+   "label": "Background Image"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-09-25 16:16:14.478648",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "About Us",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "print": 1,
+   "read": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
