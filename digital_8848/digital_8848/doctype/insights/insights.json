@@ -6,13 +6,36 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "title",
   "type",
   "short_description",
   "column_break_njbk",
   "url",
   "slug",
-  "image"
+  "image",
+  "banner_details_tab",
+  "banner_title",
+  "banner_image",
+  "banner_description",
+  "capabilities_details_tab",
+  "capabilities_title",
+  "capabilities_detail",
+  "functionality_details_tab",
+  "functionality_title",
+  "functionality_detail",
+  "integration_details_tab",
+  "integration_title",
+  "integration_detail",
+  "services_details_tab",
+  "services_title",
+  "services_detail",
+  "visibility_and_security_details",
+  "visibility_and_security_title",
+  "visibility_and_security_short_description",
+  "benefits_details_tab",
+  "benefits_title",
+  "benefits_detail"
  ],
  "fields": [
   {
@@ -49,11 +72,131 @@
    "fieldname": "image",
    "fieldtype": "Attach Image",
    "label": "Image"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "banner_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Banner Details"
+  },
+  {
+   "fieldname": "banner_title",
+   "fieldtype": "Data",
+   "label": "Banner Title"
+  },
+  {
+   "fieldname": "banner_image",
+   "fieldtype": "Attach Image",
+   "label": "Banner Image"
+  },
+  {
+   "fieldname": "banner_description",
+   "fieldtype": "Small Text",
+   "label": "Banner Description"
+  },
+  {
+   "fieldname": "capabilities_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Capabilities Details"
+  },
+  {
+   "fieldname": "capabilities_title",
+   "fieldtype": "Data",
+   "label": "Capabilities Title"
+  },
+  {
+   "fieldname": "capabilities_detail",
+   "fieldtype": "Table",
+   "label": "Capabilities Detail",
+   "options": "Capabilities Detail"
+  },
+  {
+   "fieldname": "functionality_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Functionality Details"
+  },
+  {
+   "fieldname": "functionality_title",
+   "fieldtype": "Data",
+   "label": "Functionality Title"
+  },
+  {
+   "fieldname": "functionality_detail",
+   "fieldtype": "Table",
+   "label": "Functionality Detail",
+   "options": "Functionality Detail"
+  },
+  {
+   "fieldname": "integration_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Integration Details"
+  },
+  {
+   "fieldname": "integration_title",
+   "fieldtype": "Data",
+   "label": "Integration Title"
+  },
+  {
+   "fieldname": "integration_detail",
+   "fieldtype": "Table",
+   "label": "Integration Detail",
+   "options": "Integration Detail"
+  },
+  {
+   "fieldname": "services_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Services Details"
+  },
+  {
+   "fieldname": "services_title",
+   "fieldtype": "Data",
+   "label": "Services Title"
+  },
+  {
+   "fieldname": "visibility_and_security_details",
+   "fieldtype": "Tab Break",
+   "label": "Visibility & Security Details"
+  },
+  {
+   "fieldname": "visibility_and_security_title",
+   "fieldtype": "Data",
+   "label": "Visibility & Security Title"
+  },
+  {
+   "fieldname": "visibility_and_security_short_description",
+   "fieldtype": "Small Text",
+   "label": "Visibility & Security Short Description"
+  },
+  {
+   "fieldname": "benefits_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Benefits Details"
+  },
+  {
+   "fieldname": "benefits_title",
+   "fieldtype": "Data",
+   "label": "Benefits Title"
+  },
+  {
+   "fieldname": "benefits_detail",
+   "fieldtype": "Table",
+   "label": "Benefits Detail",
+   "options": "Why Choose 8848"
+  },
+  {
+   "fieldname": "services_detail",
+   "fieldtype": "Table",
+   "label": "Services Detail",
+   "options": "Services Detail"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-26 11:54:25.164154",
+ "modified": "2024-09-26 19:39:58.581419",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Insights",
