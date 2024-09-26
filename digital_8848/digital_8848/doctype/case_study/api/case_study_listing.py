@@ -17,7 +17,8 @@ def get_case_study_listing(**kwargs):
                     "image": case_study_doctype.get("image") or None,
                     "short_description": case_study_doctype.get("short_description") or None,
                     "slug": case_study_doctype.get("slug") or None,
-                    "url": case_study_doctype.get("url") or None
+                    "url": case_study_doctype.get("url") or None,
+                    "type": case_study_doctype.get("type") or None
                 }
                 response.append(case_study_doctype_details)
             return success_response(response)
