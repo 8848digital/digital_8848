@@ -16,6 +16,7 @@ def get_about_us_detail(**kwargs):
         client_details = get_client_details(about_us_doc)
         global_delivery = get_global_delivery_details(about_us_doc)
         our_values = get_our_value_details(about_us_doc)
+        industry = get_industry_details(about_us_doc)
 
         about_us_data["about_section"] = about_section
         about_us_data["home_page"] = home_page
@@ -24,6 +25,7 @@ def get_about_us_detail(**kwargs):
         about_us_data["client_details"] = client_details
         about_us_data["global_delivery"] = global_delivery
         about_us_data["our_values"] = our_values
+        about_us_data["industry_info"] = industry
 
         return success_response(data=about_us_data)
     
@@ -134,3 +136,11 @@ def get_our_value_details(about_us_doc):
 
     our_values["our_value_details"] = our_value_details
     return our_values
+
+def get_industry_details(about_us_doc):
+    industry_details = {}
+    industry_details.update({
+        "industry_title": about_us_doc.get("industry_title") or None,
+        "industry_short_description": about_us_doc.get("industry_short_description") or None
+    })
+    return industry_details
