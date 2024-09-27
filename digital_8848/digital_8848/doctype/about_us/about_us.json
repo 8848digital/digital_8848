@@ -47,7 +47,10 @@
   "our_values_tab",
   "our_values_section_title",
   "background_image",
-  "our_values_details"
+  "our_values_details",
+  "industry_tab",
+  "industry_title",
+  "industry_short_description"
  ],
  "fields": [
   {
@@ -259,12 +262,27 @@
    "fieldname": "background_image",
    "fieldtype": "Attach Image",
    "label": "Background Image"
+  },
+  {
+   "fieldname": "industry_tab",
+   "fieldtype": "Tab Break",
+   "label": "Industry"
+  },
+  {
+   "fieldname": "industry_title",
+   "fieldtype": "Small Text",
+   "label": "Industry Title"
+  },
+  {
+   "fieldname": "industry_short_description",
+   "fieldtype": "Small Text",
+   "label": "Industry Short Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-25 16:16:14.478648",
+ "modified": "2024-09-27 14:26:41.432332",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "About Us",
