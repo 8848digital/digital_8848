@@ -40,13 +40,14 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-26 18:52:54.557591",
+ "modified": "2024-09-27 16:30:27.449634",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Services Detail",

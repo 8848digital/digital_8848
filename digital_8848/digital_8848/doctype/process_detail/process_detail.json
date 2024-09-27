@@ -33,13 +33,14 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-27 14:02:59.413173",
+ "modified": "2024-09-27 16:29:46.166317",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Process Detail",
