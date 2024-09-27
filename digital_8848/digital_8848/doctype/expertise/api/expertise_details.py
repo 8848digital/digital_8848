@@ -3,18 +3,14 @@ import frappe
 @frappe.whitelist(allow_guest=True)
 def get_expertise_details(**kwargs):
     try:
-        title = kwargs.get("title")
         slug = kwargs.get("slug")
-
-        if not title and not slug:
-            return error_response("Please provide a title or slug")
-        if title:
-            expertise_doctype = frappe.get_doc("Expertise",kwargs.get("title"))
-        if slug:
-            expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
-            if not expertise_doctype_title:
-                return error_response("No expertise found with the given slug")
-            expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
+        if not slug:
+            return error_response("Please provide a slug")
+        
+        expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
+        if not expertise_doctype_title:
+            return error_response("No expertise found with the given slug")
+        expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
 
         expertise_details = get_details(expertise_doctype)
         banner_details = get_banner_details(expertise_doctype)
@@ -50,10 +46,10 @@ def get_details(expertise_doctype):
     if expertise_doctype.get("expertise_detail"):
         expertise_detail_child = [
                 {
-                    "title":expertise.get("title"),
-                    "short_description":expertise.get("short_description"),
-                    "url":expertise.get("url"),
-                    "sequence":expertise.get("sequence")
+                    "title":expertise.get("title") or None,
+                    "short_description":expertise.get("short_description") or None,
+                    "url":expertise.get("url") or None,
+                    "sequence":expertise.get("sequence") or None
                 } 
                 for expertise in sorted(expertise_doctype.get("expertise_detail"), key=lambda x: x.get("sequence"))
             ]
@@ -84,10 +80,11 @@ def get_services_details(expertise_doctype):
     if expertise_doctype.get("services_detail"):
         services_detail_child = [
                 {
-                    "title":service.get("title"),
-                    "short_description":service.get("short_description"),
-                    "logo":service.get("logo"),
-                    "sequence":service.get("sequence")
+                    "title":service.get("title") or None,
+                    "short_description":service.get("short_description") or None,
+                    "logo":service.get("logo") or None,
+                    "sequence":service.get("sequence") or None,
+                    "url":service.get("url") or None
                 } 
                 for service in sorted(expertise_doctype.get("services_detail"), key=lambda x: x.get("sequence"))
             ]
@@ -105,9 +102,10 @@ def get_process_details(expertise_doctype):
     if expertise_doctype.get("process_details"):
         process_details_child = [
                 {
-                    "title":process.get("title"),
-                    "short_description":process.get("short_description"),
-                    "sequence":process.get("sequence")
+                    "title":process.get("title") or None,
+                    "short_description":process.get("short_description") or None,
+                    "sequence":process.get("sequence") or None,
+                    "url":process.get("url") or None
                 } 
                 for process in sorted(expertise_doctype.get("process_details"), key=lambda x: x.get("sequence"))
             ]
@@ -133,9 +131,10 @@ def get_why_choose_8848_details(expertise_doctype):
     if expertise_doctype.get("why_choose_8848"):
         why_choose_8848_child = [
                 {
-                    "title":entry.get("title"),
-                    "description":entry.get("description"),
-                    "sequence":entry.get("sequence")
+                    "title":entry.get("title") or None,
+                    "description":entry.get("description") or None,
+                    "sequence":entry.get("sequence") or None,
+                    "url":entry.get("url") or None
                 } 
                 for entry in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence"))
             ]
@@ -153,10 +152,11 @@ def get_advantages_details(expertise_doctype):
     if expertise_doctype.get("advantages"):
         advantages_child = [
                 {
-                    "title":advantage.get("title"),
-                    "short_description":advantage.get("short_description"),
-                    "image":advantage.get("image"),
-                    "sequence":advantage.get("sequence")
+                    "title":advantage.get("title") or None,
+                    "short_description":advantage.get("short_description") or None,
+                    "image":advantage.get("image") or None,
+                    "sequence":advantage.get("sequence") or None,
+                    "url":advantage.get("url") or None
                 } 
                 for advantage in sorted(expertise_doctype.get("advantages"), key=lambda x: x.get("sequence"))
             ]
@@ -183,10 +183,12 @@ def get_faq_details(expertise_doctype):
     if expertise_doctype.get("faqs_detail"):
         faqs_detail_child = [
                 {
-                    "title":faqs.get("title"),
-                    "short_description":faqs.get("short_description"),
+                    "title":faqs.get("title") or None,
+                    "short_description":faqs.get("short_description") or None,
+                    "url":faqs.get("url") or None,
+                    "sequence":faqs.get("sequence") or None
                 } 
-                for faqs in expertise_doctype.get("faqs_detail")
+                for faqs in sorted(expertise_doctype.get("faqs_detail"), key=lambda x: x.get("sequence"))
             ]
         faqs_details.update({"faqs_detail":faqs_detail_child})
     else:

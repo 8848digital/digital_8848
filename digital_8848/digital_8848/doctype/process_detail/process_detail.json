@@ -8,7 +8,8 @@
  "field_order": [
   "title",
   "short_description",
-  "sequence"
+  "sequence",
+  "url"
  ],
  "fields": [
   {
@@ -28,12 +29,17 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Sequence"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-24 14:50:05.655094",
+ "modified": "2024-09-27 14:02:59.413173",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Process Detail",
