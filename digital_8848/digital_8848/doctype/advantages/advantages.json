@@ -9,7 +9,8 @@
   "title",
   "short_description",
   "image",
-  "sequence"
+  "sequence",
+  "url"
  ],
  "fields": [
   {
@@ -34,12 +35,17 @@
    "fieldtype": "Int",
    "in_list_view": 1,
    "label": "Sequence "
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-23 18:25:25.141599",
+ "modified": "2024-09-27 14:05:16.505558",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Advantages",

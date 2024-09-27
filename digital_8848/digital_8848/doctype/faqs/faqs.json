@@ -7,7 +7,9 @@
  "engine": "InnoDB",
  "field_order": [
   "title",
-  "short_description"
+  "short_description",
+  "url",
+  "sequence"
  ],
  "fields": [
   {
@@ -21,12 +23,22 @@
    "fieldtype": "Small Text",
    "in_list_view": 1,
    "label": "Short Description"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-24 17:35:25.585009",
+ "modified": "2024-09-27 14:07:31.402983",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "FAQs",

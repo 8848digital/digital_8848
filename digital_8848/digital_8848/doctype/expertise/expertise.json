@@ -17,6 +17,7 @@
   "sequence",
   "section_break_s6uf",
   "subtitle",
+  "background_image",
   "column_break_hdmz",
   "short_description",
   "section_break_301e",
@@ -244,11 +245,16 @@
   {
    "fieldname": "section_break_301e",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "background_image",
+   "fieldtype": "Attach",
+   "label": "Background Image"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-25 15:32:18.125231",
+ "modified": "2024-09-27 13:19:00.669571",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
