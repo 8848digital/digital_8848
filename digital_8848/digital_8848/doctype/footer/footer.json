@@ -6,7 +6,8 @@
  "engine": "InnoDB",
  "field_order": [
   "footer_logo",
-  "social_media_links"
+  "social_media_links",
+  "legal_section"
  ],
  "fields": [
   {
@@ -19,12 +20,18 @@
    "fieldtype": "Table",
    "label": "Social Media Links",
    "options": "Social Media"
+  },
+  {
+   "fieldname": "legal_section",
+   "fieldtype": "Table",
+   "label": "Legal Section",
+   "options": "Legal Section"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-26 17:38:37.448454",
+ "modified": "2024-09-27 17:20:10.517304",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Footer",
