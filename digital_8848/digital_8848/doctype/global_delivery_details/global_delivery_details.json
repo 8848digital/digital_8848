@@ -13,18 +13,20 @@
   {
    "fieldname": "delivery_counts",
    "fieldtype": "Int",
+   "in_list_view": 1,
    "label": "Delivery Counts"
   },
   {
    "fieldname": "description",
    "fieldtype": "Small Text",
+   "in_list_view": 1,
    "label": "Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-25 14:34:09.483301",
+ "modified": "2024-09-27 16:42:42.022490",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Global Delivery Details",

@@ -12,6 +12,7 @@
   {
    "fieldname": "client",
    "fieldtype": "Link",
+   "in_list_view": 1,
    "label": "Client",
    "options": "Clients"
   }
@@ -19,7 +20,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-25 14:13:45.838821",
+ "modified": "2024-09-27 16:43:28.743136",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Client Details",
