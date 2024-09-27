@@ -68,8 +68,9 @@ def get_parent_category_details(category):
             parent_categories.append(category.category_name)
         if category.old_parent not in parent_of_parent_category:
             parent_of_parent_category.append(category.old_parent)
-    for value in parent_categories:
-        if value in parent_of_parent_category:
+    
+    for value in parent_of_parent_category:
+        if value in parent_categories:
             parent_categories.remove(value)
     return parent_categories
 
