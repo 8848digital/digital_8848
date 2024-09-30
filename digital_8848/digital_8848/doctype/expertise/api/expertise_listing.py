@@ -15,9 +15,12 @@ def get_expertise_listing(**kwargs):
                         "short_description": expertise_doctype.get("short_description") or None,
                         "slug": expertise_doctype.get("slug") or None,
                         "url": expertise_doctype.get("url") or None,
-                        "background_image": expertise_doctype.get("background_image") or None
+                        "background_image": expertise_doctype.get("background_image") or None,
+                        "sequence": expertise_doctype.get("sequence") or 0
                     }
                     response.append(expertise_doctype_details)
+                
+                response = sorted(response, key=lambda x: x.get("sequence") or 0)
                 return success_response(response)
             else:
                 return error_response("No data found.")

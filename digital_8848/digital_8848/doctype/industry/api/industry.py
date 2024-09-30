@@ -33,6 +33,7 @@ def get_industry_list(**kwargs):
         industry_banner_details = frappe.get_all("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"])           
         industry_banner.update({"banner_details": industry_banner_details})
         industries = frappe.get_all("Industry", fields = ["title", "image", "short_description", "slug", "sequence", "url"])
+        industries = sorted(industries, key=lambda x: x.get("sequence") or 0)
         industry_banner.update({"industries": industries})
         industry_banner.pop("name", None)
         return success_response(industry_banner)
