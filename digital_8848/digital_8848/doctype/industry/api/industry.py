@@ -4,21 +4,24 @@ import frappe
 def get_industry_details(**kwargs):
     try:
         filters = {}
-        if kwargs.get("title"):
-            filters["title"] = kwargs.get("title")
+        if kwargs.get("slug"):
+            filters["slug"] = kwargs.get("slug")
         else:
-            return error_response("Please Provide title")
+            return error_response("Please Provide a slug.")
         industries = frappe.get_all("Industry", filters = filters, fields = ["name","title", "url", "slug", "sequence", "image", "short_description", "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", "advantages_sub_title"])
-        industry_names = [industry.name for industry in industries]
-        industry_details = frappe.get_all("Industry Detail", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "description"])
-        industry_details_map = get_parent_child_map(industry_details)
-        advantages = frappe.get_all("Advantages", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "short_description", "image", "sequence"])
-        advantages_map = get_parent_child_map(advantages)
-        for industry in industries:
-            industry.update({"industry_detail": industry_details_map.get(industry.name) or []})
-            industry.update({"advantages": advantages_map.get(industry.name) or []})
-            industry.pop("name")
-        return success_response(industries)
+        if industries:
+            industry_names = [industry.name for industry in industries]
+            industry_details = frappe.get_all("Industry Detail", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "description"])
+            industry_details_map = get_parent_child_map(industry_details)
+            advantages = frappe.get_all("Advantages", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "short_description", "image", "sequence"])
+            advantages_map = get_parent_child_map(advantages)
+            for industry in industries:
+                industry.update({"industry_detail": industry_details_map.get(industry.name) or []})
+                industry.update({"advantages": advantages_map.get(industry.name) or []})
+                industry.pop("name")
+            return success_response(industries)
+        else:
+            return error_response("No Industry found with the given slug.")
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
     
