@@ -6,7 +6,10 @@
  "editable_grid": 1,
  "engine": "InnoDB",
  "field_order": [
-  "certified_partner_logo"
+  "certified_partner_logo",
+  "img_alt",
+  "height",
+  "width"
  ],
  "fields": [
   {
@@ -14,12 +17,27 @@
    "fieldtype": "Attach",
    "in_list_view": 1,
    "label": "Certified Partner Logo"
+  },
+  {
+   "fieldname": "height",
+   "fieldtype": "Int",
+   "label": "Height"
+  },
+  {
+   "fieldname": "width",
+   "fieldtype": "Int",
+   "label": "Width"
+  },
+  {
+   "fieldname": "img_alt",
+   "fieldtype": "Data",
+   "label": "Image Alt"
   }
  ],
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2024-09-27 16:53:55.303729",
+ "modified": "2024-09-30 13:17:51.580046",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Certified Partners",
