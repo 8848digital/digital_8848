@@ -18,7 +18,8 @@ def get_case_study_listing(**kwargs):
                     "short_description": case_study_doctype.get("short_description") or None,
                     "slug": case_study_doctype.get("slug") or None,
                     "url": case_study_doctype.get("url") or None,
-                    "type": case_study_doctype.get("type") or None
+                    "type": case_study_doctype.get("type") or None,
+                    "tag_detail": get_tag_details(case_study_doctype) or []
                 }
                 response.append(case_study_doctype_details)
             return success_response(response)
@@ -26,6 +27,18 @@ def get_case_study_listing(**kwargs):
             return error_response("No data found.")
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
+    
+def get_tag_details(case_study_doctype):
+    tag_details_child = []
+    
+    if case_study_doctype.get("tag_detail"):
+        tag_details_child = [
+                {
+                    "tag_name":tag.get("tag_name") or None,
+                } 
+                for tag in case_study_doctype.get("tag_detail")
+            ]
+    return tag_details_child
     
 def success_response(data=None, id=None):
     response = {"status": "success"}
