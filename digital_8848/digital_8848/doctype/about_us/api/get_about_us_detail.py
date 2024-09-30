@@ -53,6 +53,9 @@ def get_about_section_details(about_us_doc):
     for partners in about_us_doc.certified_partners:
         partner_details = {}
         partner_details["certified_partner_logo"] = partners.certified_partner_logo
+        partner_details["img_alt"] = partners.img_alt
+        partner_details["height"] = partners.height
+        partner_details["width"] = partners.width
         about_section_certified_partners.append(partner_details)
 
     about_section["certified_partners"] = about_section_certified_partners
@@ -68,6 +71,9 @@ def get_home_page_details(about_us_doc):
     for partners in about_us_doc.certified_partners_table:
         partner_details = {}
         partner_details["certified_partner_logo"] = partners.certified_partner_logo
+        partner_details["img_alt"] = partners.img_alt
+        partner_details["height"] = partners.height
+        partner_details["width"] = partners.width
         home_page_certified_partners.append(partner_details)
 
     home_page["certified_partners"] = home_page_certified_partners
@@ -85,6 +91,7 @@ def get_founder_details(about_us_doc):
     founder_details = {
             "founder_name" : about_us_doc.founder_name,
             "founder_image" : about_us_doc.founder_image,
+            "founder_designation" : about_us_doc.founder_designation,
             "description" : about_us_doc.founder_description,
             "quote" : about_us_doc.founder_quote,
             "quote_icon" : about_us_doc.founder_quote_icon
