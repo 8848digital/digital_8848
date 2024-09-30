@@ -1,9 +1,25 @@
 # Copyright (c) 2024, digital_8848 and contributors
 # For license information, please see license.txt
 
-# import frappe
+import frappe
 from frappe.model.document import Document
-
+from frappe import _
 
 class CaseStudy(Document):
-	pass
+	def validate(self):
+		self.validate_display_on_home_page_checkbox()
+        
+	def validate_display_on_home_page_checkbox(self):
+		if self.display_on_home_page:
+			other_case_studies = frappe.get_all(
+				"Case Study", filters={"name": ["!=", self.name], "display_on_home_page": 1}
+			)
+			if other_case_studies:
+				other_case_study_names = [case_study["name"] for case_study in other_case_studies]
+				frappe.throw(
+					_(
+						"Another Case Study ({0}) is already displayed on the home page. "
+						"Please uncheck 'Display on Home Page' for that Case Study first."
+					).format(", ".join(other_case_study_names))
+				)
+				
