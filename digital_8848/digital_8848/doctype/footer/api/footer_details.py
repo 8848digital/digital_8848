@@ -46,7 +46,13 @@ def get_base_category_details(category):
         category
     ).select(
         category.category_name,
-        category.old_parent
+        category.old_parent,
+        category.label,
+        category.slug,
+        category.sequence,
+        category.url,
+        category.image,
+        category.short_description
     ).where(
     (category.enable_footer == 1) & (category.is_group == 0)
     ).run(as_dict=True)
@@ -79,7 +85,16 @@ def get_formatted_category(parent_categories, base_category_details):
 
     for item in base_category_details:
         if item["old_parent"] in formatted_categories:
-            formatted_categories[item["old_parent"]].append(item["category_name"])
+            category_data = {
+                "name" : item["category_name"],
+                "label" : item["label"],
+                "slug" : item["slug"],
+                "seq" : item["sequence"],
+                "url" : item["url"],
+                "image" : item["image"],
+                "short_description" : item["short_description"]
+            }
+            formatted_categories[item["old_parent"]].append(category_data)
     return formatted_categories
 
 def get_legal_section_details(footer_doc):
