@@ -30,6 +30,7 @@
   "our_mission_description",
   "founder_tab",
   "founder_name",
+  "founder_designation",
   "column_break_9uw8",
   "founder_image",
   "section_break_jakx",
@@ -277,12 +278,17 @@
    "fieldname": "industry_short_description",
    "fieldtype": "Small Text",
    "label": "Industry Short Description"
+  },
+  {
+   "fieldname": "founder_designation",
+   "fieldtype": "Data",
+   "label": "Founder Designation"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-27 14:26:41.432332",
+ "modified": "2024-09-30 12:28:10.819165",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "About Us",
