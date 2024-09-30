@@ -16,16 +16,16 @@
   "url",
   "sequence",
   "section_break_s6uf",
-  "subtitle",
   "background_image",
   "column_break_hdmz",
   "short_description",
-  "section_break_301e",
-  "expertise_detail",
   "banner_details_tab",
   "banner_title",
   "banner_image",
   "banner_description",
+  "expertise_details_tab",
+  "subtitle",
+  "expertise_detail",
   "services_details_tab",
   "service_title",
   "services_detail",
@@ -243,18 +243,19 @@
    "label": "Short Description"
   },
   {
-   "fieldname": "section_break_301e",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "background_image",
    "fieldtype": "Attach",
    "label": "Background Image"
+  },
+  {
+   "fieldname": "expertise_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Expertise Details"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-27 13:19:00.669571",
+ "modified": "2024-09-30 15:42:09.801941",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",

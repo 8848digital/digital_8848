@@ -14,6 +14,7 @@
   "url",
   "slug",
   "image",
+  "display_on_home_page",
   "banner_details_tab",
   "banner_title",
   "banner_image",
@@ -34,7 +35,9 @@
   "impact_details_tab",
   "impact_title",
   "impact_short_description",
-  "impact_description"
+  "impact_description",
+  "tag_details_tab",
+  "tag_detail"
  ],
  "fields": [
   {
@@ -181,11 +184,28 @@
    "fieldname": "impact_description",
    "fieldtype": "Text Editor",
    "label": "Impact Description"
+  },
+  {
+   "fieldname": "tag_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tag Details"
+  },
+  {
+   "fieldname": "tag_detail",
+   "fieldtype": "Table MultiSelect",
+   "label": "Tag Detail",
+   "options": "Tag Detail"
+  },
+  {
+   "default": "0",
+   "fieldname": "display_on_home_page",
+   "fieldtype": "Check",
+   "label": "Display On Home Page"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-26 15:44:39.065790",
+ "modified": "2024-09-30 15:59:29.124148",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",

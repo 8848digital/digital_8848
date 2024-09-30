@@ -12,7 +12,8 @@ def get_expertise_details(**kwargs):
             return error_response("No expertise found with the given slug")
         expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
 
-        expertise_details = get_details(expertise_doctype)
+        details = get_details(expertise_doctype)
+        expertise_details = get_expertise_details_data(expertise_doctype)
         banner_details = get_banner_details(expertise_doctype)
         services_details = get_services_details(expertise_doctype)
         process_details = get_process_details(expertise_doctype)
@@ -21,7 +22,7 @@ def get_expertise_details(**kwargs):
         case_study_details = get_case_study_details(expertise_doctype)
         faq_details = get_faq_details(expertise_doctype)
 
-        response = [{**expertise_details,**banner_details,**services_details,**process_details,**filtered_tab_details,
+        response = [{**details,**expertise_details,**banner_details,**services_details,**process_details,**filtered_tab_details,
                     **case_study_details,**faq_details}]        
         return success_response(data=response)
           
@@ -30,7 +31,7 @@ def get_expertise_details(**kwargs):
     
 
 def get_details(expertise_doctype):
-    expertise_details = {}
+    details = {}
     get_details_default_field_values = {
         "title": None,
         "logo": None,
@@ -38,10 +39,15 @@ def get_details(expertise_doctype):
         "type": None,
         "slug": None,
         "sequence": None,
-        "subtitle": None
     }
     for field, default_value in get_details_default_field_values.items():
-        expertise_details[field] = expertise_doctype.get(field, default_value)
+        details[field] = expertise_doctype.get(field, default_value)
+    return details
+
+def get_expertise_details_data(expertise_doctype):
+    expertise_details = {}
+    subtitle = expertise_doctype.get("subtitle") if expertise_doctype.get("subtitle") else None
+    expertise_details.update({"subtitle": subtitle})
 
     if expertise_doctype.get("expertise_detail"):
         expertise_detail_child = [
@@ -57,7 +63,6 @@ def get_details(expertise_doctype):
     else:
         expertise_details.update({"expertise_detail":[]})
     return expertise_details
-
 
 def get_banner_details(expertise_doctype):
     banner_details = {}
@@ -133,8 +138,10 @@ def get_why_choose_8848_details(expertise_doctype):
                 {
                     "title":entry.get("title") or None,
                     "description":entry.get("description") or None,
-                    "sequence":entry.get("sequence") or None,
-                    "url":entry.get("url") or None
+                    "image":entry.get("image") or None,
+                    "url":entry.get("url") or None,
+                    "logo":entry.get("logo") or None,
+                    "sequence":entry.get("sequence") or None
                 } 
                 for entry in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence"))
             ]

@@ -1,18 +1,14 @@
 import frappe
 
 @frappe.whitelist(allow_guest=True)
-def get_case_study_details(**kwargs):
+def get_home_page_case_study(**kwargs):
     try:
         response = []
-        slug = kwargs.get("slug")
-        if not slug:
-            return error_response("Please provide a slug")
-        
-        case_study_doctype_title = frappe.db.get_value("Case Study",{'slug': kwargs.get("slug")})
+        case_study_doctype_title = frappe.db.get_value("Case Study",{"display_on_home_page":1})
         if not case_study_doctype_title:
-            return error_response("No case study found with the given slug")
+            return error_response("No case study found with the display_on_home_page checkbox enabled.")
+        
         case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
-
         case_study_doctype_details = get_details(case_study_doctype)
         banner_details = get_banner_details(case_study_doctype)
         overview_details = get_overview_details(case_study_doctype)
@@ -24,13 +20,14 @@ def get_case_study_details(**kwargs):
 
         combined_details = { **case_study_doctype_details,**banner_details,**overview_details,**challenge_details,
                                 **objective_details,**solution_details,**impact_details,**tag_details }
-        
+        combined_details.update({"display_on_home_page":1})
+
         response.append(combined_details)
         return success_response(data=response)
           
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
-    
+
 def get_details(case_study_doctype):
     case_study_doctype_details = {}
     case_study_doctype_details.update({
