@@ -26,7 +26,11 @@
   "industry_detail",
   "advantages_tab",
   "advantages_sub_title",
-  "advantages"
+  "advantages",
+  "services",
+  "section_title",
+  "section_break_tio5",
+  "service_table"
  ],
  "fields": [
   {
@@ -133,11 +137,31 @@
   {
    "fieldname": "section_break_bspp",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "services",
+   "fieldtype": "Tab Break",
+   "label": "Services"
+  },
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Data",
+   "label": "Section Title"
+  },
+  {
+   "fieldname": "section_break_tio5",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "service_table",
+   "fieldtype": "Table",
+   "label": "Service Table",
+   "options": "Service Table"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-24 16:36:59.722240",
+ "modified": "2024-10-07 12:29:06.607394",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",
