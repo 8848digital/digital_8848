@@ -8,28 +8,66 @@ def get_industry_details(**kwargs):
             filters["slug"] = kwargs.get("slug")
         else:
             return error_response("Please Provide a slug.")
-        industries = frappe.get_all("Industry", filters = filters, fields = ["name","title", "url", "slug", "sequence", "image", "short_description", "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", "advantages_sub_title"])
+        
+        # Fetch industries based on the slug
+        industries = frappe.get_all("Industry", filters=filters, 
+                                    fields=["name", "title", "url", "slug", "sequence", "image", "short_description", 
+                                            "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", 
+                                            "advantages_sub_title", "section_title"])  # section_title is part of Industry
+        
         if industries:
             industry_names = [industry.name for industry in industries]
-            industry_details = frappe.get_all("Industry Detail", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "description"])
+            
+            # Fetch industry details
+            industry_details = frappe.get_all("Industry Detail", filters={"parent": ["in", industry_names]}, 
+                                              fields=["parent", "title", "description"])
             industry_details_map = get_parent_child_map(industry_details)
-            advantages = frappe.get_all("Advantages", filters = {"parent": ["in", industry_names]}, fields = ["parent","title", "short_description", "image", "sequence"],order_by="sequence asc")
+            
+            # Fetch advantages
+            advantages = frappe.get_all("Advantages", filters={"parent": ["in", industry_names]}, 
+                                        fields=["parent", "title", "short_description", "image", "sequence"], 
+                                        order_by="sequence asc")
             advantages_map = get_parent_child_map(advantages)
-
-            services = frappe.get_all("Service Table", filters = {"parent": ["in", industry_names]}, fields = ["parent","service_name", "service_image","sequence"],order_by="sequence asc")
-
+            
+            # Fetch services
+            services = frappe.get_all("Service Table", filters={"parent": ["in", industry_names]}, 
+                                      fields=["parent", "service_name", "service_image", "sequence"], 
+                                      order_by="sequence asc")
             service_map = get_parent_child_map(services)
+            
+            # Update the industries with fetched data
             for industry in industries:
                 industry.update({"industry_detail": industry_details_map.get(industry.name) or []})
                 industry.update({"advantages": advantages_map.get(industry.name) or []})
-                industry.update({"service_table": service_map.get(industry.name) or []})
-
+                
+                # Prepare services with a single section_title at the top
+                services_with_section_title = {
+                    "section_title": industry.get("section_title"),
+                    "services": [
+                        {
+                            "service_name": service.get("service_name"),
+                            "service_image": service.get("service_image"),
+                            "sequence": service.get("sequence")
+                        }
+                        for service in service_map.get(industry.name, [])
+                    ]
+                }
+                
+                industry.update({"service_table": services_with_section_title})
+                
+                # Remove the 'name' field
                 industry.pop("name")
+            
             return success_response(industries)
         else:
             return error_response("No Industry found with the given slug.")
+    
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
+
+
+
+
     
 
 @frappe.whitelist(allow_guest=True)
