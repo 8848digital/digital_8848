@@ -6,7 +6,7 @@ def get_expertise_listing(**kwargs):
         if kwargs.get("type"):
             response = []
             expertise_doctypes_list = frappe.get_all("Expertise", filters={'type': kwargs.get("type")}, pluck="name")
-            technology = []  # To store technology entries
+            technology = []  
             
             if expertise_doctypes_list:
                 for doctype in expertise_doctypes_list:
@@ -23,27 +23,22 @@ def get_expertise_listing(**kwargs):
 
                     response.append(expertise_doctype_details)
 
-                    # Add technology details if type is "Technology"
                     if kwargs.get("type") == "Technology":
-                        technology.append({
-                            "module_sequence" : expertise_doctype.module_sequence or None,
-                            'module_name': expertise_doctype.module_name or None,
-                            'module_icon': expertise_doctype.module_icon or None,
-                            
-                        })
+                        for module in expertise_doctype.expertise_module:  
+                            technology.append({
+                                "module_sequence": module.module_sequence or None,  
+                                "module_name": module.module_name or None,          
+                                "module_icon": module.module_icon or None,          
+                            })
 
-                # Sort the response based on sequence
                 response = sorted(response, key=lambda x: x.get("sequence") or 0)
 
-                # Build the final response
                 final_response = {
                     "message": {
                         "status": "success",
                         "data": response
                     }
                 }
-                
-                # Add technology directly to the message
                 if technology:
                     final_response["message"]["technology"] = technology
 
