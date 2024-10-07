@@ -21,13 +21,21 @@
   "banner_description",
   "overview_details_tab",
   "overview_title",
+  "section_break_llul",
   "overview_description",
+  "column_break_jop0",
+  "overview_description_2",
   "challenge_details_tab",
   "challenge_title",
   "challenge_short_description",
   "challenge_description",
+  "section_break_s1nu",
+  "challenge_descriptions",
   "objective_details_tab",
   "objective_title",
+  "column_break_isln",
+  "objective_image",
+  "section_break_4phe",
   "objective_description",
   "solution_details_tab",
   "solution_title",
@@ -112,8 +120,8 @@
   },
   {
    "fieldname": "overview_description",
-   "fieldtype": "Text",
-   "label": "Overview Description"
+   "fieldtype": "Text Editor",
+   "label": "Overview Description 1"
   },
   {
    "fieldname": "challenge_details_tab",
@@ -201,11 +209,47 @@
    "fieldname": "display_on_home_page",
    "fieldtype": "Check",
    "label": "Display On Home Page"
+  },
+  {
+   "fieldname": "column_break_isln",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "objective_image",
+   "fieldtype": "Attach",
+   "label": "Objective Image"
+  },
+  {
+   "fieldname": "section_break_4phe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "overview_description_2",
+   "fieldtype": "Text Editor",
+   "label": "Overview Description 2"
+  },
+  {
+   "fieldname": "column_break_jop0",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_llul",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_s1nu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "challenge_descriptions",
+   "fieldtype": "Table",
+   "label": "Challenge Descriptions",
+   "options": "Challenge Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-30 15:59:29.124148",
+ "modified": "2024-10-07 16:19:14.467735",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",

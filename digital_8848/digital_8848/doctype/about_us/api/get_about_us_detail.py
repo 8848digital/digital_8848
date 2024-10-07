@@ -17,6 +17,7 @@ def get_about_us_detail(**kwargs):
         global_delivery = get_global_delivery_details(about_us_doc)
         our_values = get_our_value_details(about_us_doc)
         industry = get_industry_details(about_us_doc)
+        why_choose_us = get_choose_us(about_us_doc)
 
         about_us_data["about_section"] = about_section
         about_us_data["home_page"] = home_page
@@ -26,6 +27,7 @@ def get_about_us_detail(**kwargs):
         about_us_data["global_delivery"] = global_delivery
         about_us_data["our_values"] = our_values
         about_us_data["industry_info"] = industry
+        about_us_data["why_choose_us"] = why_choose_us
 
         return success_response(data=about_us_data)
     
@@ -151,3 +153,21 @@ def get_industry_details(about_us_doc):
         "industry_short_description": about_us_doc.get("industry_short_description") or None
     })
     return industry_details
+
+def get_choose_us(about_us_doc):
+    our_values = {
+            "section_title" : about_us_doc.section_title,
+            
+        }
+    why_choose_us_detail_tab = []
+    for value in about_us_doc.why_choose_us_detail_tab:
+        values = {}
+        values["title"] = value.title
+        values["logo"] = value.logo
+        values["short_description"] = value.short_description
+        values["url"] = value.url
+        values["sequence"] = value.sequence
+        why_choose_us_detail_tab.append(values)
+
+    our_values["why_choose_us_detail"] = why_choose_us_detail_tab
+    return our_values

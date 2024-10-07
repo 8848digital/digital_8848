@@ -19,6 +19,9 @@
   "background_image",
   "column_break_hdmz",
   "short_description",
+  "module_tab",
+  "module_icon",
+  "module_name",
   "banner_details_tab",
   "banner_title",
   "banner_image",
@@ -251,11 +254,27 @@
    "fieldname": "expertise_details_tab",
    "fieldtype": "Tab Break",
    "label": "Expertise Details"
+  },
+  {
+   "depends_on": "eval: doc.type == \"Technology\";",
+   "fieldname": "module_tab",
+   "fieldtype": "Tab Break",
+   "label": "Module"
+  },
+  {
+   "fieldname": "module_icon",
+   "fieldtype": "Attach",
+   "label": "Module Icon"
+  },
+  {
+   "fieldname": "module_name",
+   "fieldtype": "Data",
+   "label": "Module Name"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-30 15:42:09.801941",
+ "modified": "2024-10-07 16:46:43.744793",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",

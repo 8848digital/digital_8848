@@ -123,7 +123,7 @@ def get_services_details(insights_doctype):
                 "short_description": service.get("short_description") or None,
                 "url": service.get("url") or None,
                 "sequence": service.get("sequence") or None,
-                "logo": service.get("logo") or None
+                "image": service.get("logo") or None
             }
             for service in sorted(insights_doctype.get("services_detail"), key=lambda x: x.get("sequence"))
         ]
@@ -149,7 +149,7 @@ def get_benefits_details(insights_doctype):
         benefits_details_child = [
             {
                 "title": benefit.get("title") or None,
-                "description": benefit.get("description") or None,
+                "short_description": benefit.get("description") or None,
                 "url": benefit.get("url") or None,
                 "sequence": benefit.get("sequence") or None,
                 "logo": benefit.get("logo") or None
