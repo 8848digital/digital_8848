@@ -1,0 +1,45 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-07 18:14:42.193499",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "module_sequence",
+  "module_name",
+  "module_icon"
+ ],
+ "fields": [
+  {
+   "fieldname": "module_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Module Name"
+  },
+  {
+   "fieldname": "module_icon",
+   "fieldtype": "Attach",
+   "in_list_view": 1,
+   "label": "Module Icon"
+  },
+  {
+   "fieldname": "module_sequence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Module Sequence"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-10-07 18:34:00.587657",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Expertise Module",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
