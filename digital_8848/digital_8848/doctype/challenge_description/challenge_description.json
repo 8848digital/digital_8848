@@ -1,0 +1,31 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-07 16:14:57.678207",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "challenge_description"
+ ],
+ "fields": [
+  {
+   "fieldname": "challenge_description",
+   "fieldtype": "Text Editor",
+   "in_list_view": 1,
+   "label": "Challenge Description"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-10-07 16:19:34.203996",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Challenge Description",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

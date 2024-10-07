@@ -16,8 +16,18 @@ def get_expertise_listing(**kwargs):
                         "slug": expertise_doctype.get("slug") or None,
                         "url": expertise_doctype.get("url") or None,
                         "background_image": expertise_doctype.get("background_image") or None,
-                        "sequence": expertise_doctype.get("sequence") or 0
+                        "sequence": expertise_doctype.get("sequence") or 0,
                     }
+
+                    # Include 'technology' only if type is "Technology"
+                    if kwargs.get("type") == "Technology":
+                        expertise_doctype_details['technology'] = [{
+                            'module_icon': expertise_doctype.module_icon or None,
+                            'module_name': expertise_doctype.module_name or None,
+                        }]
+                    else:
+                        expertise_doctype_details['technology'] = None  # or omit this line if you want to exclude it entirely
+
                     response.append(expertise_doctype_details)
                 
                 response = sorted(response, key=lambda x: x.get("sequence") or 0)

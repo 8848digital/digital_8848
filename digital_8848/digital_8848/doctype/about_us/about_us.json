@@ -51,7 +51,11 @@
   "our_values_details",
   "industry_tab",
   "industry_title",
-  "industry_short_description"
+  "industry_short_description",
+  "why_choose_us_tab",
+  "section_title",
+  "section_break_jyxg",
+  "why_choose_us_detail_tab"
  ],
  "fields": [
   {
@@ -283,12 +287,32 @@
    "fieldname": "founder_designation",
    "fieldtype": "Data",
    "label": "Founder Designation"
+  },
+  {
+   "fieldname": "why_choose_us_tab",
+   "fieldtype": "Tab Break",
+   "label": "Why Choose US"
+  },
+  {
+   "fieldname": "section_break_jyxg",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "why_choose_us_detail_tab",
+   "fieldtype": "Table",
+   "label": "Why Choose US Detail",
+   "options": "Why Choose US Detail"
+  },
+  {
+   "fieldname": "section_title",
+   "fieldtype": "Data",
+   "label": "Section Title"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-09-30 12:28:10.819165",
+ "modified": "2024-10-07 15:25:36.124257",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "About Us",
