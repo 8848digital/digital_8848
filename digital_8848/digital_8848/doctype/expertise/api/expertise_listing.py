@@ -6,7 +6,7 @@ def get_expertise_listing(**kwargs):
         if kwargs.get("type"):
             response = []
             expertise_doctypes_list = frappe.get_all("Expertise", filters={'type': kwargs.get("type")}, pluck="name")
-            technology = []  
+            technology = []  # To store technology entries
             
             if expertise_doctypes_list:
                 for doctype in expertise_doctypes_list:
@@ -23,22 +23,31 @@ def get_expertise_listing(**kwargs):
 
                     response.append(expertise_doctype_details)
 
+                    # Add technology details if type is "Technology"
                     if kwargs.get("type") == "Technology":
-                        for module in expertise_doctype.expertise_module:  
+                        # Fetching technology details from the child table "Expertise Module"
+                        for module in expertise_doctype.expertise_module:  # Assuming the field name for the child table is expertise_module
                             technology.append({
-                                "module_sequence": module.module_sequence or None,  
-                                "module_name": module.module_name or None,          
-                                "module_icon": module.module_icon or None,          
+                                "module_sequence": module.module_sequence or None,  # Get from the child table
+                                "module_name": module.module_name or None,          # Get from the child table
+                                "module_icon": module.module_icon or None,          # Get from the child table
                             })
+                
+                # Sort the technology list based on module_sequence
+                technology = sorted(technology, key=lambda x: x.get("module_sequence") or 0)
 
+                # Sort the response based on sequence
                 response = sorted(response, key=lambda x: x.get("sequence") or 0)
 
+                # Build the final response
                 final_response = {
                     "message": {
                         "status": "success",
                         "data": response
                     }
                 }
+                
+                # Add sorted technology directly to the message
                 if technology:
                     final_response["message"]["technology"] = technology
 
