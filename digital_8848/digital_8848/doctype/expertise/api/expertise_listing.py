@@ -6,6 +6,8 @@ def get_expertise_listing(**kwargs):
         if kwargs.get("type"):
             response = []
             expertise_doctypes_list = frappe.get_all("Expertise", filters={'type': kwargs.get("type")}, pluck="name")
+            technology = []  # To store technology entries
+            
             if expertise_doctypes_list:
                 for doctype in expertise_doctypes_list:
                     expertise_doctype = frappe.get_doc("Expertise", doctype)
@@ -19,30 +21,44 @@ def get_expertise_listing(**kwargs):
                         "sequence": expertise_doctype.get("sequence") or 0,
                     }
 
-                    # Include 'technology' only if type is "Technology"
-                    if kwargs.get("type") == "Technology":
-                        expertise_doctype_details['technology'] = [{
-                            'module_icon': expertise_doctype.module_icon or None,
-                            'module_name': expertise_doctype.module_name or None,
-                        }]
-                    else:
-                        expertise_doctype_details['technology'] = None  # or omit this line if you want to exclude it entirely
-
                     response.append(expertise_doctype_details)
-                
+
+                    # Add technology details if type is "Technology"
+                    if kwargs.get("type") == "Technology":
+                        technology.append({
+                            "module_sequence" : expertise_doctype.module_sequence or None,
+                            'module_name': expertise_doctype.module_name or None,
+                            'module_icon': expertise_doctype.module_icon or None,
+                            
+                        })
+
+                # Sort the response based on sequence
                 response = sorted(response, key=lambda x: x.get("sequence") or 0)
-                return success_response(response)
+
+                # Build the final response
+                final_response = {
+                    "message": {
+                        "status": "success",
+                        "data": response
+                    }
+                }
+                
+                # Add technology directly to the message
+                if technology:
+                    final_response["message"]["technology"] = technology
+
+                return final_response
             else:
                 return error_response("No data found.")
         else:
             return error_response("Please provide a type.")
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
-    
-def success_response(data=None, id=None):
-    response = {"status": "success"}
-    response["data"] = data
-    return response
 
 def error_response(err_msg):
-    return {"status": "error", "error": err_msg}
+    return {
+        "message": {
+            "status": "error",
+            "error": err_msg
+        }
+    }
