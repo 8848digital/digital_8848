@@ -20,8 +20,11 @@
   "column_break_hdmz",
   "short_description",
   "module_tab",
-  "module_icon",
+  "module_sequence",
+  "section_break_5szt",
   "module_name",
+  "column_break_yvf2",
+  "module_icon",
   "banner_details_tab",
   "banner_title",
   "banner_image",
@@ -270,11 +273,24 @@
    "fieldname": "module_name",
    "fieldtype": "Data",
    "label": "Module Name"
+  },
+  {
+   "fieldname": "module_sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
+  },
+  {
+   "fieldname": "section_break_5szt",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_yvf2",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-07 16:46:43.744793",
+ "modified": "2024-10-07 17:54:03.354407",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
