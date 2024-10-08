@@ -6,9 +6,7 @@ def get_expertise_listing(**kwargs):
         if kwargs.get("type"):
             response = []
             technology = []
-            
             expertise_doctypes_list = frappe.get_all("Expertise", filters={'type': kwargs.get("type")}, pluck="name")
-            
             if expertise_doctypes_list:
                 for doctype in expertise_doctypes_list:
                     expertise_doctype = frappe.get_doc("Expertise", doctype)
@@ -23,7 +21,6 @@ def get_expertise_listing(**kwargs):
                         "sequence": expertise_doctype.get("sequence") or 0,
                     }
                     response.append(expertise_doctype_details)
-
                     if kwargs.get("type") == "Technology":
                         for module in expertise_doctype.expertise_module:
                             technology.append({
