@@ -14,41 +14,40 @@ def get_meta_tags(**kwargs):
         meta_tags_doctype = frappe.get_doc("Meta Tags", meta_tags_docname)
 
         response_data = {
-            "page_name": meta_tags_doctype.get("page_name") or "home",
-            "title": "8848 DIGITAL LLP",
-            "description": "At 8848 Digital, we combine cutting-edge technology with deep industry expertise to drive your digital transformation.",
+            "page_name": meta_tags_doctype.get("page_name") or None,
+            "title": meta_tags_doctype.get("meta_title")or None,
+            "description": meta_tags_doctype.get("description") or None,
             "icons": {
-                "icon": "/favicon/8848 Favicon_32x32-White.svg"
+                "icon": meta_tags_doctype.get("fav_icon_image") or None,
             },
-            "robots": meta_tags_doctype.get("robots") or "index,follow"
+            "robots": meta_tags_doctype.get("robots") or None,
         }
 
-        # Open Graph data
+        # Open Graph data - Dynamic assignment
         open_graph = {
-            "type": None,
-            "url": None,
-            "images": "/favicon/8848 Favicon_32x32-White.svg",
-            "title": "8848 DIGITAL LLP",
-            "description": "At 8848 Digital, we combine cutting-edge technology with deep industry expertise to drive your digital transformation."
+            "type": meta_tags_doctype.get("open_graph_type") or None,
+            "url": meta_tags_doctype.get("open_graph_url") or None,
+            "images": meta_tags_doctype.get("open_graph_images") or None,
+            "title": meta_tags_doctype.get("open_graph_title") or None,
+            "description": meta_tags_doctype.get("open_graph_description") or None,
         }
 
-        # Twitter data
+        # Twitter data - Dynamic assignment
         twitter = {
-            "card": "summary_large_image",
-            "title": "8848 DIGITAL LLP",
-            "description": "At 8848 Digital, we combine cutting-edge technology with deep industry expertise to drive your digital transformation.",
-            "image": "/favicon/8848 Favicon_32x32-White.svg"
+            "card": meta_tags_doctype.get("twitter_card") or None,
+            "title": meta_tags_doctype.get("twitter_title") or None,
+            "description": meta_tags_doctype.get("twitter_description") or None,
+            "image": meta_tags_doctype.get("twitter_image") or None,
         }
 
         # Construct the final response
         response = {
-           
-                "status": "success",
-                "data": {
-                    **response_data,
-                    "openGraph": open_graph,
-                    "twitter": twitter
-                }
+            "status": "success",
+            "data": {
+                **response_data,
+                "openGraph": open_graph,
+                "twitter": twitter
+            }
         }
 
         return response
