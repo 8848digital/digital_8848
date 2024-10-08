@@ -3,11 +3,6 @@ import frappe
 @frappe.whitelist(allow_guest=True)
 def get_meta_tags(**kwargs):
     try:
-        response = {
-            "status": "success",
-            "data": {}
-        }
-
         page_name = kwargs.get("page_name") or None
         if not page_name:
             return error_response("Please provide a page name")
@@ -18,54 +13,48 @@ def get_meta_tags(**kwargs):
 
         meta_tags_doctype = frappe.get_doc("Meta Tags", meta_tags_docname)
 
-        # Construct the response data for meta_tag
-        meta_tag = {
-            "page_name": meta_tags_doctype.get("page_name") or None,
-            "meta_title": meta_tags_doctype.get("meta_title") or None,
-            "fav_icon_image": meta_tags_doctype.get("fav_icon_image") or None,
-            "robots": meta_tags_doctype.get("robots") or None,
-            "description": meta_tags_doctype.get("description") or None
+        response_data = {
+            "page_name": meta_tags_doctype.get("page_name") or "home",
+            "title": "8848 DIGITAL LLP",
+            "description": "At 8848 Digital, we combine cutting-edge technology with deep industry expertise to drive your digital transformation.",
+            "icons": {
+                "icon": "/favicon/8848 Favicon_32x32-White.svg"
+            },
+            "robots": meta_tags_doctype.get("robots") or "index,follow"
         }
 
         # Open Graph data
-        open_graph_images = meta_tags_doctype.get("open_graph_images")
         open_graph = {
-            "images": open_graph_images if open_graph_images else None,
-            "title": meta_tags_doctype.get("open_graph_title") or None,
-            "url": meta_tags_doctype.get("open_graph_url") or None,
-            "type": meta_tags_doctype.get("open_graph_type") or None,
-            "description": meta_tags_doctype.get("open_graph_description") or None,
+            "type": None,
+            "url": None,
+            "images": "/favicon/8848 Favicon_32x32-White.svg",
+            "title": "8848 DIGITAL LLP",
+            "description": "At 8848 Digital, we combine cutting-edge technology with deep industry expertise to drive your digital transformation."
         }
 
         # Twitter data
-        twitter_card = meta_tags_doctype.get("twitter_card")
         twitter = {
-            "card": twitter_card if twitter_card else None,
-            "site": meta_tags_doctype.get("twitter_site") or None,
-            "title": meta_tags_doctype.get("twitter_title") or None,
-            "description": meta_tags_doctype.get("twitter_description") or None,
-            "image": meta_tags_doctype.get("twitter_image") or None,
+            "card": "summary_large_image",
+            "title": "8848 DIGITAL LLP",
+            "description": "At 8848 Digital, we combine cutting-edge technology with deep industry expertise to drive your digital transformation.",
+            "image": "/favicon/8848 Favicon_32x32-White.svg"
         }
 
-        # Remove keys from twitter if they are None
-        twitter = {k: v for k, v in twitter.items() if v is not None}
-
-        # Assign dictionaries directly to the data field
-        response["data"] = {
-            "meta_tag": meta_tag,
-            "open_graph": open_graph if any(open_graph.values()) else {},  # return empty dict if no values
-            "twitter": twitter if twitter else {}  # return empty dict if no values
+        # Construct the final response
+        response = {
+           
+                "status": "success",
+                "data": {
+                    **response_data,
+                    "openGraph": open_graph,
+                    "twitter": twitter
+                }
         }
 
         return response
 
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}")
-
-def success_response(data=None, id=None):
-    response = {"status": "success"}
-    response["data"] = data
-    return response
 
 def error_response(err_msg):
     return {"status": "error", "error": err_msg}
