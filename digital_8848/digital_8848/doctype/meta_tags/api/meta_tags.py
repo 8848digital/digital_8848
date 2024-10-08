@@ -5,7 +5,7 @@ def get_meta_tags(**kwargs):
     try:
         response = {
             "status": "success",
-            "data": {}  # Change this to a dictionary
+            "data": {}
         }
 
         page_name = kwargs.get("page_name") or None
@@ -18,7 +18,7 @@ def get_meta_tags(**kwargs):
 
         meta_tags_doctype = frappe.get_doc("Meta Tags", meta_tags_docname)
 
-        # Construct the response data
+        # Construct the response data for meta_tag
         meta_tag = {
             "page_name": meta_tags_doctype.get("page_name") or None,
             "meta_title": meta_tags_doctype.get("meta_title") or None,
@@ -27,29 +27,34 @@ def get_meta_tags(**kwargs):
             "description": meta_tags_doctype.get("description") or None
         }
 
-        # Open Graph data (add as needed)
+        # Open Graph data
+        open_graph_images = meta_tags_doctype.get("open_graph_images")
         open_graph = {
-            "images": meta_tags_doctype.get("open_graph_images") or None,
+            "images": open_graph_images if open_graph_images else None,
             "title": meta_tags_doctype.get("open_graph_title") or None,
             "url": meta_tags_doctype.get("open_graph_url") or None,
             "type": meta_tags_doctype.get("open_graph_type") or None,
             "description": meta_tags_doctype.get("open_graph_description") or None,
         }
 
-        # Twitter data (add as needed)
+        # Twitter data
+        twitter_card = meta_tags_doctype.get("twitter_card")
         twitter = {
-            "card": meta_tags_doctype.get("twitter_card") or None,
+            "card": twitter_card if twitter_card else None,
             "site": meta_tags_doctype.get("twitter_site") or None,
             "title": meta_tags_doctype.get("twitter_title") or None,
             "description": meta_tags_doctype.get("twitter_description") or None,
             "image": meta_tags_doctype.get("twitter_image") or None,
         }
 
+        # Remove keys from twitter if they are None
+        twitter = {k: v for k, v in twitter.items() if v is not None}
+
         # Assign dictionaries directly to the data field
         response["data"] = {
             "meta_tag": meta_tag,
-            "open_graph": open_graph,
-            "twitter": twitter
+            "open_graph": open_graph if any(open_graph.values()) else {},  # return empty dict if no values
+            "twitter": twitter if twitter else {}  # return empty dict if no values
         }
 
         return response
