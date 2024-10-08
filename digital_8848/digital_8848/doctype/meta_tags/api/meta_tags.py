@@ -15,7 +15,7 @@ def get_meta_tags(**kwargs):
 
         response_data = {
             "page_name": meta_tags_doctype.get("page_name") or None,
-            "title": meta_tags_doctype.get("meta_title")or None,
+            "title": meta_tags_doctype.get("meta_title") or None,
             "description": meta_tags_doctype.get("description") or None,
             "icons": {
                 "icon": meta_tags_doctype.get("fav_icon_image") or None,
@@ -40,13 +40,21 @@ def get_meta_tags(**kwargs):
             "image": meta_tags_doctype.get("twitter_image") or None,
         }
 
+        # Remove openGraph from the response if all values are None
+        if all(value is None for value in open_graph.values()):
+            open_graph = {}
+
+        # Remove twitter from the response if all values are None
+        if all(value is None for value in twitter.values()):
+            twitter = {}
+
         # Construct the final response
         response = {
             "status": "success",
             "data": {
                 **response_data,
-                "openGraph": open_graph,
-                "twitter": twitter
+                "openGraph": open_graph,  # This will be empty if all values were None
+                "twitter": twitter          # This will be empty if all values were None
             }
         }
 
