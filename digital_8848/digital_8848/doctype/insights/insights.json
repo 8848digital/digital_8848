@@ -8,6 +8,7 @@
  "field_order": [
   "details_tab",
   "title",
+  "sequence",
   "type",
   "short_description",
   "column_break_njbk",
@@ -192,11 +193,16 @@
    "fieldtype": "Table",
    "label": "Services Detail",
    "options": "Services Detail"
+  },
+  {
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "label": "Sequence"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-26 19:39:58.581419",
+ "modified": "2024-10-08 14:59:59.749294",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Insights",
