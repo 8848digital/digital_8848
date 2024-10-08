@@ -11,7 +11,25 @@
   "description",
   "column_break_6jlf",
   "meta_title",
-  "robots"
+  "robots",
+  "open_graph_tab",
+  "open_graph_title",
+  "column_break_jrqt",
+  "open_graph_images",
+  "section_break_ie1j",
+  "open_graph_type",
+  "open_graph_url",
+  "column_break_3agr",
+  "open_graph_description",
+  "twitter_tab",
+  "twitter_title",
+  "column_break_qywh",
+  "twitter_image",
+  "section_break_d0hj",
+  "twitter_site",
+  "twitter_card",
+  "column_break_qab4",
+  "twitter_description"
  ],
  "fields": [
   {
@@ -42,11 +60,96 @@
   {
    "fieldname": "column_break_6jlf",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "open_graph_tab",
+   "fieldtype": "Tab Break",
+   "label": "Open Graph"
+  },
+  {
+   "fieldname": "open_graph_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "open_graph_type",
+   "fieldtype": "Select",
+   "label": "Type",
+   "options": "\nArticle"
+  },
+  {
+   "fieldname": "open_graph_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "open_graph_images",
+   "fieldtype": "Attach",
+   "label": "Images"
+  },
+  {
+   "fieldname": "open_graph_url",
+   "fieldtype": "Data",
+   "label": "URL"
+  },
+  {
+   "fieldname": "twitter_tab",
+   "fieldtype": "Tab Break",
+   "label": "Twitter"
+  },
+  {
+   "fieldname": "twitter_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "twitter_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "twitter_image",
+   "fieldtype": "Attach",
+   "label": "Image"
+  },
+  {
+   "fieldname": "twitter_site",
+   "fieldtype": "Data",
+   "label": "Site"
+  },
+  {
+   "fieldname": "twitter_card",
+   "fieldtype": "Data",
+   "label": "Card"
+  },
+  {
+   "fieldname": "column_break_jrqt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ie1j",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_3agr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qywh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_d0hj",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_qab4",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-09-27 11:30:10.563839",
+ "modified": "2024-10-08 13:21:05.032519",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Meta Tags",
