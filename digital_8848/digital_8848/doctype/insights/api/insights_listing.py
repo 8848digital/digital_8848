@@ -8,12 +8,13 @@ def get_insights_listing(**kwargs):
         if kwargs.get("type"):
             filters.update({"type": kwargs.get("type")})
 
-        insights_doctypes_list = frappe.get_all("Insights", filters=filters, pluck="name")
+        insights_doctypes_list = frappe.get_all("Insights", filters=filters, pluck="name", order_by="sequence asc")
         if insights_doctypes_list:
             for doctype in insights_doctypes_list:
                 insights_doctype = frappe.get_doc("Insights", doctype)
                 insights_doctype_details = {
                     "title": insights_doctype.get("title") or None,
+                    "sequence": insights_doctype.get("sequence") or None,
                     "image": insights_doctype.get("image") or None,
                     "short_description": insights_doctype.get("short_description") or None,
                     "slug": insights_doctype.get("slug") or None,
