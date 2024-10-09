@@ -98,7 +98,8 @@ def get_solution_details(case_study_doctype):
     solution_details = {}
     solution_details.update({
         "solution_title": case_study_doctype.get("solution_title") or None,
-        "solution_description": case_study_doctype.get("solution_description") or None
+        "solution_description_1": case_study_doctype.get("solution_description_1") or None,
+        "solution_description_2": case_study_doctype.get("solution_description_1") or None
     })
     return solution_details
 
@@ -109,6 +110,18 @@ def get_impact_details(case_study_doctype):
         "impact_short_description": case_study_doctype.get("impact_short_description") or None,
         "impact_description": case_study_doctype.get("impact_description") or None
     })
+    if case_study_doctype.get("impact_details"):
+        impact_details_child = [
+                {
+                    "sequence":impact.get("sequence") or None,
+                    "delivery_card":impact.get("delivery_card") or None,
+                    "description":impact.get("description") or None,
+                } 
+                for impact in case_study_doctype.get("impact_details")
+            ]
+        impact_details.update({"impact_detail":impact_details_child})
+    else:
+        impact_details.update({"impact_detail":[]})
     return impact_details
 
 def get_tag_details(case_study_doctype):
