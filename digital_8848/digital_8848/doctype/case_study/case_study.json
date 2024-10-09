@@ -28,8 +28,6 @@
   "challenge_details_tab",
   "challenge_title",
   "challenge_short_description",
-  "challenge_description",
-  "section_break_s1nu",
   "challenge_descriptions",
   "objective_details_tab",
   "objective_title",
@@ -39,11 +37,13 @@
   "objective_description",
   "solution_details_tab",
   "solution_title",
-  "solution_description",
+  "solution_description_1",
+  "solution_description_2",
   "impact_details_tab",
   "impact_title",
   "impact_short_description",
   "impact_description",
+  "impact_details",
   "tag_details_tab",
   "tag_detail"
  ],
@@ -139,11 +139,6 @@
    "label": "Challenge Short Description"
   },
   {
-   "fieldname": "challenge_description",
-   "fieldtype": "Text Editor",
-   "label": "Challenge Description"
-  },
-  {
    "fieldname": "objective_details_tab",
    "fieldtype": "Tab Break",
    "label": "Objective Details"
@@ -167,11 +162,6 @@
    "fieldname": "solution_title",
    "fieldtype": "Data",
    "label": "Solution Title"
-  },
-  {
-   "fieldname": "solution_description",
-   "fieldtype": "Text",
-   "label": "Solution Description"
   },
   {
    "fieldname": "impact_details_tab",
@@ -237,19 +227,31 @@
    "fieldtype": "Section Break"
   },
   {
-   "fieldname": "section_break_s1nu",
-   "fieldtype": "Section Break"
-  },
-  {
    "fieldname": "challenge_descriptions",
    "fieldtype": "Table",
    "label": "Challenge Descriptions",
    "options": "Challenge Description"
+  },
+  {
+   "fieldname": "impact_details",
+   "fieldtype": "Table",
+   "label": "Impact Details",
+   "options": "Impact Details"
+  },
+  {
+   "fieldname": "solution_description_1",
+   "fieldtype": "Text Editor",
+   "label": "Solution Description 1"
+  },
+  {
+   "fieldname": "solution_description_2",
+   "fieldtype": "Text Editor",
+   "label": "Solution Description 2"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-07 16:19:14.467735",
+ "modified": "2024-10-09 16:36:14.488192",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",
