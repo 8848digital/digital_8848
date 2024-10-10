@@ -60,7 +60,7 @@ def get_capabilities_details(insights_doctype):
         capabilities_details_child = [
                     {
                         "title": capability.get("title") or None,
-                        "short_description": capability.get("short_description") or None,
+                        "description": capability.get("short_description") or None,
                         "url": capability.get("url") or None,
                         "sequence": capability.get("sequence") or None
                     }
