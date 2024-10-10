@@ -123,7 +123,7 @@ def get_services_details(insights_doctype):
                 "image": service.get("image") or None,
                 "url": service.get("url") or None,
                 "sequence": service.get("sequence") or None,
-                "service_details": get_service_details_info(service.get("title"))
+                "Service_details": get_service_details_info(service.get("title"))
             }
             for service in sorted(insights_doctype.get("services_detail"), key=lambda x: x.get("sequence"))
         ]
