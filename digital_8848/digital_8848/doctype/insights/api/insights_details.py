@@ -117,27 +117,30 @@ def get_services_details(insights_doctype):
     services_details.update({"services_title": services_title})
 
     if insights_doctype.get("services_detail"):
-    
-        services_details_child =[]
-        for value in sorted(insights_doctype.get("services_detail"), key=lambda x: x.get("sequence")):
-            query=frappe.db.sql(f''' 
-                    select icon_image,service_info from `tabService Details Info` where parent = '{value.get("title")}'
-                ''',as_dict=True
-            )
-            services_details_child.append(
-                 {
-                    "title":value.get("title") or None,
-                    "image":value.get('image') or None,
-                    "url":value.get("url") or None,
-                    "sequence":value.get("sequence") or None,
-                    'Service_details':query
-                    
-                } 
-            )
+        services_details_child = [
+            {
+                "title": service.get("title") or None,
+                "image": service.get("image") or None,
+                "url": service.get("url") or None,
+                "sequence": service.get("sequence") or None,
+                "service_details": get_service_details_info(service.get("title"))
+            }
+            for service in sorted(insights_doctype.get("services_detail"), key=lambda x: x.get("sequence"))
+        ]
         services_details.update({"services_detail": services_details_child})
     else:
         services_details.update({"services_detail": []})
     return services_details
+
+def get_service_details_info(services_detail_title):
+    service_details_info = []
+    service_details_doctype = frappe.get_doc("Service Details", services_detail_title)
+    for entry in service_details_doctype.get("service_details_info"):
+        service_details_info.append({
+            "icon_image": entry.get("icon_image"),
+            "service_info": entry.get("service_info")
+        })
+    return service_details_info
 
 def get_visibility_and_security_details(insights_doctype):
     visibility_and_security_details = {}
