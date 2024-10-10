@@ -128,38 +128,36 @@ def filter_tab_details_based_on_type(type,expertise_doctype):
     return filtered_data
     
 def get_why_choose_8848_details(expertise_doctype):
-    
     why_choose_8848_details = {}
     if expertise_doctype.get("why_choose_8848_title"):
         why_choose_8848_details.update({"why_choose_8848_title": expertise_doctype.get("why_choose_8848_title")})
     else:
         why_choose_8848_details.update({"why_choose_8848_title": None})
     if expertise_doctype.get("why_choose_8848"):
-        why_choose_8848_child =[]
-        for value in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence")):
-            query=frappe.db.sql(f''' 
-                    select icon_image,service_info from `tabService Details Info` where parent = '{value.get("title")}'
-                ''',as_dict=True
-            )
-            why_choose_8848_child.append(
-                 {
-                    "title":value.get("title") or None,
-                    "image":value.get('image') or None,
-                    "url":value.get("url") or None,
-                    "sequence":value.get("sequence") or None,
-                    'Service_details':query
-                    
+        why_choose_8848_child = [
+                {
+                    "title":entry.get("title") or None,
+                    "image":entry.get("image") or None,
+                    "url":entry.get("url") or None,
+                    "sequence":entry.get("sequence") or None,
+                    "service_details": get_service_details_info(entry.get("title"))
                 } 
-            )
-
-                            
-        
+                for entry in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence"))
+            ]
         why_choose_8848_details.update({"why_choose_8848":why_choose_8848_child})
     else:
         why_choose_8848_details.update({"why_choose_8848":[]})
     return why_choose_8848_details
 
-   
+def get_service_details_info(services_detail_title):
+    service_details_info = []
+    service_details_doctype = frappe.get_doc("Service Details", services_detail_title)
+    for entry in service_details_doctype.get("service_details_info"):
+        service_details_info.append({
+            "icon_image": entry.get("icon_image"),
+            "service_info": entry.get("service_info")
+        })
+    return service_details_info
 
 def get_advantages_details(expertise_doctype):
     advantage_details = {}
