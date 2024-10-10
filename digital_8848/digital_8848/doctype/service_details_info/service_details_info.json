@@ -1,0 +1,36 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2024-10-10 11:26:17.792996",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "icon_image",
+  "service_info"
+ ],
+ "fields": [
+  {
+   "fieldname": "icon_image",
+   "fieldtype": "Attach Image",
+   "label": "Icon Image"
+  },
+  {
+   "fieldname": "service_info",
+   "fieldtype": "Data",
+   "label": "Service Info"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-10-10 11:27:16.229516",
+ "modified_by": "Administrator",
+ "module": "digital_8848",
+ "name": "Service Details Info",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

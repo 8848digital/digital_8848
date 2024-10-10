@@ -128,27 +128,37 @@ def filter_tab_details_based_on_type(type,expertise_doctype):
     return filtered_data
     
 def get_why_choose_8848_details(expertise_doctype):
+    
     why_choose_8848_details = {}
     if expertise_doctype.get("why_choose_8848_title"):
         why_choose_8848_details.update({"why_choose_8848_title": expertise_doctype.get("why_choose_8848_title")})
     else:
         why_choose_8848_details.update({"why_choose_8848_title": None})
     if expertise_doctype.get("why_choose_8848"):
-        why_choose_8848_child = [
-                {
-                    "title":entry.get("title") or None,
-                    "description":entry.get("description") or None,
-                    "image":entry.get("image") or None,
-                    "url":entry.get("url") or None,
-                    "logo":entry.get("logo") or None,
-                    "sequence":entry.get("sequence") or None
+        why_choose_8848_child =[]
+        for value in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence")):
+            query=frappe.db.sql(f''' 
+                    select icon_image,service_info from `tabService Details Info` where parent = '{value.get("title")}'
+                ''',as_dict=True
+            )
+            why_choose_8848_child.append(
+                 {
+                    "title":value.get("title") or None,
+                    "url":value.get("url") or None,
+                    "sequence":value.get("sequence") or None,
+                    'Service_details':query
+                    
                 } 
-                for entry in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence"))
-            ]
+            )
+
+                            
+        
         why_choose_8848_details.update({"why_choose_8848":why_choose_8848_child})
     else:
         why_choose_8848_details.update({"why_choose_8848":[]})
     return why_choose_8848_details
+
+   
 
 def get_advantages_details(expertise_doctype):
     advantage_details = {}
