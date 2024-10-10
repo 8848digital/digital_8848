@@ -144,6 +144,7 @@ def get_why_choose_8848_details(expertise_doctype):
             why_choose_8848_child.append(
                  {
                     "title":value.get("title") or None,
+                    "image":value.get('image') or None,
                     "url":value.get("url") or None,
                     "sequence":value.get("sequence") or None,
                     'Service_details':query
