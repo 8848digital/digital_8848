@@ -7,7 +7,6 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
-  "section_title",
   "title",
   "type",
   "column_break_bfev",
@@ -266,16 +265,11 @@
    "fieldtype": "Table",
    "label": "Expertise Module",
    "options": "Expertise Module"
-  },
-  {
-   "fieldname": "section_title",
-   "fieldtype": "Data",
-   "label": "Section Title"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-11 13:18:32.667692",
+ "modified": "2024-10-11 16:24:29.616547",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
