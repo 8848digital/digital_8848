@@ -17,6 +17,7 @@
   "sequence",
   "section_break_s6uf",
   "background_image",
+  "truncate_text",
   "column_break_hdmz",
   "short_description",
   "module_tab",
@@ -28,21 +29,26 @@
   "expertise_details_tab",
   "subtitle",
   "expertise_detail",
+  "truncate_text_1",
   "services_details_tab",
   "service_title",
   "services_detail",
+  "truncate_text_2",
   "process_details_tab",
   "process_title",
   "process_details",
+  "truncate_text_3",
   "why_choose_8848_tab",
   "why_choose_8848_title",
   "why_choose_8848",
   "advantages_tab",
   "advantages_title",
   "advantages",
+  "truncate_text_4",
   "case_study_tab",
   "case_study_title",
   "case_study_description",
+  "truncate_text_5",
   "column_break_vezs",
   "case_study_image",
   "case_study_short_description",
@@ -148,8 +154,9 @@
    "label": "Advantages"
   },
   {
+   "default": "0",
    "fieldname": "advantages_title",
-   "fieldtype": "Data",
+   "fieldtype": "Check",
    "label": "Advantages Title"
   },
   {
@@ -265,11 +272,47 @@
    "fieldtype": "Table",
    "label": "Expertise Module",
    "options": "Expertise Module"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_1",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_2",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_3",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_4",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_5",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-11 16:24:29.616547",
+ "modified": "2024-10-17 14:09:21.113813",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",

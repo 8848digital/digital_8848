@@ -38,6 +38,8 @@ def get_details(expertise_doctype):
         "url": None,
         "type": None,
         "slug": None,
+        "short_description": None,
+        "truncate_text": None,
         "sequence": None,
     }
     for field, default_value in get_details_default_field_values.items():
@@ -54,6 +56,7 @@ def get_expertise_details_data(expertise_doctype):
                 {
                     "title":expertise.get("title") or None,
                     "short_description":expertise.get("short_description") or None,
+                    "truncate_text":expertise_doctype.get("truncate_text_1"),
                     "url":expertise.get("url") or None,
                     "sequence":expertise.get("sequence") or None
                 } 
@@ -87,6 +90,7 @@ def get_services_details(expertise_doctype):
                 {
                     "title":service.get("title") or None,
                     "short_description":service.get("short_description") or None,
+                    "truncate_text":expertise_doctype.get("truncate_text_2"),
                     "logo":service.get("logo") or None,
                     "sequence":service.get("sequence") or None,
                     "url":service.get("url") or None
@@ -109,6 +113,7 @@ def get_process_details(expertise_doctype):
                 {
                     "title":process.get("title") or None,
                     "short_description":process.get("short_description") or None,
+                    "truncate_text":expertise_doctype.get("truncate_text_3"),
                     "sequence":process.get("sequence") or None,
                     "url":process.get("url") or None
                 } 
@@ -170,6 +175,7 @@ def get_advantages_details(expertise_doctype):
                 {
                     "title":advantage.get("title") or None,
                     "short_description":advantage.get("short_description") or None,
+                    "truncate_text":expertise_doctype.get("truncate_text_4"),
                     "image":advantage.get("image") or None,
                     "sequence":advantage.get("sequence") or None,
                     "url":advantage.get("url") or None

@@ -15,6 +15,7 @@
   "image",
   "section_break_jt0k",
   "short_description",
+  "truncate_text_1",
   "banner_details_tab",
   "banner_title",
   "column_break_jmhq",
@@ -24,9 +25,11 @@
   "industry_details",
   "industry_detail_sub_title",
   "industry_detail",
+  "truncate_text_2",
   "advantages_tab",
   "advantages_sub_title",
   "advantages",
+  "truncate_text_3",
   "services",
   "section_title",
   "section_break_tio5",
@@ -157,11 +160,29 @@
    "fieldtype": "Table",
    "label": "Service Table",
    "options": "Service Table"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_1",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_2",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_3",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-07 12:29:06.607394",
+ "modified": "2024-10-17 11:20:28.675145",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",

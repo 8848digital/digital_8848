@@ -16,6 +16,7 @@ def get_case_study_listing(**kwargs):
                     "title": case_study_doctype.get("title") or None,
                     "image": case_study_doctype.get("image") or None,
                     "short_description": case_study_doctype.get("short_description") or None,
+                    "truncate_text": case_study_doctype.get("truncate_text_1"),
                     "slug": case_study_doctype.get("slug") or None,
                     "url": case_study_doctype.get("url") or None,
                     "type": case_study_doctype.get("type") or None,
