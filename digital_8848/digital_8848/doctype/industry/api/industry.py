@@ -58,7 +58,7 @@ def get_industry_list(**kwargs):
         industry_banner = frappe.get_value("Banner", "Industry", ["name"], as_dict = 1) or {}
         industry_banner_details = frappe.get_all("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"])           
         industry_banner.update({"banner_details": industry_banner_details})
-        industries = frappe.get_all("Industry", fields = ["title", "image", "short_description", "slug", "sequence", "url"])
+        industries = frappe.get_all("Industry", fields = ["title", "image", "short_description", "truncate_text_1 as truncate_text", "slug", "sequence", "url"])
         industries = sorted(industries, key=lambda x: x.get("sequence") or 0)
         industry_banner.update({"industries": industries})
         industry_banner.pop("name", None)
@@ -80,6 +80,13 @@ def error_response(err_msg):
 def get_parent_child_map(details):
     parent_child_map = {}
     for detail in details:
+        industry_titles = [industry.title for industry in frappe.get_all("Industry Detail", filters={"parent": detail.get("parent")}, fields=["title"])]
+        advantages_titles = [adv.title for adv in frappe.get_all("Advantages", filters={"parent": detail.get("parent")}, fields=["title"])]
+        if detail.get("title") in industry_titles:
+            detail["truncate_text"] = frappe.db.get_value('Industry', detail.get("parent"), 'truncate_text_1')
+        elif detail.get("title") in advantages_titles:
+            detail["truncate_text"] = frappe.db.get_value('Industry', detail.get("parent"), 'truncate_text_2')
+
         parent = detail.pop("parent", None)
         if parent is not None:
             if parent_child_map.get(parent):

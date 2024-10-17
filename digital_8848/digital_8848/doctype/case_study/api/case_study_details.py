@@ -39,6 +39,7 @@ def get_details(case_study_doctype):
             "type": case_study_doctype.get("type") or None,
             "slug": case_study_doctype.get("slug") or None,
             "short_description": case_study_doctype.get("short_description") or None,
+            "truncate_text": case_study_doctype.get("truncate_text_1"),
             "image": case_study_doctype.get("image") or None
         })
     return case_study_doctype_details
@@ -57,7 +58,8 @@ def get_overview_details(case_study_doctype):
     overview_details.update({
         "overview_title": case_study_doctype.get("overview_title") or None,
         "overview_description_1": case_study_doctype.get("overview_description") or None,
-        "overview_description_2": case_study_doctype.get("overview_description_2") or None
+        "overview_description_2": case_study_doctype.get("overview_description_2") or None,
+        "overview_truncate_text": case_study_doctype.get("truncate_text_2"),
     })
     return overview_details
 
@@ -65,16 +67,16 @@ def get_challenge_details(case_study_doctype):
     challenge_details = {}
     challenge_details.update({
         "challenge_title": case_study_doctype.get("challenge_title") or None,
-        "challenge_short_description": case_study_doctype.get("challenge_short_description") or None
+        "challenge_short_description": case_study_doctype.get("challenge_short_description") or None,
+        "challenge_truncate_text": case_study_doctype.get("truncate_text_3"),
         # "challenge_description": case_study_doctype.get("challenge_description") or None
     })
 
-    # Fetching the child table 'challenge_descriptions' dynamically
     if case_study_doctype.get("challenge_descriptions"):
         challenge_descriptions = [
             {
                 "idx":desc.get("idx") or None,
-                "challenge_description": desc.get("challenge_description") or None  # Assuming the child table has a field 'description'
+                "challenge_description": desc.get("challenge_description") or None
             }
             for desc in case_study_doctype.get("challenge_descriptions")
         ]
@@ -90,7 +92,8 @@ def get_objective_details(case_study_doctype):
     objective_details.update({
         "objective_title": case_study_doctype.get("objective_title") or None,
         "objective_image": case_study_doctype.get("objective_image") or None,
-        "objective_description": case_study_doctype.get("objective_description") or None
+        "objective_description": case_study_doctype.get("objective_description") or None,
+        "objective_truncate_text": case_study_doctype.get("truncate_text_4")  
     })
     return objective_details
 
@@ -99,7 +102,8 @@ def get_solution_details(case_study_doctype):
     solution_details.update({
         "solution_title": case_study_doctype.get("solution_title") or None,
         "solution_description_1": case_study_doctype.get("solution_description_1") or None,
-        "solution_description_2": case_study_doctype.get("solution_description_1") or None
+        "solution_description_2": case_study_doctype.get("solution_description_1") or None,
+        "solution_truncate_text": case_study_doctype.get("truncate_text_5") or None
     })
     return solution_details
 
@@ -108,7 +112,8 @@ def get_impact_details(case_study_doctype):
     impact_details.update({
         "impact_title": case_study_doctype.get("impact_title") or None,
         "impact_short_description": case_study_doctype.get("impact_short_description") or None,
-        "impact_description": case_study_doctype.get("impact_description") or None
+        "impact_description": case_study_doctype.get("impact_description") or None,
+        "impact_truncate_text": case_study_doctype.get("truncate_text_6")
     })
     if case_study_doctype.get("impact_details"):
         impact_details_child = [

@@ -10,6 +10,7 @@
   "title",
   "type",
   "short_description",
+  "truncate_text_1",
   "column_break_gulm",
   "url",
   "slug",
@@ -23,11 +24,13 @@
   "overview_title",
   "section_break_llul",
   "overview_description",
+  "truncate_text_2",
   "column_break_jop0",
   "overview_description_2",
   "challenge_details_tab",
   "challenge_title",
   "challenge_short_description",
+  "truncate_text_3",
   "challenge_descriptions",
   "objective_details_tab",
   "objective_title",
@@ -35,13 +38,16 @@
   "objective_image",
   "section_break_4phe",
   "objective_description",
+  "truncate_text_4",
   "solution_details_tab",
   "solution_title",
   "solution_description_1",
   "solution_description_2",
+  "truncate_text_5",
   "impact_details_tab",
   "impact_title",
   "impact_short_description",
+  "truncate_text_6",
   "impact_description",
   "impact_details",
   "tag_details_tab",
@@ -247,11 +253,47 @@
    "fieldname": "solution_description_2",
    "fieldtype": "Text Editor",
    "label": "Solution Description 2"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_1",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_2",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_3",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_4",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_5",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "truncate_text_6",
+   "fieldtype": "Check",
+   "label": "Truncate Text"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-11 16:24:37.732049",
+ "modified": "2024-10-16 18:33:25.429642",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",

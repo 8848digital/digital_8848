@@ -15,6 +15,7 @@ def get_expertise_listing(**kwargs):
                         "title": expertise_doctype.get("title") or None,
                         "logo": expertise_doctype.get("logo") or None,
                         "short_description": expertise_doctype.get("short_description") or None,
+                        "truncate_text":expertise_doctype.get("truncate_text"),
                         "slug": expertise_doctype.get("slug") or None,
                         "url": expertise_doctype.get("url") or None,
                         "background_image": expertise_doctype.get("background_image") or None,
