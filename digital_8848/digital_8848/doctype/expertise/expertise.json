@@ -154,9 +154,8 @@
    "label": "Advantages"
   },
   {
-   "default": "0",
    "fieldname": "advantages_title",
-   "fieldtype": "Check",
+   "fieldtype": "Data",
    "label": "Advantages Title"
   },
   {
@@ -312,7 +311,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-17 14:09:21.113813",
+ "modified": "2024-10-17 14:30:25.746682",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
