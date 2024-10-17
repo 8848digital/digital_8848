@@ -19,7 +19,7 @@ def get_industry_details(**kwargs):
                                               fields=["parent", "title", "description"])
             industry_details_map = get_parent_child_map(industry_details)
             advantages = frappe.get_all("Advantages", filters={"parent": ["in", industry_names]}, 
-                                        fields=["parent", "title", "short_description", "image", "sequence"], 
+                                        fields=["parent", "title", "short_description", "sequence"], 
                                         order_by="sequence asc")
             advantages_map = get_parent_child_map(advantages)
             services = frappe.get_all("Service Table", filters={"parent": ["in", industry_names]}, 
