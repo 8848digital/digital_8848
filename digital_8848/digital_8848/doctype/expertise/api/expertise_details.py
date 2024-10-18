@@ -145,7 +145,7 @@ def get_why_choose_8848_details(expertise_doctype):
                     "image":entry.get("image") or None,
                     "url":entry.get("url") or None,
                     "sequence":entry.get("sequence") or None,
-                    "Service_details": get_service_details_info(entry.get("title"))
+                    "service_details": get_service_details_info(entry.get("title"), expertise_doctype.get("slug"))
                 } 
                 for entry in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence"))
             ]
@@ -154,12 +154,13 @@ def get_why_choose_8848_details(expertise_doctype):
         why_choose_8848_details.update({"why_choose_8848":[]})
     return why_choose_8848_details
 
-def get_service_details_info(services_detail_title):
+def get_service_details_info(services_detail_title, slug):
     service_details_info = []
+    logo_image = frappe.get_value('Expertise', filters={'slug':slug}, fieldname='bullet_image')
     service_details_doctype = frappe.get_doc("Service Details", services_detail_title)
     for entry in service_details_doctype.get("service_details_info"):
         service_details_info.append({
-            "icon_image": entry.get("icon_image"),
+            "icon_image": logo_image,
             "service_info": entry.get("service_info")
         })
     return service_details_info

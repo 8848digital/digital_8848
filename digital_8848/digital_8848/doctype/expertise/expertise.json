@@ -40,6 +40,9 @@
   "truncate_text_3",
   "why_choose_8848_tab",
   "why_choose_8848_title",
+  "column_break_benz",
+  "bullet_image",
+  "section_break_5pav",
   "why_choose_8848",
   "advantages_tab",
   "advantages_title",
@@ -154,6 +157,7 @@
    "label": "Advantages"
   },
   {
+   "default": "0",
    "fieldname": "advantages_title",
    "fieldtype": "Data",
    "label": "Advantages Title"
@@ -307,11 +311,24 @@
    "fieldname": "truncate_text",
    "fieldtype": "Check",
    "label": "Truncate Text"
+  },
+  {
+   "fieldname": "column_break_benz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bullet_image",
+   "fieldtype": "Attach",
+   "label": "Bullet Image"
+  },
+  {
+   "fieldname": "section_break_5pav",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-17 14:30:25.746682",
+ "modified": "2024-10-18 18:05:26.502636",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
