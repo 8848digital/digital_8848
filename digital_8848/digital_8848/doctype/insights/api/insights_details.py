@@ -123,7 +123,7 @@ def get_services_details(insights_doctype):
                 "image": service.get("image") or None,
                 "url": service.get("url") or None,
                 "sequence": service.get("sequence") or None,
-                "Service_details": get_service_details_info(service.get("title"))
+                "Service_details": get_service_details_info(service.get("title"), insights_doctype.get("slug"))
             }
             for service in sorted(insights_doctype.get("services_detail"), key=lambda x: x.get("sequence"))
         ]
@@ -132,12 +132,13 @@ def get_services_details(insights_doctype):
         services_details.update({"services_detail": []})
     return services_details
 
-def get_service_details_info(services_detail_title):
+def get_service_details_info(services_detail_title, slug):
     service_details_info = []
+    logo_image = frappe.get_value('Insights', filters={'slug':slug}, fieldname='bullet_image')
     service_details_doctype = frappe.get_doc("Service Details", services_detail_title)
     for entry in service_details_doctype.get("service_details_info"):
         service_details_info.append({
-            "icon_image": entry.get("icon_image"),
+            "icon_image": logo_image,
             "service_info": entry.get("service_info")
         })
     return service_details_info
