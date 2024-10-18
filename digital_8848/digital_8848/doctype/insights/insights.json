@@ -30,6 +30,9 @@
   "integration_detail",
   "services_details_tab",
   "services_title",
+  "column_break_84h8",
+  "bullet_image",
+  "section_break_mrqt",
   "services_detail",
   "visibility_and_security_details",
   "visibility_and_security_title",
@@ -198,11 +201,24 @@
    "fieldname": "sequence",
    "fieldtype": "Int",
    "label": "Sequence"
+  },
+  {
+   "fieldname": "column_break_84h8",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bullet_image",
+   "fieldtype": "Attach",
+   "label": "Bullet Image"
+  },
+  {
+   "fieldname": "section_break_mrqt",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-08 14:59:59.749294",
+ "modified": "2024-10-18 18:54:29.212097",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Insights",
