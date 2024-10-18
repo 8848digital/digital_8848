@@ -145,7 +145,7 @@ def get_why_choose_8848_details(expertise_doctype):
                     "image":entry.get("image") or None,
                     "url":entry.get("url") or None,
                     "sequence":entry.get("sequence") or None,
-                    "service_details": get_service_details_info(entry.get("title"), expertise_doctype.get("slug"))
+                    "Service_details": get_service_details_info(entry.get("title"), expertise_doctype.get("slug"))
                 } 
                 for entry in sorted(expertise_doctype.get("why_choose_8848"), key=lambda x: x.get("sequence"))
             ]
