@@ -149,4 +149,4 @@ def success_response(data=None, id=None):
     return response
 
 def error_response(err_msg, response):
-    return {"status": "Error", "error": err_msg, "data" : response}
+    return {"status": "Error", "msg": err_msg, "data" : response}
