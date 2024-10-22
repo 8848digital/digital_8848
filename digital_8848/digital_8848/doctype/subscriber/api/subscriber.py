@@ -13,7 +13,7 @@ def get_subscriber(**kwargs):
         frappe.set_user(frappe.session.user)
         return {
             "status": "success",
-            "data": "Subscription to our newsletter added"
+            "data": "Subscription to newsletter added successfully"
         }
     
     except Exception as e:
