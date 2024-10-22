@@ -6,11 +6,11 @@ def get_insights_details(**kwargs):
         response = []
         slug = kwargs.get("slug")
         if not slug:
-            return error_response("Please provide a slug")
+            return error_response("Please provide a slug", response)
         
         insights_doctype_title = frappe.db.get_value("Insights",{'slug': kwargs.get("slug")})
         if not insights_doctype_title:
-            return error_response("No insights found with the given slug")
+            return error_response("No data found", response)
         insights_doctype = frappe.get_doc("Insights",insights_doctype_title)
 
         insights_doctype_details = get_details(insights_doctype)
@@ -28,7 +28,7 @@ def get_insights_details(**kwargs):
         return success_response(data=response)
           
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}", response)
     
 def get_details(insights_doctype):
     insights_doctype_details = {}
@@ -177,5 +177,5 @@ def success_response(data=None, id=None):
     response["data"] = data
     return response
 
-def error_response(err_msg):
-    return {"status": "error", "error": err_msg}
+def error_response(err_msg, response):
+    return {"status": "Error", "msg": err_msg, "data" : response}

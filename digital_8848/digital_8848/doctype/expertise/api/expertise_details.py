@@ -4,12 +4,13 @@ import frappe
 def get_expertise_details(**kwargs):
     try:
         slug = kwargs.get("slug")
+        response = []
         if not slug:
-            return error_response("Please provide a slug")
+            return error_response("Please provide a slug",response)
         
         expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
         if not expertise_doctype_title:
-            return error_response("No expertise found with the given slug")
+            return error_response("No data found",response)
         expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
 
         details = get_details(expertise_doctype)
@@ -27,7 +28,7 @@ def get_expertise_details(**kwargs):
         return success_response(data=response)
           
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}",response)
     
 
 def get_details(expertise_doctype):
@@ -223,5 +224,5 @@ def success_response(data=None, id=None):
     response["data"] = data
     return response
 
-def error_response(err_msg):
-    return {"status": "error", "error": err_msg}
+def error_response(err_msg, response):
+    return {"status": "Error", "msg": err_msg, "data" : response}

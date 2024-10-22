@@ -4,10 +4,11 @@ import frappe
 def get_industry_details(**kwargs):
     try:
         filters = {}
+        response = []
         if kwargs.get("slug"):
             filters["slug"] = kwargs.get("slug")
         else:
-            return error_response("Please Provide a slug.")
+            return error_response("Please Provide a slug.", response)
         industries = frappe.get_all("Industry", filters=filters, 
                                     fields=["name", "title", "url", "slug", "sequence", "image", "short_description", 
                                             "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", 
@@ -43,18 +44,19 @@ def get_industry_details(**kwargs):
                 
                 industry.update({"service_table": services_with_section_title})
                 industry.pop("name")
-            
-            return success_response(industries)
+                response = industries
+            return success_response(data=response)
         else:
-            return error_response("No Industry found with the given slug.")
+            return error_response("No data found", response)
     
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}", response)
 
 
 @frappe.whitelist(allow_guest=True)
 def get_industry_list(**kwargs):
     try:
+        response = []
         industry_banner = frappe.get_value("Banner", "Industry", ["name"], as_dict = 1) or {}
         industry_banner_details = frappe.get_all("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"])           
         industry_banner.update({"banner_details": industry_banner_details})
@@ -62,9 +64,10 @@ def get_industry_list(**kwargs):
         industries = sorted(industries, key=lambda x: x.get("sequence") or 0)
         industry_banner.update({"industries": industries})
         industry_banner.pop("name", None)
-        return success_response(industry_banner)
+        response = industry_banner
+        return success_response(data = response)
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}", response)
 
     
 def success_response(data=None, id=None):
@@ -73,8 +76,8 @@ def success_response(data=None, id=None):
     if id:
         response["data"] = {"id": id, "name": id}
     return response
-def error_response(err_msg):
-    return {"status": "error", "error": err_msg}
+def error_response(err_msg, response):
+    return {"status": "Error", "msg": err_msg, "data" : response}
 
 
 def get_parent_child_map(details):
