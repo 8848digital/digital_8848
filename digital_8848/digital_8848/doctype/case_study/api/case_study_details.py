@@ -6,11 +6,11 @@ def get_case_study_details(**kwargs):
         response = []
         slug = kwargs.get("slug")
         if not slug:
-            return error_response("Please provide a slug")
+            return error_response("Please provide a slug", response)
         
         case_study_doctype_title = frappe.db.get_value("Case Study",{'slug': kwargs.get("slug")})
         if not case_study_doctype_title:
-            return error_response("No case study found with the given slug")
+            return error_response("No data found", response)
         case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
 
         case_study_doctype_details = get_details(case_study_doctype)
@@ -29,7 +29,7 @@ def get_case_study_details(**kwargs):
         return success_response(data=response)
           
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}", response)
     
 def get_details(case_study_doctype):
     case_study_doctype_details = {}
@@ -148,5 +148,5 @@ def success_response(data=None, id=None):
     response["data"] = data
     return response
 
-def error_response(err_msg):
-    return {"status": "error", "error": err_msg}
+def error_response(err_msg, response):
+    return {"status": "Error", "error": err_msg, "data" : response}
