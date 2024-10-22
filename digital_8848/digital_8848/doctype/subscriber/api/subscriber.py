@@ -20,5 +20,5 @@ def get_subscriber(**kwargs):
         frappe.set_user(frappe.session.user)
         return {
             "status": "error",
-            "data": f"An error occurred: {str(e)}"
+            "data": "Subscription already exists"
         }
