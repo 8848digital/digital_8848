@@ -11,7 +11,7 @@ def get_expertise_details(**kwargs):
         expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
         if not expertise_doctype_title:
             return error_response("No data found",response)
-        expertise_doctype = frappe.get_doc("Expertisse",expertise_doctype_title)
+        expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
 
         details = get_details(expertise_doctype)
         expertise_details = get_expertise_details_data(expertise_doctype)
