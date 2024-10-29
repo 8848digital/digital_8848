@@ -61,9 +61,9 @@
   },
   {
    "fieldname": "type",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Type",
-   "options": "Manufacturing\nConstruction\nRetail\nOnline Retail"
+   "options": "Industry"
   },
   {
    "fieldname": "short_description",
@@ -293,7 +293,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-16 18:33:25.429642",
+ "modified": "2024-10-29 13:42:32.684124",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",
