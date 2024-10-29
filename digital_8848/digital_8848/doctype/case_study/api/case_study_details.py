@@ -102,7 +102,7 @@ def get_solution_details(case_study_doctype):
     solution_details.update({
         "solution_title": case_study_doctype.get("solution_title") or None,
         "solution_description_1": case_study_doctype.get("solution_description_1") or None,
-        "solution_description_2": case_study_doctype.get("solution_description_1") or None,
+        "solution_description_2": case_study_doctype.get("solution_description_2") or None,
         "solution_truncate_text": case_study_doctype.get("truncate_text_5") or None
     })
     return solution_details
