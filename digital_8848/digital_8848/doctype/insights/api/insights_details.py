@@ -4,14 +4,17 @@ import frappe
 def get_insights_details(**kwargs):
     try:
         response = []
+        title = kwargs.get("title")
         slug = kwargs.get("slug")
-        if not slug:
-            return error_response("Please provide a slug", response)
-        
-        insights_doctype_title = frappe.db.get_value("Insights",{'slug': kwargs.get("slug")})
-        if not insights_doctype_title:
-            return error_response("No data found", response)
-        insights_doctype = frappe.get_doc("Insights",insights_doctype_title)
+        if not title and not slug:
+            return error_response("Please provide a title or slug", response)
+        if slug:
+            insights_doctype_title = frappe.db.get_value("Insights",{'slug': kwargs.get("slug")})
+            if not insights_doctype_title:
+                return error_response("No insights found with the given slug", response)
+            insights_doctype = frappe.get_doc("Insights",insights_doctype_title)
+        if title:
+            insights_doctype = frappe.get_doc("Insights",kwargs.get("title"))
 
         insights_doctype_details = get_details(insights_doctype)
         banner_details = get_banner_details(insights_doctype)

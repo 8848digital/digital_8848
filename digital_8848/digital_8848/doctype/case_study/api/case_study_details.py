@@ -4,14 +4,17 @@ import frappe
 def get_case_study_details(**kwargs):
     try:
         response = []
+        title = kwargs.get("title")
         slug = kwargs.get("slug")
-        if not slug:
-            return error_response("Please provide a slug", response)
-        
-        case_study_doctype_title = frappe.db.get_value("Case Study",{'slug': kwargs.get("slug")})
-        if not case_study_doctype_title:
-            return error_response("No data found", response)
-        case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
+        if not title and not slug:
+            return error_response("Please provide a title or slug",response)
+        if slug:
+            case_study_doctype_title = frappe.db.get_value("Case Study",{'slug': kwargs.get("slug")})
+            if not case_study_doctype_title:
+                return error_response("No case study found with the given slug",response)
+            case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
+        if title:
+            case_study_doctype = frappe.get_doc("Case Study",kwargs.get("title"))
 
         case_study_doctype_details = get_details(case_study_doctype)
         banner_details = get_banner_details(case_study_doctype)
