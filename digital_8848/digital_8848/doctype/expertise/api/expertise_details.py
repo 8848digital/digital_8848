@@ -3,15 +3,18 @@ import frappe
 @frappe.whitelist(allow_guest=True)
 def get_expertise_details(**kwargs):
     try:
-        slug = kwargs.get("slug")
         response = []
-        if not slug:
-            return error_response("Please provide a slug",response)
-        
-        expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
-        if not expertise_doctype_title:
-            return error_response("No data found",response)
-        expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
+        title = kwargs.get("title")
+        slug = kwargs.get("slug")
+        if not title and not slug:
+            return error_response("Please provide a title or slug", response)
+        if slug:
+            expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
+            if not expertise_doctype_title:
+                return error_response("No expertise found with the given slug",response)
+            expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
+        if title:
+            expertise_doctype = frappe.get_doc("Expertise",kwargs.get("title"))
 
         details = get_details(expertise_doctype)
         expertise_details = get_expertise_details_data(expertise_doctype)

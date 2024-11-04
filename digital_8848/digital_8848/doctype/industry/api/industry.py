@@ -5,10 +5,16 @@ def get_industry_details(**kwargs):
     try:
         filters = {}
         response = []
-        if kwargs.get("slug"):
+        title = kwargs.get("title")
+        slug = kwargs.get("slug")
+        if not title and not slug:
+            return error_response("Please Provide a title or slug.", response)
+        if slug:
             filters["slug"] = kwargs.get("slug")
-        else:
-            return error_response("Please Provide a slug.", response)
+        if title:
+            filters["title"] = kwargs.get("title")
+           
+        
         industries = frappe.get_all("Industry", filters=filters, 
                                     fields=["name", "title", "url", "slug", "sequence", "image", "short_description", 
                                             "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", 
