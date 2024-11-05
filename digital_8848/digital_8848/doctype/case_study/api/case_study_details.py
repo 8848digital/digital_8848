@@ -14,7 +14,7 @@ def get_case_study_details(**kwargs):
                 return error_response("No case study found with the given slug",response)
             case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
         if title:
-            case_study_doctype = frappe.get_doc("Case Study",kwargs.get("title"))
+            case_study_doctype = frappe.get_doc("Case Study", {"title": title})
 
         case_study_doctype_details = get_details(case_study_doctype)
         banner_details = get_banner_details(case_study_doctype)

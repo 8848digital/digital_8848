@@ -14,7 +14,7 @@ def get_insights_details(**kwargs):
                 return error_response("No insights found with the given slug", response)
             insights_doctype = frappe.get_doc("Insights",insights_doctype_title)
         if title:
-            insights_doctype = frappe.get_doc("Insights",kwargs.get("title"))
+            insights_doctype = frappe.get_doc("Insights", {"title": title})
 
         insights_doctype_details = get_details(insights_doctype)
         banner_details = get_banner_details(insights_doctype)
