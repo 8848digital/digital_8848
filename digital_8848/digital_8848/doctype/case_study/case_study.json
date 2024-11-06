@@ -7,6 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
+  "publish_on_site",
+  "section_break_ewue",
   "title",
   "type",
   "short_description",
@@ -289,11 +291,21 @@
    "fieldname": "truncate_text_6",
    "fieldtype": "Check",
    "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish_on_site",
+   "fieldtype": "Check",
+   "label": "Publish on Site"
+  },
+  {
+   "fieldname": "section_break_ewue",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-29 13:42:32.684124",
+ "modified": "2024-11-06 11:40:41.107991",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",

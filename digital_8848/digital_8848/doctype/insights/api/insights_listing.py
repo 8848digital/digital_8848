@@ -4,7 +4,7 @@ import frappe
 def get_insights_listing(**kwargs):
     try:
         response = []
-        filters = {}
+        filters = {"publish_on_site" : 1,}
         if kwargs.get("type"):
             filters.update({"type": kwargs.get("type")})
 

@@ -7,6 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
+  "publish_on_site",
+  "section_break_pn3h",
   "title",
   "type",
   "column_break_bfev",
@@ -50,11 +52,6 @@
   "truncate_text_4",
   "case_study_tab",
   "case_study_title",
-  "case_study_description",
-  "truncate_text_5",
-  "column_break_vezs",
-  "case_study_image",
-  "case_study_short_description",
   "faqs_tab",
   "faqs_detail"
  ],
@@ -175,27 +172,9 @@
   },
   {
    "fieldname": "case_study_title",
-   "fieldtype": "Data",
-   "label": "Case Study Title"
-  },
-  {
-   "fieldname": "case_study_description",
-   "fieldtype": "Small Text",
-   "label": "Case Study Description"
-  },
-  {
-   "fieldname": "column_break_vezs",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "case_study_image",
-   "fieldtype": "Attach",
-   "label": "Case Study Image"
-  },
-  {
-   "fieldname": "case_study_short_description",
-   "fieldtype": "Small Text",
-   "label": "Case Study Short Description"
+   "fieldtype": "Link",
+   "label": "Case Study Title",
+   "options": "Case Study"
   },
   {
    "fieldname": "faqs_tab",
@@ -302,12 +281,6 @@
   },
   {
    "default": "0",
-   "fieldname": "truncate_text_5",
-   "fieldtype": "Check",
-   "label": "Truncate Text"
-  },
-  {
-   "default": "0",
    "fieldname": "truncate_text",
    "fieldtype": "Check",
    "label": "Truncate Text"
@@ -324,11 +297,21 @@
   {
    "fieldname": "section_break_5pav",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish_on_site",
+   "fieldtype": "Check",
+   "label": "Publish on Site"
+  },
+  {
+   "fieldname": "section_break_pn3h",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-18 18:05:26.502636",
+ "modified": "2024-11-06 11:32:26.202802",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",

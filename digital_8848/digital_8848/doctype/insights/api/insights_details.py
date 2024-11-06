@@ -29,7 +29,7 @@ def get_insights_details(**kwargs):
                                 **integration_details,**services_details,**visibility_and_security_details, **benefits_details }
         response.append(combined_details)
         return success_response(data=response)
-          
+
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}", response)
     
