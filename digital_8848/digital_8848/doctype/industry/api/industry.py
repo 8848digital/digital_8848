@@ -13,7 +13,7 @@ def get_industry_details(**kwargs):
             filters["slug"] = kwargs.get("slug")
         if title:
             filters["title"] = kwargs.get("title")
-           
+
         
         industries = frappe.get_all("Industry", filters=filters, 
                                     fields=["name", "title", "url", "slug", "sequence", "image", "short_description", 
@@ -23,15 +23,15 @@ def get_industry_details(**kwargs):
         if industries:
             industry_names = [industry.name for industry in industries]
             industry_details = frappe.get_all("Industry Detail", filters={"parent": ["in", industry_names]}, 
-                                              fields=["parent", "title", "description"])
+                                                fields=["parent", "title", "description"])
             industry_details_map = get_parent_child_map(industry_details)
             advantages = frappe.get_all("Advantages", filters={"parent": ["in", industry_names]}, 
                                         fields=["parent", "title", "short_description", "sequence"], 
                                         order_by="sequence asc")
             advantages_map = get_parent_child_map(advantages)
             services = frappe.get_all("Service Table", filters={"parent": ["in", industry_names]}, 
-                                      fields=["parent", "service_name", "service_image", "sequence"], 
-                                      order_by="sequence asc")
+                                        fields=["parent", "service_name", "service_image", "sequence"], 
+                                        order_by="sequence asc")
             service_map = get_parent_child_map(services)
             for industry in industries:
                 industry.update({"industry_detail": industry_details_map.get(industry.name) or []})
@@ -66,7 +66,7 @@ def get_industry_list(**kwargs):
         industry_banner = frappe.get_value("Banner", "Industry", ["name"], as_dict = 1) or {}
         industry_banner_details = frappe.get_all("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"])           
         industry_banner.update({"banner_details": industry_banner_details})
-        industries = frappe.get_all("Industry", fields = ["title", "image", "short_description", "truncate_text_1 as truncate_text", "slug", "sequence", "url"])
+        industries = frappe.get_all("Industry", filters={"publish_on_site" : 1}, fields = ["title", "image", "short_description", "truncate_text_1 as truncate_text", "slug", "sequence", "url"])
         industries = sorted(industries, key=lambda x: x.get("sequence") or 0)
         industry_banner.update({"industries": industries})
         industry_banner.pop("name", None)
@@ -103,7 +103,6 @@ def get_parent_child_map(details):
             else:
                 parent_child_map[parent] = [detail]
     return parent_child_map
-    
-        
+
 
 

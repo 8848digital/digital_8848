@@ -7,6 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
+  "publish_on_site",
+  "section_break_gpkj",
   "title",
   "sequence",
   "type",
@@ -214,11 +216,21 @@
   {
    "fieldname": "section_break_mrqt",
    "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish_on_site",
+   "fieldtype": "Check",
+   "label": "Publish on Site"
+  },
+  {
+   "fieldname": "section_break_gpkj",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-18 18:54:29.212097",
+ "modified": "2024-11-06 11:35:27.683168",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Insights",

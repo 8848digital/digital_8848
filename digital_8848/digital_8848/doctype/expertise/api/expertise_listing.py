@@ -6,7 +6,7 @@ def get_expertise_listing(**kwargs):
         if kwargs.get("type"):
             response = []
             technology = []
-            expertise_doctypes_list = frappe.get_all("Expertise", filters={'type': kwargs.get("type")}, pluck="name")
+            expertise_doctypes_list = frappe.get_all("Expertise", filters={'type': kwargs.get("type"), "publish_on_site" : 1}, pluck="name")
             if expertise_doctypes_list:
                 for doctype in expertise_doctypes_list:
                     expertise_doctype = frappe.get_doc("Expertise", doctype)

@@ -29,7 +29,7 @@ def get_expertise_details(**kwargs):
         response = [{**details,**expertise_details,**banner_details,**services_details,**process_details,**filtered_tab_details,
                     **case_study_details,**faq_details}]        
         return success_response(data=response)
-          
+
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}",response)
     
@@ -193,15 +193,21 @@ def get_advantages_details(expertise_doctype):
     return advantage_details 
 
 def get_case_study_details(expertise_doctype):
-    case_study_details = {}
-    case_study_default_field_values = {
-        "case_study_title": None,
-        "case_study_image": None,
-        "case_study_description": None,
-        "case_study_short_description": None
+    case_study_title = expertise_doctype.case_study_title
+    if not frappe.db.exists("Case Study", case_study_title):
+        return {
+            "case_study_title": None,
+            "case_study_image": None,
+            "case_study_description": None,
+            "case_study_short_description": None
+        }
+    case_study_doc = frappe.get_doc("Case Study", case_study_title)
+    case_study_details = {
+        "case_study_title": case_study_doc.title,
+        "case_study_image": case_study_doc.image,
+        "case_study_description": case_study_doc.banner_description,
+        "case_study_short_description": case_study_doc.short_description
     }
-    for field, default_value in case_study_default_field_values.items():
-        case_study_details[field] = expertise_doctype.get(field, default_value)
     return case_study_details
     
 

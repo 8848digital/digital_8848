@@ -7,6 +7,8 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
+  "publish_on_site",
+  "section_break_wzi2",
   "title",
   "url",
   "slug",
@@ -178,11 +180,21 @@
    "fieldname": "truncate_text_3",
    "fieldtype": "Check",
    "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish_on_site",
+   "fieldtype": "Check",
+   "label": "Publish on Site"
+  },
+  {
+   "fieldname": "section_break_wzi2",
+   "fieldtype": "Section Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-17 11:20:28.675145",
+ "modified": "2024-11-06 11:33:39.627002",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",
