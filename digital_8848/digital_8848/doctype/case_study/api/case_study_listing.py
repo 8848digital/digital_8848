@@ -32,12 +32,12 @@ def get_case_study_listing(**kwargs):
 def get_tag_details(case_study_doctype):
     tag_details_child = []
     
-    if case_study_doctype.get("tag_detail"):
+    if case_study_doctype.get("tags"):
         tag_details_child = [
                 {
                     "tag_name":tag.get("tag_name") or None,
                 } 
-                for tag in case_study_doctype.get("tag_detail")
+                for tag in case_study_doctype.get("tags")
             ]
     return tag_details_child
     

@@ -11,9 +11,11 @@
   "section_break_pn3h",
   "title",
   "type",
+  "category",
   "column_break_bfev",
   "logo",
   "slug",
+  "file_url",
   "column_break_wbs0",
   "url",
   "sequence",
@@ -199,7 +201,8 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
-   "label": "URL"
+   "label": "URL",
+   "read_only": 1
   },
   {
    "fieldname": "section_break_s6uf",
@@ -307,11 +310,22 @@
   {
    "fieldname": "section_break_pn3h",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Data",
+   "label": "File URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-06 11:32:26.202802",
+ "modified": "2024-11-07 12:43:43.721654",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",

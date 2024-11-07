@@ -15,8 +15,8 @@ frappe.ui.form.on("Industry", {
         frm.refresh_field("slug");
     },
     refresh: function(frm) {
-        if (frm.doc.url) {
-            frm.add_custom_button(__("See on Website"), function () {
+        if (frm.doc.url && frm.doc.publish_on_site == 1) {
+            frm.add_custom_button(__("Show on Website"), function () {
                 const url = frm.doc.url
                 frappe.db.get_single_value("Website URL Settings", "base_url")
                     .then(base_url => {
@@ -62,7 +62,7 @@ function validate_sequence(frm, table_field, label) {
 }
 
 function generate_url(frm) {
-    if (frm.doc.url && frm.doc.slug && !frm.doc.url.includes(frm.doc.slug)) {
-        frm.doc.url = frm.doc.url + "/" + frm.doc.slug;
+    if (frm.doc.file_url && frm.doc.slug) {
+        frm.doc.url = frm.doc.file_url + "/" + frm.doc.slug;
     }
 }

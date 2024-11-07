@@ -18,19 +18,21 @@ def get_case_study_details(**kwargs):
 
         case_study_doctype_details = get_details(case_study_doctype)
         banner_details = get_banner_details(case_study_doctype)
-        overview_details = get_overview_details(case_study_doctype)
+        client_details = get_client_details(case_study_doctype)
         challenge_details = get_challenge_details(case_study_doctype)
-        objective_details = get_objective_details(case_study_doctype)
+        reason_details = get_reason_details(case_study_doctype)
         solution_details = get_solution_details(case_study_doctype)
+        result_details = get_result_details(case_study_doctype)
+        next_steps_details = get_next_steps_details(case_study_doctype)
         impact_details = get_impact_details(case_study_doctype)
         tag_details = get_tag_details(case_study_doctype)
 
-        combined_details = { **case_study_doctype_details,**banner_details,**overview_details,**challenge_details,
-                                **objective_details,**solution_details,**impact_details,**tag_details }
+        combined_details = { **case_study_doctype_details,**banner_details,**client_details,**challenge_details,
+                                **reason_details,**solution_details,**result_details,**next_steps_details,**impact_details,**tag_details  }
         
         response.append(combined_details)
         return success_response(data=response)
-          
+
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}", response)
     
@@ -56,90 +58,70 @@ def get_banner_details(case_study_doctype):
     })
     return banner_details
 
-def get_overview_details(case_study_doctype):
-    overview_details = {}
-    overview_details.update({
-        "overview_title": case_study_doctype.get("overview_title") or None,
-        "overview_description_1": case_study_doctype.get("overview_description") or None,
-        "overview_description_2": case_study_doctype.get("overview_description_2") or None,
-        "overview_truncate_text": case_study_doctype.get("truncate_text_2"),
+def get_client_details(case_study_doctype):
+    client_details = {}
+    client_details.update({
+        "client_title": case_study_doctype.get("client_title") or None,
+        "client_description": case_study_doctype.get("client_description") or None
     })
-    return overview_details
+    return client_details
 
 def get_challenge_details(case_study_doctype):
     challenge_details = {}
     challenge_details.update({
         "challenge_title": case_study_doctype.get("challenge_title") or None,
-        "challenge_short_description": case_study_doctype.get("challenge_short_description") or None,
-        "challenge_truncate_text": case_study_doctype.get("truncate_text_3"),
-        # "challenge_description": case_study_doctype.get("challenge_description") or None
+        "challenge_description": case_study_doctype.get("challenge_description") or None
     })
-
-    if case_study_doctype.get("challenge_descriptions"):
-        challenge_descriptions = [
-            {
-                "idx":desc.get("idx") or None,
-                "challenge_description": desc.get("challenge_description") or None
-            }
-            for desc in case_study_doctype.get("challenge_descriptions")
-        ]
-        challenge_details.update({"challenge_descriptions": challenge_descriptions})
-    else:
-        challenge_details.update({"challenge_descriptions": []})
-    
     return challenge_details
 
-
-def get_objective_details(case_study_doctype):
-    objective_details = {}
-    objective_details.update({
-        "objective_title": case_study_doctype.get("objective_title") or None,
-        "objective_image": case_study_doctype.get("objective_image") or None,
-        "objective_description": case_study_doctype.get("objective_description") or None,
-        "objective_truncate_text": case_study_doctype.get("truncate_text_4")  
+def get_reason_details(case_study_doctype):
+    reason_details = {}
+    reason_details.update({
+        "reason_title": case_study_doctype.get("reason_title") or None,
+        "reason_description": case_study_doctype.get("reason_description") or None
     })
-    return objective_details
+    return reason_details
 
 def get_solution_details(case_study_doctype):
     solution_details = {}
     solution_details.update({
         "solution_title": case_study_doctype.get("solution_title") or None,
-        "solution_description_1": case_study_doctype.get("solution_description_1") or None,
-        "solution_description_2": case_study_doctype.get("solution_description_2") or None,
-        "solution_truncate_text": case_study_doctype.get("truncate_text_5") or None
+        "solution_description": case_study_doctype.get("solution_description") or None
     })
     return solution_details
+
+def get_result_details(case_study_doctype):
+    result_details = {}
+    result_details.update({
+        "result_title": case_study_doctype.get("result_title") or None,
+        "result_description": case_study_doctype.get("result_description") or None
+    })
+    return result_details
+
+def get_next_steps_details(case_study_doctype):
+    next_steps_details = {}
+    next_steps_details.update({
+        "next_steps_title": case_study_doctype.get("next_steps_title") or None,
+        "next_steps_description": case_study_doctype.get("next_steps_description") or None
+    })
+    return next_steps_details
 
 def get_impact_details(case_study_doctype):
     impact_details = {}
     impact_details.update({
         "impact_title": case_study_doctype.get("impact_title") or None,
-        "impact_short_description": case_study_doctype.get("impact_short_description") or None,
-        "impact_description": case_study_doctype.get("impact_description") or None,
-        "impact_truncate_text": case_study_doctype.get("truncate_text_6")
+        "impact_description": case_study_doctype.get("impact_description") or None
     })
-    if case_study_doctype.get("impact_details"):
-        impact_details_child = [
-                {
-                    "sequence":impact.get("sequence") or None,
-                    "delivery_card":impact.get("delivery_card") or None,
-                    "description":impact.get("description") or None,
-                } 
-                for impact in case_study_doctype.get("impact_details")
-            ]
-        impact_details.update({"impact_detail":impact_details_child})
-    else:
-        impact_details.update({"impact_detail":[]})
     return impact_details
 
 def get_tag_details(case_study_doctype):
     tag_details = {}
-    if case_study_doctype.get("tag_detail"):
+    if case_study_doctype.get("tags"):
         tag_details_child = [
                 {
                     "tag_name":tag.get("tag_name") or None,
                 } 
-                for tag in case_study_doctype.get("tag_detail")
+                for tag in case_study_doctype.get("tags")
             ]
         tag_details.update({"tag_detail":tag_details_child})
     else:
