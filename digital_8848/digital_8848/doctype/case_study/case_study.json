@@ -14,46 +14,38 @@
   "short_description",
   "truncate_text_1",
   "column_break_gulm",
+  "file_url",
   "url",
   "slug",
   "image",
   "display_on_home_page",
-  "banner_details_tab",
+  "banner_details_section",
   "banner_title",
   "banner_image",
   "banner_description",
-  "overview_details_tab",
-  "overview_title",
-  "section_break_llul",
-  "overview_description",
-  "truncate_text_2",
-  "column_break_jop0",
-  "overview_description_2",
-  "challenge_details_tab",
+  "column_break_6en6",
+  "tags",
+  "client_tab",
+  "client_title",
+  "client_description",
+  "challenge_tab",
   "challenge_title",
-  "challenge_short_description",
-  "truncate_text_3",
-  "challenge_descriptions",
-  "objective_details_tab",
-  "objective_title",
-  "column_break_isln",
-  "objective_image",
-  "section_break_4phe",
-  "objective_description",
-  "truncate_text_4",
-  "solution_details_tab",
+  "challenge_description",
+  "reason_tab",
+  "reason_title",
+  "reason_description",
+  "solution_tab",
   "solution_title",
-  "solution_description_1",
-  "solution_description_2",
-  "truncate_text_5",
-  "impact_details_tab",
+  "solution_description",
+  "result_tab",
+  "result_title",
+  "result_description",
+  "next_steps_tab",
+  "next_steps_title",
+  "next_steps_description",
+  "impact_tab",
   "impact_title",
-  "impact_short_description",
-  "truncate_text_6",
-  "impact_description",
-  "impact_details",
-  "tag_details_tab",
-  "tag_detail"
+  "impact_description"
  ],
  "fields": [
   {
@@ -84,7 +76,8 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
-   "label": "URL"
+   "label": "URL",
+   "read_only": 1
   },
   {
    "fieldname": "slug",
@@ -95,11 +88,6 @@
    "fieldname": "details_tab",
    "fieldtype": "Tab Break",
    "label": "Details"
-  },
-  {
-   "fieldname": "banner_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Banner Details"
   },
   {
    "fieldname": "banner_title",
@@ -117,90 +105,24 @@
    "label": "Banner Description"
   },
   {
-   "fieldname": "overview_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Overview Details"
-  },
-  {
-   "fieldname": "overview_title",
-   "fieldtype": "Data",
-   "label": "Overview Title"
-  },
-  {
-   "fieldname": "overview_description",
-   "fieldtype": "Text Editor",
-   "label": "Overview Description 1"
-  },
-  {
-   "fieldname": "challenge_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Challenge Details"
-  },
-  {
    "fieldname": "challenge_title",
    "fieldtype": "Data",
-   "label": "Challenge Title"
-  },
-  {
-   "fieldname": "challenge_short_description",
-   "fieldtype": "Small Text",
-   "label": "Challenge Short Description"
-  },
-  {
-   "fieldname": "objective_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Objective Details"
-  },
-  {
-   "fieldname": "objective_title",
-   "fieldtype": "Data",
-   "label": "Objective Title"
-  },
-  {
-   "fieldname": "objective_description",
-   "fieldtype": "Text Editor",
-   "label": "Objective Description"
-  },
-  {
-   "fieldname": "solution_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Solution Details"
+   "label": "Title"
   },
   {
    "fieldname": "solution_title",
    "fieldtype": "Data",
-   "label": "Solution Title"
-  },
-  {
-   "fieldname": "impact_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Impact Details"
+   "label": "Title"
   },
   {
    "fieldname": "impact_title",
    "fieldtype": "Data",
-   "label": "Impact Title"
-  },
-  {
-   "fieldname": "impact_short_description",
-   "fieldtype": "Small Text",
-   "label": "Impact Short Description"
+   "label": "Title"
   },
   {
    "fieldname": "impact_description",
    "fieldtype": "Text Editor",
-   "label": "Impact Description"
-  },
-  {
-   "fieldname": "tag_details_tab",
-   "fieldtype": "Tab Break",
-   "label": "Tag Details"
-  },
-  {
-   "fieldname": "tag_detail",
-   "fieldtype": "Table MultiSelect",
-   "label": "Tag Detail",
-   "options": "Tag Detail"
+   "label": "Description"
   },
   {
    "default": "0",
@@ -209,86 +131,8 @@
    "label": "Display On Home Page"
   },
   {
-   "fieldname": "column_break_isln",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "objective_image",
-   "fieldtype": "Attach",
-   "label": "Objective Image"
-  },
-  {
-   "fieldname": "section_break_4phe",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "overview_description_2",
-   "fieldtype": "Text Editor",
-   "label": "Overview Description 2"
-  },
-  {
-   "fieldname": "column_break_jop0",
-   "fieldtype": "Column Break"
-  },
-  {
-   "fieldname": "section_break_llul",
-   "fieldtype": "Section Break"
-  },
-  {
-   "fieldname": "challenge_descriptions",
-   "fieldtype": "Table",
-   "label": "Challenge Descriptions",
-   "options": "Challenge Description"
-  },
-  {
-   "fieldname": "impact_details",
-   "fieldtype": "Table",
-   "label": "Impact Details",
-   "options": "Impact Details"
-  },
-  {
-   "fieldname": "solution_description_1",
-   "fieldtype": "Text Editor",
-   "label": "Solution Description 1"
-  },
-  {
-   "fieldname": "solution_description_2",
-   "fieldtype": "Text Editor",
-   "label": "Solution Description 2"
-  },
-  {
    "default": "0",
    "fieldname": "truncate_text_1",
-   "fieldtype": "Check",
-   "label": "Truncate Text"
-  },
-  {
-   "default": "0",
-   "fieldname": "truncate_text_2",
-   "fieldtype": "Check",
-   "label": "Truncate Text"
-  },
-  {
-   "default": "0",
-   "fieldname": "truncate_text_3",
-   "fieldtype": "Check",
-   "label": "Truncate Text"
-  },
-  {
-   "default": "0",
-   "fieldname": "truncate_text_4",
-   "fieldtype": "Check",
-   "label": "Truncate Text"
-  },
-  {
-   "default": "0",
-   "fieldname": "truncate_text_5",
-   "fieldtype": "Check",
-   "label": "Truncate Text"
-  },
-  {
-   "default": "0",
-   "fieldname": "truncate_text_6",
    "fieldtype": "Check",
    "label": "Truncate Text"
   },
@@ -301,11 +145,116 @@
   {
    "fieldname": "section_break_ewue",
    "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Data",
+   "label": "File URL"
+  },
+  {
+   "fieldname": "banner_details_section",
+   "fieldtype": "Section Break",
+   "label": "Banner Details"
+  },
+  {
+   "fieldname": "client_tab",
+   "fieldtype": "Tab Break",
+   "label": "Client"
+  },
+  {
+   "fieldname": "client_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "client_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "challenge_tab",
+   "fieldtype": "Tab Break",
+   "label": "Challenge"
+  },
+  {
+   "fieldname": "challenge_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "reason_tab",
+   "fieldtype": "Tab Break",
+   "label": "Reason"
+  },
+  {
+   "fieldname": "reason_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "reason_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "solution_tab",
+   "fieldtype": "Tab Break",
+   "label": "Solution"
+  },
+  {
+   "fieldname": "solution_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "result_tab",
+   "fieldtype": "Tab Break",
+   "label": "Result"
+  },
+  {
+   "fieldname": "result_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "result_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "next_steps_tab",
+   "fieldtype": "Tab Break",
+   "label": "Next Steps"
+  },
+  {
+   "fieldname": "next_steps_title",
+   "fieldtype": "Data",
+   "label": "Title"
+  },
+  {
+   "fieldname": "next_steps_description",
+   "fieldtype": "Text Editor",
+   "label": "Description"
+  },
+  {
+   "fieldname": "impact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Impact"
+  },
+  {
+   "fieldname": "tags",
+   "fieldtype": "Table MultiSelect",
+   "label": "Tags",
+   "options": "Tag Detail"
+  },
+  {
+   "fieldname": "column_break_6en6",
+   "fieldtype": "Column Break"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-06 11:40:41.107991",
+ "modified": "2024-11-07 14:06:30.167135",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",

@@ -22,8 +22,12 @@ def get_industry_details(**kwargs):
         
         if industries:
             industry_names = [industry.name for industry in industries]
-            industry_details = frappe.get_all("Industry Detail", filters={"parent": ["in", industry_names]}, 
-                                                fields=["parent", "title", "description"])
+            industry_details = frappe.get_all(
+                "Industry Detail",
+                filters={"parent": ["in", industry_names]},
+                fields=["parent", "title", "description"],
+                order_by="idx ASC"
+            )
             industry_details_map = get_parent_child_map(industry_details)
             advantages = frappe.get_all("Advantages", filters={"parent": ["in", industry_names]}, 
                                         fields=["parent", "title", "short_description", "sequence"], 

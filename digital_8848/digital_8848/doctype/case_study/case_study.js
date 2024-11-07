@@ -12,11 +12,32 @@ frappe.ui.form.on("Case Study", {
     before_save(frm) {
         generate_url(frm);
     },
+    refresh: function(frm) {
+        if (frm.doc.url && frm.doc.publish_on_site == 1) {
+            frm.add_custom_button(__("Show on Website"), function () {
+                const url = frm.doc.url
+                frappe.db.get_single_value("Website URL Settings", "base_url")
+                    .then(base_url => {
+                        window.open(base_url + "/" + url, '_blank');
+                    })
+                    .catch(error => {
+                        console.error("Error fetching base URL:", error);
+                    });
+            })
+            .css({
+                color: "#10635a",
+                "background-color": "#e3e3e3",
+                "border-radius": "8px",
+                "font-weight": "bold",
+                padding: "5px 10px"
+            });
+        }
+    }
 
 });
 
 function generate_url(frm) {
-    if (frm.doc.url && frm.doc.slug && !frm.doc.url.includes(frm.doc.slug)) {
-        frm.doc.url = frm.doc.url + "/" + frm.doc.slug;
+    if (frm.doc.file_url && frm.doc.slug) {
+        frm.doc.url = frm.doc.file_url + "/" + frm.doc.slug;
     }
 }
