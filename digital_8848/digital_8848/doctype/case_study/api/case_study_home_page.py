@@ -19,9 +19,10 @@ def get_home_page_case_study(**kwargs):
         result_details = get_result_details(case_study_doctype)
         next_steps_details = get_next_steps_details(case_study_doctype)
         impact_details = get_impact_details(case_study_doctype)
+        tag_details = get_tag_details(case_study_doctype)
 
         combined_details = { **case_study_doctype_details,**banner_details,**client_details,**challenge_details,
-                                **reason_details,**solution_details,**result_details,**next_steps_details,**impact_details }
+                                **reason_details,**solution_details,**result_details,**next_steps_details,**impact_details,**tag_details }
         combined_details.update({"display_on_home_page":1})
 
         response.append(combined_details)
@@ -107,6 +108,20 @@ def get_impact_details(case_study_doctype):
         "impact_description": case_study_doctype.get("impact_description") or None
     })
     return impact_details
+
+def get_tag_details(case_study_doctype):
+    tag_details = {}
+    if case_study_doctype.get("tags"):
+        tag_details_child = [
+                {
+                    "tag_name":tag.get("tag_name") or None,
+                } 
+                for tag in case_study_doctype.get("tags")
+            ]
+        tag_details.update({"tag_detail":tag_details_child})
+    else:
+        tag_details.update({"tag_detail":[]})
+    return tag_details
 
 def success_response(data=None, id=None):
     response = {"status": "success"}
