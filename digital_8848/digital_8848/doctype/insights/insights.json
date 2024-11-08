@@ -6,10 +6,20 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
+  "details_tab",
   "publish_on_site",
   "section_break_gpkj",
   "title",
+  "type",
+  "image",
   "tags",
+  "column_break_qmz6",
+  "file_url",
+  "slug",
+  "url",
+  "section_break_6azc",
+  "short_descripton",
+  "content_tab",
   "author",
   "published_on",
   "description"
@@ -50,11 +60,61 @@
    "fieldname": "description",
    "fieldtype": "Text Editor",
    "label": "Description"
+  },
+  {
+   "fieldname": "details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Details"
+  },
+  {
+   "fieldname": "type",
+   "fieldtype": "Link",
+   "label": "Type",
+   "options": "Industry"
+  },
+  {
+   "fieldname": "content_tab",
+   "fieldtype": "Tab Break",
+   "label": "Content"
+  },
+  {
+   "fieldname": "column_break_qmz6",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Data",
+   "label": "File URL"
+  },
+  {
+   "fieldname": "slug",
+   "fieldtype": "Data",
+   "label": "Slug"
+  },
+  {
+   "fieldname": "url",
+   "fieldtype": "Data",
+   "label": "URL",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_6azc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "short_descripton",
+   "fieldtype": "Small Text",
+   "label": "Short Descripton"
+  },
+  {
+   "fieldname": "image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-07 14:54:19.350851",
+ "modified": "2024-11-08 14:18:26.618996",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Insights",

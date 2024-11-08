@@ -25,9 +25,9 @@ def get_case_study_listing(**kwargs):
                 response.append(case_study_doctype_details)
             return success_response(response)
         else:
-            return error_response("No data found.")
+            return error_response("No data found.", response)
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}", response)
     
 def get_tag_details(case_study_doctype):
     tag_details_child = []
@@ -41,10 +41,10 @@ def get_tag_details(case_study_doctype):
             ]
     return tag_details_child
     
-def success_response(data=None, id=None):
+def success_response(data=None):
     response = {"status": "success"}
     response["data"] = data
     return response
 
-def error_response(err_msg):
-    return {"status": "error", "error": err_msg}
+def error_response(err_msg, response):
+    return {"status": "Error", "msg": err_msg, "data" : response}

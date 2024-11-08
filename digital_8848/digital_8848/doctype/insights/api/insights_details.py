@@ -4,10 +4,13 @@ import frappe
 def get_insights_details(**kwargs):
     try:
         response = []
-        title = kwargs.get("title")
+        slug = kwargs.get("slug")
 
-        if title:
-            insights_doctype = frappe.get_doc("Insights", {"title": title})
+        if frappe.db.exists("Insights", {"slug": slug}):
+            insights_doctype = frappe.get_doc("Insights", {"slug": slug})
+
+        if frappe.db.exists("Insights", {"title": slug}):
+            insights_doctype = frappe.get_doc("Insights", {"title": slug})
 
         insights_doctype_details = get_details(insights_doctype)
         response.append(insights_doctype_details)
@@ -20,6 +23,7 @@ def get_details(insights_doctype):
     insights_doctype_details = {}
     insights_doctype_details.update({
             "title": insights_doctype.get("title") or None,
+            "image": insights_doctype.get("image") or None,
             "tags": get_tag_details(insights_doctype) or [],
             "author": insights_doctype.get("author") or None,
             "published_on": insights_doctype.get("published_on") or None,
@@ -28,17 +32,17 @@ def get_details(insights_doctype):
 
     return insights_doctype_details
 
-def get_tag_details(case_study_doctype):
-    tag_details_child = []
+def get_tag_details(insights_doctype):
+    tag_details= []
     
-    if case_study_doctype.get("tags"):
-        tag_details_child = [
+    if insights_doctype.get("tags"):
+        tag_details = [
                 {
                     "tag_name":tag.get("tag_name") or None,
                 } 
-                for tag in case_study_doctype.get("tags")
+                for tag in insights_doctype.get("tags")
             ]
-    return tag_details_child
+    return tag_details
 
 def success_response(data=None, id=None):
     response = {"status": "success"}
