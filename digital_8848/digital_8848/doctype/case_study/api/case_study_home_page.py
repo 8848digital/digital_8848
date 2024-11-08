@@ -65,7 +65,8 @@ def get_challenge_details(case_study_doctype):
     challenge_details = {}
     challenge_details.update({
         "challenge_title": case_study_doctype.get("challenge_title") or None,
-        "challenge_description": case_study_doctype.get("challenge_description") or None
+        "challenge_description": case_study_doctype.get("challenge_description") or None,
+        "bullet_points": case_study_doctype.get("bullet_points") or None
     })
     return challenge_details
 
@@ -73,6 +74,7 @@ def get_reason_details(case_study_doctype):
     reason_details = {}
     reason_details.update({
         "reason_title": case_study_doctype.get("reason_title") or None,
+        "reason_image": case_study_doctype.get("reason_image") or None,
         "reason_description": case_study_doctype.get("reason_description") or None
     })
     return reason_details
@@ -103,9 +105,17 @@ def get_next_steps_details(case_study_doctype):
 
 def get_impact_details(case_study_doctype):
     impact_details = {}
+    impact_details_child = [
+        {
+            "impact_counts":impact.get("impact_counts") or None,
+            "description":impact.get("description") or None
+        } 
+        for impact in case_study_doctype.get("impact_detail")
+    ]
     impact_details.update({
         "impact_title": case_study_doctype.get("impact_title") or None,
-        "impact_description": case_study_doctype.get("impact_description") or None
+        "impact_description": case_study_doctype.get("impact_description") or None,
+        "impact_detail": impact_details_child,
     })
     return impact_details
 

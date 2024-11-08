@@ -31,8 +31,12 @@
   "challenge_tab",
   "challenge_title",
   "challenge_description",
+  "bullet_points",
   "reason_tab",
   "reason_title",
+  "column_break_mf2a",
+  "reason_image",
+  "section_break_zjco",
   "reason_description",
   "solution_tab",
   "solution_title",
@@ -45,7 +49,8 @@
   "next_steps_description",
   "impact_tab",
   "impact_title",
-  "impact_description"
+  "impact_description",
+  "impact_detail"
  ],
  "fields": [
   {
@@ -250,11 +255,35 @@
   {
    "fieldname": "column_break_6en6",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_mf2a",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "reason_image",
+   "fieldtype": "Attach Image",
+   "label": "Image"
+  },
+  {
+   "fieldname": "section_break_zjco",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bullet_points",
+   "fieldtype": "Text Editor",
+   "label": "Bullet Points"
+  },
+  {
+   "fieldname": "impact_detail",
+   "fieldtype": "Table",
+   "label": "Impact Detail",
+   "options": "Impact Counts"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-07 14:06:30.167135",
+ "modified": "2024-11-08 11:11:18.687596",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Case Study",

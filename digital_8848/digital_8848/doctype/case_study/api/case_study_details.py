@@ -15,7 +15,7 @@ def get_case_study_details(**kwargs):
             case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
         if title:
             case_study_doctype = frappe.get_doc("Case Study", {"title": title})
-
+        tab_list = get_tab_details()
         case_study_doctype_details = get_details(case_study_doctype)
         banner_details = get_banner_details(case_study_doctype)
         client_details = get_client_details(case_study_doctype)
@@ -31,7 +31,7 @@ def get_case_study_details(**kwargs):
                                 **reason_details,**solution_details,**result_details,**next_steps_details,**impact_details,**tag_details  }
         
         response.append(combined_details)
-        return success_response(data=response)
+        return success_response(tab_list, response)
 
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}", response)
@@ -70,7 +70,8 @@ def get_challenge_details(case_study_doctype):
     challenge_details = {}
     challenge_details.update({
         "challenge_title": case_study_doctype.get("challenge_title") or None,
-        "challenge_description": case_study_doctype.get("challenge_description") or None
+        "challenge_description": case_study_doctype.get("challenge_description") or None,
+        "bullet_points": case_study_doctype.get("bullet_points") or None
     })
     return challenge_details
 
@@ -78,6 +79,7 @@ def get_reason_details(case_study_doctype):
     reason_details = {}
     reason_details.update({
         "reason_title": case_study_doctype.get("reason_title") or None,
+        "reason_image": case_study_doctype.get("reason_image") or None,
         "reason_description": case_study_doctype.get("reason_description") or None
     })
     return reason_details
@@ -108,9 +110,17 @@ def get_next_steps_details(case_study_doctype):
 
 def get_impact_details(case_study_doctype):
     impact_details = {}
+    impact_details_child = [
+        {
+            "impact_counts":impact.get("impact_counts") or None,
+            "description":impact.get("description") or None
+        } 
+        for impact in case_study_doctype.get("impact_detail")
+    ]
     impact_details.update({
         "impact_title": case_study_doctype.get("impact_title") or None,
-        "impact_description": case_study_doctype.get("impact_description") or None
+        "impact_description": case_study_doctype.get("impact_description") or None,
+        "impact_detail": impact_details_child,
     })
     return impact_details
 
@@ -128,8 +138,22 @@ def get_tag_details(case_study_doctype):
         tag_details.update({"tag_detail":[]})
     return tag_details
 
-def success_response(data=None, id=None):
+def get_tab_details():
+    case_study_meta_fields = frappe.get_meta("Case Study")
+    tab_list = []
+    for field in case_study_meta_fields.get("fields"):
+        if field.fieldtype == "Tab Break":
+            tab_detail = {
+                "label" : field.label,
+                "href" : field.fieldname
+            }
+            if field.label != "Details":
+                tab_list.append(tab_detail) 
+    return tab_list
+
+def success_response(tab_section=None, data=None):
     response = {"status": "success"}
+    response["tab_section"] = tab_section
     response["data"] = data
     return response
 
