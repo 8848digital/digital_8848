@@ -7,7 +7,7 @@ def get_case_study_listing(**kwargs):
         filters = {"publish_on_site": 1,}
         if kwargs.get("type"):
             filters.update({"type": kwargs.get("type")})
-
+        tab_list = get_tab_details()
         case_study_doctypes_list = frappe.get_all("Case Study", filters=filters, pluck="name")
         if case_study_doctypes_list:
             for doctype in case_study_doctypes_list:
@@ -23,7 +23,7 @@ def get_case_study_listing(**kwargs):
                     "tag_detail": get_tag_details(case_study_doctype) or []
                 }
                 response.append(case_study_doctype_details)
-            return success_response(response)
+            return success_response(tab_list, response)
         else:
             return error_response("No data found.", response)
     except Exception as e:
@@ -40,9 +40,27 @@ def get_tag_details(case_study_doctype):
                 for tag in case_study_doctype.get("tags")
             ]
     return tag_details_child
-    
-def success_response(data=None):
+
+def get_tab_details():
+    tab_list = [
+            {
+                "key": "",
+                "title": "All"
+            }
+        ]
+    insights_doc = frappe.get_all("Insights", filters={"publish_on_site" : 1}, fields=["type"], order_by="published_on desc")
+    for insight in insights_doc:
+        type_detail = {
+                "key": insight.get("type"),
+                "title": insight.get("type"),
+            }
+        if type_detail not in tab_list:
+            tab_list.append(type_detail)
+    return tab_list
+
+def success_response(tab_list = None, data=None):
     response = {"status": "success"}
+    response["tab_list"] = tab_list
     response["data"] = data
     return response
 
