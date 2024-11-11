@@ -1,4 +1,6 @@
 import frappe
+import re
+from frappe.utils import get_url
 
 @frappe.whitelist(allow_guest=True)
 def get_insights_details(**kwargs):
@@ -21,13 +23,21 @@ def get_insights_details(**kwargs):
     
 def get_details(insights_doctype):
     insights_doctype_details = {}
+    base_url = get_url()
+    description = insights_doctype.get("description") or None
+    if description:
+        description = re.sub(
+            r'src="(/files/[^"]+)"',
+            rf'src="{base_url}\1"',
+            description
+        )
     insights_doctype_details.update({
             "title": insights_doctype.get("title") or None,
             "image": insights_doctype.get("image") or None,
             "tags": get_tag_details(insights_doctype) or [],
             "author": insights_doctype.get("author") or None,
             "published_on": insights_doctype.get("published_on") or None,
-            "description": insights_doctype.get("description") or None,
+            "description": description or None,
         })
 
     return insights_doctype_details

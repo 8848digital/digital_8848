@@ -1,4 +1,6 @@
+import re
 import frappe
+from frappe.utils import get_url
 
 @frappe.whitelist(allow_guest=True)
 def get_home_page_case_study(**kwargs):
@@ -9,16 +11,16 @@ def get_home_page_case_study(**kwargs):
             return error_response("No case study found with the display_on_home_page checkbox enabled.")
         
         case_study_doctype = frappe.get_doc("Case Study",case_study_doctype_title)
-
+        base_url = get_url()
         case_study_doctype_details = get_details(case_study_doctype)
         banner_details = get_banner_details(case_study_doctype)
-        client_details = get_client_details(case_study_doctype)
-        challenge_details = get_challenge_details(case_study_doctype)
-        reason_details = get_reason_details(case_study_doctype)
-        solution_details = get_solution_details(case_study_doctype)
-        result_details = get_result_details(case_study_doctype)
-        next_steps_details = get_next_steps_details(case_study_doctype)
-        impact_details = get_impact_details(case_study_doctype)
+        client_details = get_client_details(case_study_doctype, base_url)
+        challenge_details = get_challenge_details(case_study_doctype, base_url)
+        reason_details = get_reason_details(case_study_doctype, base_url)
+        solution_details = get_solution_details(case_study_doctype, base_url)
+        result_details = get_result_details(case_study_doctype, base_url)
+        next_steps_details = get_next_steps_details(case_study_doctype, base_url)
+        impact_details = get_impact_details(case_study_doctype, base_url)
         tag_details = get_tag_details(case_study_doctype)
 
         combined_details = { **case_study_doctype_details,**banner_details,**client_details,**challenge_details,
@@ -53,57 +55,57 @@ def get_banner_details(case_study_doctype):
     })
     return banner_details
 
-def get_client_details(case_study_doctype):
+def get_client_details(case_study_doctype, base_url):
     client_details = {}
     client_details.update({
         "client_title": case_study_doctype.get("client_title") or None,
-        "client_description": case_study_doctype.get("client_description") or None
+        "client_description": update_image_url(case_study_doctype.get("client_description"), base_url) or None
     })
     return client_details
 
-def get_challenge_details(case_study_doctype):
+def get_challenge_details(case_study_doctype, base_url):
     challenge_details = {}
     challenge_details.update({
         "challenge_title": case_study_doctype.get("challenge_title") or None,
-        "challenge_description": case_study_doctype.get("challenge_description") or None,
-        "bullet_points": case_study_doctype.get("bullet_points") or None
+        "challenge_description": update_image_url(case_study_doctype.get("challenge_description"), base_url) or None,
+        "bullet_points": update_image_url(case_study_doctype.get("bullet_points"), base_url) or None,
     })
     return challenge_details
 
-def get_reason_details(case_study_doctype):
+def get_reason_details(case_study_doctype, base_url):
     reason_details = {}
     reason_details.update({
         "reason_title": case_study_doctype.get("reason_title") or None,
         "reason_image": case_study_doctype.get("reason_image") or None,
-        "reason_description": case_study_doctype.get("reason_description") or None
+        "reason_description": update_image_url(case_study_doctype.get("reason_description"), base_url) or None
     })
     return reason_details
 
-def get_solution_details(case_study_doctype):
+def get_solution_details(case_study_doctype, base_url):
     solution_details = {}
     solution_details.update({
         "solution_title": case_study_doctype.get("solution_title") or None,
-        "solution_description": case_study_doctype.get("solution_description") or None
+        "solution_description": update_image_url(case_study_doctype.get("solution_description"), base_url) or None
     })
     return solution_details
 
-def get_result_details(case_study_doctype):
+def get_result_details(case_study_doctype, base_url):
     result_details = {}
     result_details.update({
         "result_title": case_study_doctype.get("result_title") or None,
-        "result_description": case_study_doctype.get("result_description") or None
+        "result_description": update_image_url(case_study_doctype.get("result_description"), base_url) or None
     })
     return result_details
 
-def get_next_steps_details(case_study_doctype):
+def get_next_steps_details(case_study_doctype, base_url):
     next_steps_details = {}
     next_steps_details.update({
         "next_steps_title": case_study_doctype.get("next_steps_title") or None,
-        "next_steps_description": case_study_doctype.get("next_steps_description") or None
+        "next_steps_description": update_image_url(case_study_doctype.get("next_steps_description"), base_url) or None
     })
     return next_steps_details
 
-def get_impact_details(case_study_doctype):
+def get_impact_details(case_study_doctype, base_url):
     impact_details = {}
     impact_details_child = [
         {
@@ -114,7 +116,7 @@ def get_impact_details(case_study_doctype):
     ]
     impact_details.update({
         "impact_title": case_study_doctype.get("impact_title") or None,
-        "impact_description": case_study_doctype.get("impact_description") or None,
+        "impact_description": update_image_url(case_study_doctype.get("impact_description"), base_url) or None,
         "impact_detail": impact_details_child,
     })
     return impact_details
@@ -132,6 +134,18 @@ def get_tag_details(case_study_doctype):
     else:
         tag_details.update({"tag_detail":[]})
     return tag_details
+
+def update_image_url(description, base_url):
+    print(base_url)
+    if description:
+        description = re.sub(
+            r'src="(/files/[^"]+)"',
+            rf'src="{base_url}\1"',
+            description
+        )
+        return description
+    else:
+        return description
 
 def success_response(data=None, id=None):
     response = {"status": "success"}
