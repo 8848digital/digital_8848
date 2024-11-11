@@ -9,9 +9,6 @@ frappe.ui.form.on("Case Study", {
             .replace(/\s+/g, '-');
         frm.refresh_field("slug");
     },
-    before_save(frm) {
-        generate_url(frm);
-    },
     refresh: function(frm) {
         if (frm.doc.url && frm.doc.publish_on_site == 1) {
             frm.add_custom_button(__("Show on Website"), function () {
@@ -35,9 +32,3 @@ frappe.ui.form.on("Case Study", {
     }
 
 });
-
-function generate_url(frm) {
-    if (frm.doc.file_url && frm.doc.slug) {
-        frm.doc.url = frm.doc.file_url + "/" + frm.doc.slug;
-    }
-}
