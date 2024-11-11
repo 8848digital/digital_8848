@@ -5,7 +5,6 @@ frappe.ui.form.on("Industry", {
     before_save(frm) {
         validate_sequence(frm, "advantages", "Advantages Table");
         validate_sequence(frm, "service_table", "Service Table");
-        generate_url(frm);
     },
     title: function(frm) {
         frm.doc.slug = frm.doc.title
@@ -58,11 +57,5 @@ function validate_sequence(frm, table_field, label) {
             frappe.validated = false; 
         }
         frm.refresh_field(table_field);
-    }
-}
-
-function generate_url(frm) {
-    if (frm.doc.file_url && frm.doc.slug) {
-        frm.doc.url = frm.doc.file_url + "/" + frm.doc.slug;
     }
 }

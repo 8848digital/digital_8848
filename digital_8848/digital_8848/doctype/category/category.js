@@ -9,13 +9,4 @@ frappe.ui.form.on("Category", {
             .replace(/\s+/g, '-');
         frm.refresh_field("slug");
     },
-    before_save(frm) {
-        generate_url(frm);
-    },
 });
-
-function generate_url(frm) {
-    if (frm.doc.file_url && frm.doc.slug) {
-        frm.doc.url = frm.doc.file_url + "/" + frm.doc.slug;
-    }
-}

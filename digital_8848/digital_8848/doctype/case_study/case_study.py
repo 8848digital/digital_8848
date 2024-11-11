@@ -8,6 +8,13 @@ from frappe import _
 class CaseStudy(Document):
 	def validate(self):
 		self.validate_display_on_home_page_checkbox()
+	
+	def before_save(self):
+		if self.file_url:
+			self.url = self.file_url + "/" + self.slug
+		else:
+			self.url = "/" + self.slug
+
         
 	def validate_display_on_home_page_checkbox(self):
 		if self.display_on_home_page:

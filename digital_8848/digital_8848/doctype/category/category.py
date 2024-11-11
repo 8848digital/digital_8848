@@ -6,4 +6,8 @@ from frappe.utils.nestedset import NestedSet
 
 
 class Category(NestedSet):
-	pass
+	def before_save(self):
+		if self.file_url:
+			self.url = self.file_url + "/" + self.slug
+		else:
+			self.url = "/" + self.slug

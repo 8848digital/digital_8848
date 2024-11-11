@@ -30,14 +30,4 @@ frappe.ui.form.on("Insights", {
             });
         }
     },
-    before_save(frm) {
-        generate_url(frm);
-    },
-
 });
-
-function generate_url(frm) {
-    if (frm.doc.file_url && frm.doc.slug) {
-        frm.doc.url = frm.doc.file_url + "/" + frm.doc.slug;
-    }
-}
