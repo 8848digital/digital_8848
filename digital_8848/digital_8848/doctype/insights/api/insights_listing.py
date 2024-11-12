@@ -24,7 +24,7 @@ def get_insights_listing(**kwargs):
                     "slug": insights_doctype.get("slug") or None,
                     "url": insights_doctype.get("url") or None,
                     "tags": get_tag_details(insights_doctype),
-                    "short_description": insights_doctype.get("short_description") or None
+                    "short_description": insights_doctype.get("short_descriptions") or None
                 }
                 response.append(insights_doctype_details)
             return success_response(tab_list, response)
