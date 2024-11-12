@@ -48,14 +48,14 @@ def get_tab_details():
                 "title": "All"
             }
         ]
-    insights_doc = frappe.get_all("Insights", filters={"publish_on_site" : 1}, fields=["type"], order_by="published_on desc")
-    for insight in insights_doc:
+    case_study_doc = frappe.get_all("Case Study", filters={"publish_on_site" : 1}, fields=["type"])
+    type_list = list({doc.get('type') for doc in case_study_doc})
+    for case_study in type_list:
         type_detail = {
-                "key": insight.get("type"),
-                "title": insight.get("type"),
+                "key": case_study,
+                "title": case_study,
             }
-        if type_detail not in tab_list:
-            tab_list.append(type_detail)
+        tab_list.append(type_detail)
     return tab_list
 
 def success_response(tab_list = None, data=None):
