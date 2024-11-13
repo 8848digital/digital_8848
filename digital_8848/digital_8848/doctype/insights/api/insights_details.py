@@ -1,6 +1,7 @@
 import frappe
 import re
 from frappe.utils import get_url
+from bs4 import BeautifulSoup
 
 @frappe.whitelist(allow_guest=True)
 def get_insights_details(**kwargs):
@@ -24,7 +25,7 @@ def get_insights_details(**kwargs):
 def get_details(insights_doctype):
     insights_doctype_details = {}
     base_url = get_url()
-    description = insights_doctype.get("description") or None
+    description = validate_txt_editor_content(insights_doctype.get("description")) or None
     if description:
         description = re.sub(
             r'src="(/files/[^"]+)"',
@@ -61,3 +62,26 @@ def success_response(data=None, id=None):
 
 def error_response(err_msg, response):
     return {"status": "Error", "msg": err_msg, "data" : response}
+
+def validate_txt_editor_content(txt):
+    if txt:
+        soup = BeautifulSoup(txt, "html.parser")
+        if soup.get_text(strip=True) == '':
+            description = None
+        else:
+            description = text_editor_content_modifications(str(soup))
+        return description
+
+def text_editor_content_modifications(html_content):
+    soup = BeautifulSoup(html_content, "html.parser")
+    for li in soup.find_all("li", {"data-list": "bullet"}):
+        parent_ol = li.find_parent("ol")
+        if parent_ol:
+            new_ul = soup.new_tag("ul")
+            parent_ol.insert_before(new_ul)
+            for bullet_li in parent_ol.find_all("li", {"data-list": "bullet"}):
+                new_ul.append(bullet_li.extract())
+            if not parent_ol.find_all("li"):
+                parent_ol.decompose()
+                
+    return str(soup)
