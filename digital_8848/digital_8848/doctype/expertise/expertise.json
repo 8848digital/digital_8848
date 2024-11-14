@@ -7,18 +7,15 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
-  "publish_on_site",
-  "section_break_pn3h",
   "title",
   "type",
-  "category",
   "column_break_bfev",
   "logo",
   "slug",
-  "file_url",
   "column_break_wbs0",
   "url",
   "sequence",
+  "technology_type",
   "section_break_s6uf",
   "background_image",
   "truncate_text",
@@ -54,6 +51,11 @@
   "truncate_text_4",
   "case_study_tab",
   "case_study_title",
+  "case_study_description",
+  "truncate_text_5",
+  "column_break_vezs",
+  "case_study_image",
+  "case_study_short_description",
   "faqs_tab",
   "faqs_detail"
  ],
@@ -174,9 +176,8 @@
   },
   {
    "fieldname": "case_study_title",
-   "fieldtype": "Link",
-   "label": "Case Study Title",
-   "options": "Case Study"
+   "fieldtype": "Data",
+   "label": "Case Study Title"
   },
   {
    "fieldname": "faqs_tab",
@@ -201,8 +202,7 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
-   "label": "URL",
-   "read_only": 1
+   "label": "URL"
   },
   {
    "fieldname": "section_break_s6uf",
@@ -302,31 +302,40 @@
    "fieldtype": "Section Break"
   },
   {
+   "fieldname": "technology_type",
+   "fieldtype": "Select",
+   "label": "Technology Type",
+   "options": "\nPlatform\nLanguage"
+  },
+  {
+   "fieldname": "case_study_description",
+   "fieldtype": "Small Text",
+   "label": "Case Study Description"
+  },
+  {
    "default": "0",
-   "fieldname": "publish_on_site",
+   "fieldname": "truncate_text_5",
    "fieldtype": "Check",
-   "label": "Publish on Site"
+   "label": "Truncate Text"
   },
   {
-   "fieldname": "section_break_pn3h",
-   "fieldtype": "Section Break"
+   "fieldname": "column_break_vezs",
+   "fieldtype": "Column Break"
   },
   {
-   "fieldname": "category",
-   "fieldtype": "Link",
-   "label": "Category",
-   "options": "Category"
+   "fieldname": "case_study_image",
+   "fieldtype": "Attach",
+   "label": "Case Study Image"
   },
   {
-   "fieldname": "file_url",
-   "fieldtype": "Data",
-   "label": "File URL"
+   "fieldname": "case_study_short_description",
+   "fieldtype": "Small Text",
+   "label": "Case Study Short Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "make_attachments_public": 1,
- "modified": "2024-11-08 18:41:23.524390",
+ "modified": "2024-11-14 16:09:43.628411",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
