@@ -6,20 +6,22 @@ def get_technology():
     platforms = frappe.get_all(
         "Expertise",
         filters={"technology_type": "Platform"},
-        fields=["title", "logo","url"]
+        fields=["title", "logo","url","sequence"],
+        order_by="sequence"
     )
 
     # Fetch languages
     languages = frappe.get_all(
         "Expertise",
         filters={"technology_type": "Language"},
-        fields=["title", "logo","url"]
+        fields=["title", "logo","url","sequence"],
+        order_by="sequence"
     )
 
     # Structure the data as requested
     data = {
-        "platforms": [{"title": platform["title"], "logo": platform["logo"],"url": platform["url"],} for platform in platforms],
-        "languages": [{"title": language["title"], "logo": language["logo"],"url": language["url"],} for language in languages]
+        "platforms": [{"title": platform["title"], "logo": platform["logo"],"url": platform["url"],"sequence":platform["sequence"]} for platform in platforms],
+        "languages": [{"title": language["title"], "logo": language["logo"],"url": language["url"],"sequence":language["sequence"]} for language in languages]
     }
 
     return success_response(data=data)
