@@ -138,14 +138,10 @@ override_doctype_class = {
 # Hook on document methods and events
 
 # doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
+# 	"File": {
+# 		"after_insert": "digital_8848.digital_8848.doc_events.file.after_insert",
+# 	},
 # }
-
-
 # Scheduled Tasks
 # ---------------
 

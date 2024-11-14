@@ -20,6 +20,7 @@
   "sequence",
   "column_break_cujc",
   "enable_footer",
+  "file_url",
   "url",
   "image",
   "short_description"
@@ -98,7 +99,8 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
-   "label": "URL"
+   "label": "URL",
+   "read_only": 1
   },
   {
    "fieldname": "image",
@@ -119,12 +121,18 @@
    "fieldname": "enable_footer",
    "fieldtype": "Check",
    "label": "Enable Footer"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Data",
+   "label": "File URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "is_tree": 1,
  "links": [],
- "modified": "2024-09-27 17:09:03.119758",
+ "make_attachments_public": 1,
+ "modified": "2024-11-08 18:40:57.408075",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Category",

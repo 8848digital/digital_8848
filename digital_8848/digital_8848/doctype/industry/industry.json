@@ -7,7 +7,11 @@
  "engine": "InnoDB",
  "field_order": [
   "details_tab",
+  "publish_on_site",
+  "section_break_wzi2",
   "title",
+  "category",
+  "file_url",
   "url",
   "slug",
   "column_break_4fez",
@@ -55,7 +59,8 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
-   "label": "URL"
+   "label": "URL",
+   "read_only": 1
   },
   {
    "fieldname": "sequence",
@@ -178,11 +183,33 @@
    "fieldname": "truncate_text_3",
    "fieldtype": "Check",
    "label": "Truncate Text"
+  },
+  {
+   "default": "0",
+   "fieldname": "publish_on_site",
+   "fieldtype": "Check",
+   "label": "Publish on Site"
+  },
+  {
+   "fieldname": "section_break_wzi2",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "category",
+   "fieldtype": "Link",
+   "label": "Category",
+   "options": "Category"
+  },
+  {
+   "fieldname": "file_url",
+   "fieldtype": "Data",
+   "label": "File URL"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-17 11:20:28.675145",
+ "make_attachments_public": 1,
+ "modified": "2024-11-08 18:40:46.724136",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",
