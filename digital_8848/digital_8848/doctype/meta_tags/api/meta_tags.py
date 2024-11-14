@@ -13,6 +13,10 @@ def get_meta_tags(**kwargs):
 
         meta_tags_doctype = frappe.get_doc("Meta Tags", meta_tags_docname)
 
+        # Fetching keywords from the Key Words child table
+        keywords = ", ".join(
+            [kw.get("tag") for kw in meta_tags_doctype.get("key_words") if kw.get("tag")]
+        )
         response_data = {
             "page_name": meta_tags_doctype.get("page_name") or None,
             "title": meta_tags_doctype.get("meta_title") or None,
@@ -21,6 +25,7 @@ def get_meta_tags(**kwargs):
                 "icon": meta_tags_doctype.get("fav_icon_image") or None,
             },
             "robots": meta_tags_doctype.get("robots") or None,
+            "keywords": keywords or None
         }
 
         # Open Graph data - Dynamic assignment

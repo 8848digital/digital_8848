@@ -12,6 +12,8 @@
   "column_break_6jlf",
   "meta_title",
   "robots",
+  "meta_image",
+  "key_words",
   "open_graph_tab",
   "open_graph_title",
   "column_break_jrqt",
@@ -48,8 +50,10 @@
    "label": "Fav Icon Image"
   },
   {
+   "default": "index, follow",
    "fieldname": "robots",
    "fieldtype": "Data",
+   "hidden": 1,
    "label": "Robots"
   },
   {
@@ -75,11 +79,11 @@
    "fieldname": "open_graph_type",
    "fieldtype": "Select",
    "label": "Type",
-   "options": "\nArticle"
+   "options": "\nArticle\nWebsite"
   },
   {
    "fieldname": "open_graph_description",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Small Text",
    "label": "Description"
   },
   {
@@ -104,7 +108,7 @@
   },
   {
    "fieldname": "twitter_description",
-   "fieldtype": "Text Editor",
+   "fieldtype": "Small Text",
    "label": "Description"
   },
   {
@@ -145,11 +149,22 @@
   {
    "fieldname": "column_break_qab4",
    "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "meta_image",
+   "fieldtype": "Attach",
+   "label": "Image"
+  },
+  {
+   "fieldname": "key_words",
+   "fieldtype": "Table MultiSelect",
+   "label": "Key Words",
+   "options": "Key Words"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-08 13:21:05.032519",
+ "modified": "2024-11-14 18:29:38.529334",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Meta Tags",
