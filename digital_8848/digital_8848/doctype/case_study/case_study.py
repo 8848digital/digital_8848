@@ -42,7 +42,7 @@ class CaseStudy(Document):
 			frappe.throw(_("Solution Title is Mandatory"))
 		if (not self.result_title) and validate_txt_editor_content(self.result_description):
 			frappe.throw(_("Result Title is Mandatory"))
-		if (not self.next_steps_title) and validate_txt_editor_content(self.next_steps_title):
+		if (not self.next_steps_title) and validate_txt_editor_content(self.next_steps_description):
 			frappe.throw(_("Next Step Title is Mandatory"))
 		if (not self.impact_title) and validate_txt_editor_content(self.impact_description):
 			frappe.throw(_("Impact Title is Mandatory"))
@@ -55,5 +55,4 @@ def validate_txt_editor_content(txt):
 			descrption = None
 		else:
 			descrption = str(soup)
-		print(descrption)
 		return descrption
