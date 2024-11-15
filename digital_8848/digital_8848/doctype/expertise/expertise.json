@@ -202,8 +202,7 @@
   {
    "fieldname": "url",
    "fieldtype": "Data",
-   "label": "URL",
-   "read_only": 1
+   "label": "URL"
   },
   {
    "fieldname": "section_break_s6uf",
@@ -333,7 +332,7 @@
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2024-11-14 17:11:50.713867",
+ "modified": "2024-11-15 13:50:47.851658",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",
