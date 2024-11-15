@@ -1,4 +1,5 @@
 import frappe
+from digital_8848.digital_8848.doctype.case_study.api.case_study_listing import get_tag_details
 
 @frappe.whitelist(allow_guest=True)
 def get_expertise_details(**kwargs):
@@ -9,10 +10,10 @@ def get_expertise_details(**kwargs):
         if not title and not slug:
             return error_response("Please provide a title or slug", response)
         if slug:
-            expertise_doctype_title = frappe.db.get_value("Expertise",{'slug': kwargs.get("slug")})
+            expertise_doctype_title = frappe.db.get_value("Expertise", {'slug': kwargs.get("slug")})
             if not expertise_doctype_title:
-                return error_response("No expertise found with the given slug",response)
-            expertise_doctype = frappe.get_doc("Expertise",expertise_doctype_title)
+                return error_response("No expertise found with the given slug", response)
+            expertise_doctype = frappe.get_doc("Expertise", expertise_doctype_title)
         if title:
             expertise_doctype = frappe.get_doc("Expertise", {"title": title})
 
@@ -22,17 +23,24 @@ def get_expertise_details(**kwargs):
         services_details = get_services_details(expertise_doctype)
         process_details = get_process_details(expertise_doctype)
         type = expertise_doctype.get("type")
-        filtered_tab_details = filter_tab_details_based_on_type(type,expertise_doctype)
+        filtered_tab_details = filter_tab_details_based_on_type(type, expertise_doctype)
         case_study_details = get_case_study_details(expertise_doctype)
         faq_details = get_faq_details(expertise_doctype)
 
-        response = [{**details,**expertise_details,**banner_details,**services_details,**process_details,**filtered_tab_details,
-                    **case_study_details,**faq_details}]        
+        response = [{
+            **details,
+            **expertise_details,
+            **banner_details,
+            **services_details,
+            **process_details,
+            **filtered_tab_details,
+            **case_study_details,
+            **faq_details
+        }]
         return success_response(data=response)
 
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}",response)
-    
+        return error_response(f"An error occurred: {str(e)}", response)
 
 def get_details(expertise_doctype):
     details = {}
@@ -193,22 +201,26 @@ def get_advantages_details(expertise_doctype):
     return advantage_details 
 
 def get_case_study_details(expertise_doctype):
-    case_study_title = expertise_doctype.case_study_title
+    case_study_title = expertise_doctype.get("case_study_title")
+    if not case_study_title:
+        return {"case_study_details": []}  # Return an empty dictionary under case_study_details key
+
     if not frappe.db.exists("Case Study", case_study_title):
-        return {
-            "case_study_title": None,
-            "case_study_image": None,
-            "case_study_description": None,
-            "case_study_short_description": None
-        }
+        return {"case_study_details": []}  # Return an empty dictionary under case_study_details key
+
     case_study_doc = frappe.get_doc("Case Study", case_study_title)
-    case_study_details = {
-        "case_study_title": case_study_doc.title,
-        "case_study_image": case_study_doc.image,
-        "case_study_description": case_study_doc.banner_description,
-        "case_study_short_description": case_study_doc.short_description
+    case_study_doctype_details = {
+        "title": case_study_doc.get("title") or None,
+        "image": case_study_doc.get("image") or None,
+        "short_description": case_study_doc.get("short_description") or None,
+        "truncate_text": case_study_doc.get("truncate_text_1") or None,
+        "slug": case_study_doc.get("slug") or None,
+        "url": case_study_doc.get("url") or None,
+        "type": case_study_doc.get("type") or None,
+        "tag_detail": get_tag_details(case_study_doc) or []
     }
-    return case_study_details
+    # Return under the single key case_study_details
+    return {"case_study_details": [case_study_doctype_details]}
     
 
 def get_faq_details(expertise_doctype):
