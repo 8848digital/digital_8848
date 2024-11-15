@@ -45,6 +45,7 @@ def get_details(case_study_doctype):
     case_study_doctype_details.update({
             "title": case_study_doctype.get("title") or None,
             "url": case_study_doctype.get("url") or None,
+            "button_url": case_study_doctype.get("button_url") or None,
             "type": case_study_doctype.get("type") or None,
             "slug": case_study_doctype.get("slug") or None,
             "short_description": case_study_doctype.get("short_description") or None,
