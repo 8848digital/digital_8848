@@ -18,8 +18,7 @@ def get_case_study_listing(**kwargs):
                     "short_description": case_study_doctype.get("short_description") or None,
                     "truncate_text": case_study_doctype.get("truncate_text_1"),
                     "slug": case_study_doctype.get("slug") or None,
-                    "url": case_study_doctype.get("url") or None,
-                    "button_url": case_study_doctype.get("button_url") or None,
+                    "url":get_button_url(case_study_doctype) or None,
                     "type": case_study_doctype.get("type") or None,
                     "tag_detail": get_tag_details(case_study_doctype) or []
                 }
@@ -67,3 +66,11 @@ def success_response(tab_list = None, data=None):
 
 def error_response(err_msg, response):
     return {"status": "Error", "msg": err_msg, "data" : response}
+
+
+def get_button_url(case_study_doctype):
+    if case_study_doctype.get("button_url") and case_study_doctype.get("use_button_url") == 1:
+        url = case_study_doctype.get("button_url")
+    else:
+        url = case_study_doctype.get("url")
+    return url    

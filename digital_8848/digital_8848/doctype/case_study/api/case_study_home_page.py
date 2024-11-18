@@ -1,6 +1,7 @@
 import re
 import frappe
 from frappe.utils import get_url
+from digital_8848.digital_8848.doctype.case_study.api.case_study_listing import get_button_url
 
 @frappe.whitelist(allow_guest=True)
 def get_home_page_case_study(**kwargs):
@@ -37,8 +38,7 @@ def get_details(case_study_doctype):
     case_study_doctype_details = {}
     case_study_doctype_details.update({
             "title": case_study_doctype.get("title") or None,
-            "url": case_study_doctype.get("url") or None,
-            "button_url": case_study_doctype.get("button_url") or None,
+            "url":get_button_url(case_study_doctype) or None,
             "type": case_study_doctype.get("type") or None,
             "slug": case_study_doctype.get("slug") or None,
             "short_description": case_study_doctype.get("short_description") or None,
