@@ -1,5 +1,6 @@
 {
  "actions": [],
+ "allow_import": 1,
  "allow_rename": 1,
  "autoname": "MT-.######",
  "creation": "2024-09-27 11:21:30.346115",
@@ -37,11 +38,14 @@
   {
    "fieldname": "page_name",
    "fieldtype": "Data",
+   "in_filter": 1,
+   "in_list_view": 1,
    "label": "Page Name"
   },
   {
    "fieldname": "meta_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Meta Title"
   },
   {
@@ -73,6 +77,7 @@
   {
    "fieldname": "open_graph_title",
    "fieldtype": "Data",
+   "in_list_view": 1,
    "label": "Title"
   },
   {
@@ -164,7 +169,7 @@
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-11-14 18:29:38.529334",
+ "modified": "2024-11-25 13:15:46.534798",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Meta Tags",
@@ -186,5 +191,6 @@
  ],
  "sort_field": "modified",
  "sort_order": "DESC",
- "states": []
+ "states": [],
+ "track_changes": 1
 }
