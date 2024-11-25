@@ -14,12 +14,16 @@ def get_industry_details(**kwargs):
         if title:
             filters["title"] = kwargs.get("title")
 
-        
-        industries = frappe.get_all("Industry", filters=filters, 
-                                    fields=["name", "title", "url", "slug", "sequence", "image", "short_description", 
-                                            "banner_title", "banner_image", "banner_description", "industry_detail_sub_title", 
-                                            "advantages_sub_title", "section_title"]) 
-        
+        industries = frappe.get_all(
+            "Industry",
+            filters=filters,
+            fields=[
+                "name", "title", "url", "slug", "sequence", "image", "short_description",
+                "banner_title", "banner_image", "banner_description", "industry_detail_sub_title",
+                "advantages_sub_title", "section_title", "cta_btn_url", "cta_btn_text"
+            ]
+        )
+
         if industries:
             industry_names = [industry.name for industry in industries]
             industry_details = frappe.get_all(
@@ -29,15 +33,31 @@ def get_industry_details(**kwargs):
                 order_by="idx ASC"
             )
             industry_details_map = get_parent_child_map(industry_details)
-            advantages = frappe.get_all("Advantages", filters={"parent": ["in", industry_names]}, 
-                                        fields=["parent", "title", "short_description", "sequence"], 
-                                        order_by="sequence asc")
+            advantages = frappe.get_all(
+                "Advantages",
+                filters={"parent": ["in", industry_names]},
+                fields=["parent", "title", "short_description", "sequence"],
+                order_by="sequence asc"
+            )
             advantages_map = get_parent_child_map(advantages)
-            services = frappe.get_all("Service Table", filters={"parent": ["in", industry_names]}, 
-                                        fields=["parent", "service_name", "service_image", "sequence"], 
-                                        order_by="sequence asc")
+            services = frappe.get_all(
+                "Service Table",
+                filters={"parent": ["in", industry_names]},
+                fields=["parent", "service_name", "service_image", "sequence"],
+                order_by="sequence asc"
+            )
             service_map = get_parent_child_map(services)
             for industry in industries:
+                # Apply conditional inclusion for cta_btn_url and cta_btn_text
+                cta_btn_url = industry.get("cta_btn_url")
+                cta_btn_text = industry.get("cta_btn_text")
+                if cta_btn_url and cta_btn_text:
+                    industry["cta_btn_url"] = cta_btn_url
+                    industry["cta_btn_text"] = cta_btn_text
+                else:
+                    industry.pop("cta_btn_url", None)
+                    industry.pop("cta_btn_text", None)
+
                 industry.update({"industry_detail": industry_details_map.get(industry.name) or []})
                 industry.update({"advantages": advantages_map.get(industry.name) or []})
                 services_with_section_title = {
@@ -51,14 +71,14 @@ def get_industry_details(**kwargs):
                         for service in service_map.get(industry.name, [])
                     ]
                 }
-                
+
                 industry.update({"service_table": services_with_section_title})
                 industry.pop("name")
                 response = industries
             return success_response(data=response)
         else:
             return error_response("No data found", response)
-    
+
     except Exception as e:
         return error_response(f"An error occurred: {str(e)}", response)
 
@@ -107,6 +127,3 @@ def get_parent_child_map(details):
             else:
                 parent_child_map[parent] = [detail]
     return parent_child_map
-
-
-

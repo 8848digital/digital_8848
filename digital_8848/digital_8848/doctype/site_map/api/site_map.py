@@ -7,6 +7,7 @@ def get_site_map(**kwargs):
     # Fetch the list of doctypes from the 'Website URL Settings' doctype
     try:
         settings = frappe.get_doc("Website URL Settings")
+        website_url = settings.base_url
         doctypes = [row.document_type for row in settings.doctypes]
     except Exception as e:
         frappe.log_error(f"Error fetching 'Website URL Settings': {str(e)}", "Get Site Map Error")
@@ -32,11 +33,13 @@ def get_site_map(**kwargs):
             query = frappe.qb.from_(table).select(*fields)
             results = query.run(as_dict=True)
 
-            # Format the 'modified' field to dd-mm-yyyy and add doctype to each result
+            # Format the 'modified' field and add doctype to each result
             for result in results:
                 result["doctype"] = doctype
                 if result.get("modified"):
                     result["modified"] = result["modified"].strftime("%d-%m-%Y")
+                if result.get("url"):
+                    result["url"] = f"{website_url}{result['url']}"
 
             return results
         except Exception as e:
