@@ -23,6 +23,8 @@
   "section_break_s6uf",
   "background_image",
   "truncate_text",
+  "change_frequency",
+  "priority",
   "column_break_hdmz",
   "short_description",
   "module_tab",
@@ -328,12 +330,26 @@
    "fieldtype": "Select",
    "label": "Technology Type",
    "options": "\nPlatform\nLanguage"
+  },
+  {
+   "default": "Weekly",
+   "description": "Daily, Weekly, Monthly, Yearly",
+   "fieldname": "change_frequency",
+   "fieldtype": "Data",
+   "label": "Change Frequency"
+  },
+  {
+   "default": "1",
+   "description": " 0.1, 0.2  till 1",
+   "fieldname": "priority",
+   "fieldtype": "Data",
+   "label": "Priority"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2024-11-25 12:59:07.675677",
+ "modified": "2024-11-25 16:02:59.282595",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Expertise",

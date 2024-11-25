@@ -6,12 +6,15 @@
  "engine": "InnoDB",
  "field_order": [
   "section_break_8avz",
-  "base_url"
+  "base_url",
+  "site_map_settings_section",
+  "doctypes"
  ],
  "fields": [
   {
    "fieldname": "section_break_8avz",
-   "fieldtype": "Section Break"
+   "fieldtype": "Section Break",
+   "label": "Details"
   },
   {
    "fieldname": "base_url",
@@ -19,12 +22,23 @@
    "in_list_view": 1,
    "label": "Base URL",
    "reqd": 1
+  },
+  {
+   "fieldname": "site_map_settings_section",
+   "fieldtype": "Section Break",
+   "label": "Site Map Settings"
+  },
+  {
+   "fieldname": "doctypes",
+   "fieldtype": "Table",
+   "label": "Doctypes",
+   "options": "Global Search DocType"
   }
  ],
  "index_web_pages_for_search": 1,
  "issingle": 1,
  "links": [],
- "modified": "2024-11-06 13:53:20.706204",
+ "modified": "2024-11-25 16:11:29.340299",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Website URL Settings",
