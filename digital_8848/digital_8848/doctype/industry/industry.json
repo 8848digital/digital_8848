@@ -18,13 +18,18 @@
   "column_break_4fez",
   "sequence",
   "image",
+  "change_frequency",
+  "priority",
   "section_break_jt0k",
   "short_description",
   "truncate_text_1",
   "banner_details_tab",
   "banner_title",
+  "cta_btn_url",
   "column_break_jmhq",
   "banner_image",
+  "cta_btn_text",
+  "btn_description",
   "section_break_bspp",
   "banner_description",
   "industry_details",
@@ -206,12 +211,43 @@
    "fieldname": "file_url",
    "fieldtype": "Data",
    "label": "File URL"
+  },
+  {
+   "default": "Weekly",
+   "description": "Values should be - (Daily, Weekly, Monthly, Yearly)",
+   "fieldname": "change_frequency",
+   "fieldtype": "Data",
+   "label": "Change Frequency"
+  },
+  {
+   "default": "1",
+   "description": "Values should be - (0.1, 0.2 till 1)",
+   "fieldname": "priority",
+   "fieldtype": "Data",
+   "label": "Priority"
+  },
+  {
+   "fieldname": "cta_btn_url",
+   "fieldtype": "Data",
+   "label": "Cta Btn URL",
+   "mandatory_depends_on": "eval: doc.cta_btn_text"
+  },
+  {
+   "fieldname": "cta_btn_text",
+   "fieldtype": "Data",
+   "label": "Cta Btn Text",
+   "mandatory_depends_on": "eval: doc.cta_btn_url"
+  },
+  {
+   "fieldname": "btn_description",
+   "fieldtype": "Small Text",
+   "label": "Btn Description"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
  "make_attachments_public": 1,
- "modified": "2024-11-25 13:08:24.165705",
+ "modified": "2024-11-26 18:49:00.724077",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Industry",

@@ -6,9 +6,8 @@
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
-  "name1",
+  "title",
   "url",
-  "last_modified",
   "change_frequency",
   "priority"
  ],
@@ -19,29 +18,28 @@
    "label": "URL"
   },
   {
-   "fieldname": "last_modified",
-   "fieldtype": "Date",
-   "label": "Last Modified"
-  },
-  {
+   "default": "Weekly",
+   "description": "Values should be - (Daily, Weekly, Monthly, Yearly)",
    "fieldname": "change_frequency",
    "fieldtype": "Data",
    "label": "Change Frequency"
   },
   {
+   "default": "1",
+   "description": "Values should be - (0.1, 0.2 till 1)",
    "fieldname": "priority",
    "fieldtype": "Data",
    "label": "Priority"
   },
   {
-   "fieldname": "name1",
+   "fieldname": "title",
    "fieldtype": "Data",
-   "label": "Name"
+   "label": "Title"
   }
  ],
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2024-10-08 15:30:10.130313",
+ "modified": "2024-11-25 17:23:32.200754",
  "modified_by": "Administrator",
  "module": "digital_8848",
  "name": "Site Map",
