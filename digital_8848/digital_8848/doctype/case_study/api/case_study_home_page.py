@@ -52,21 +52,12 @@ def get_banner_details(expertise_doctype):
     banner_details_default_field_values = {
         "banner_title": None,
         "banner_image": None,
-        "banner_description": None
+        "banner_description": None,
+        "cta_btn_url": None,
+        "cta_btn_text": None 
     }
-
-    # Set default values for the standard fields
     for field, default_value in banner_details_default_field_values.items():
         banner_details[field] = expertise_doctype.get(field, default_value)
-
-    # Handle conditional inclusion of cta_btn_url and cta_btn_text
-    cta_btn_url = expertise_doctype.get("cta_btn_url")
-    cta_btn_text = expertise_doctype.get("cta_btn_text")
-
-    if cta_btn_url and cta_btn_text:  # Include only if both are present
-        banner_details["cta_btn_url"] = cta_btn_url
-        banner_details["cta_btn_text"] = cta_btn_text
-
     return banner_details
 
 
