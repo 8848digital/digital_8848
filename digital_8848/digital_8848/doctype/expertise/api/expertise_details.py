@@ -46,6 +46,7 @@ def get_details(expertise_doctype):
     details = {}
     get_details_default_field_values = {
         "title": None,
+        "publish_on_site": None,
         "logo": None,
         "url": None,
         "type": None,
@@ -86,7 +87,8 @@ def get_banner_details(expertise_doctype):
         "banner_image": None,
         "banner_description": None,
         "cta_btn_url": None,
-        "cta_btn_text": None 
+        "cta_btn_text": None,
+        "btn_description": None
     }
     for field, default_value in banner_details_default_field_values.items():
         banner_details[field] = expertise_doctype.get(field, default_value)

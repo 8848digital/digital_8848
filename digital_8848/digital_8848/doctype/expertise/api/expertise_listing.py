@@ -10,9 +10,9 @@ def get_expertise_listing(**kwargs):
             if expertise_doctypes_list:
                 for doctype in expertise_doctypes_list:
                     expertise_doctype = frappe.get_doc("Expertise", doctype)
-                    
                     expertise_doctype_details = {
                         "title": expertise_doctype.get("title") or None,
+                        "publish_on_site": expertise_doctype.get("publish_on_site") or None,
                         "logo": expertise_doctype.get("logo") or None,
                         "short_description": expertise_doctype.get("short_description") or None,
                         "truncate_text":expertise_doctype.get("truncate_text"),

@@ -19,6 +19,7 @@ def get_insights_listing(**kwargs):
                 insights_doctype = frappe.get_doc("Insights", doctype)
                 insights_doctype_details = {
                     "title": insights_doctype.get("title") or None,
+                    "publish_on_site":insights_doctype.get("publish_on_site") or None,
                     "image": insights_doctype.get("image") or None,
                     "type": insights_doctype.get("type") or None,
                     "slug": insights_doctype.get("slug") or None,

@@ -16,8 +16,8 @@ def get_industry_details(**kwargs):
 
         
         industries = frappe.get_all("Industry", filters=filters, 
-                                    fields=["name", "title", "url", "slug", "sequence", "image", "short_description", 
-                                            "banner_title", "banner_image", "banner_description","cta_btn_url","cta_btn_text", 
+                                    fields=["name", "title", "publish_on_site","url", "slug", "sequence", "image", "short_description", 
+                                            "banner_title", "banner_image", "banner_description","cta_btn_url","cta_btn_text","btn_description", 
                                             "industry_detail_sub_title", 
                                             "advantages_sub_title", "section_title"]) 
         
@@ -71,7 +71,7 @@ def get_industry_list(**kwargs):
         industry_banner = frappe.get_value("Banner", "Industry", ["name"], as_dict = 1) or {}
         industry_banner_details = frappe.get_all("Banner Detail", {"parent": industry_banner.get("name")}, ["title", "short_description", "banner_image"])           
         industry_banner.update({"banner_details": industry_banner_details})
-        industries = frappe.get_all("Industry", filters={"publish_on_site" : 1}, fields = ["title", "image", "short_description", "truncate_text_1 as truncate_text", "slug", "sequence", "url"])
+        industries = frappe.get_all("Industry", filters={"publish_on_site" : 1}, fields = ["title","publish_on_site", "image", "short_description", "truncate_text_1 as truncate_text", "slug", "sequence", "url"])
         industries = sorted(industries, key=lambda x: x.get("sequence") or 0)
         industry_banner.update({"industries": industries})
         industry_banner.pop("name", None)

@@ -45,6 +45,7 @@ def get_details(case_study_doctype):
     case_study_doctype_details = {}
     case_study_doctype_details.update({
             "title": case_study_doctype.get("title") or None,
+            "publish_on_site":case_study_doctype.get("publish_on_site") or None,
             "url":get_button_url(case_study_doctype) or None,
             "type": case_study_doctype.get("type") or None,
             "slug": case_study_doctype.get("slug") or None,
@@ -61,7 +62,8 @@ def get_banner_details(expertise_doctype):
         "banner_image": None,
         "banner_description": None,
         "cta_btn_url": None,
-        "cta_btn_text": None 
+        "cta_btn_text": None,
+        "btn_description": None 
     }
     for field, default_value in banner_details_default_field_values.items():
         banner_details[field] = expertise_doctype.get(field, default_value)
