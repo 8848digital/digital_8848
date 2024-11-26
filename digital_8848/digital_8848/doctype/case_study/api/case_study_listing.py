@@ -14,6 +14,7 @@ def get_case_study_listing(**kwargs):
                 case_study_doctype = frappe.get_doc("Case Study", doctype)
                 case_study_doctype_details = {
                     "title": case_study_doctype.get("title") or None,
+                    "publish_on_site":case_study_doctype.get("publish_on_site") or None,
                     "image": case_study_doctype.get("image") or None,
                     "short_description": case_study_doctype.get("short_description") or None,
                     "truncate_text": case_study_doctype.get("truncate_text_1"),

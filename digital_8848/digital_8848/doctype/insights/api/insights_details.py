@@ -34,6 +34,7 @@ def get_details(insights_doctype):
         )
     insights_doctype_details.update({
             "title": insights_doctype.get("title") or None,
+            "publish_on_site":insights_doctype.get("publish_on_site") or None,
             "image": insights_doctype.get("image") or None,
             "tags": get_tag_details(insights_doctype) or [],
             "author": insights_doctype.get("author") or None,
