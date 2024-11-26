@@ -54,14 +54,28 @@ def get_details(case_study_doctype):
         })
     return case_study_doctype_details
 
-def get_banner_details(case_study_doctype):
+def get_banner_details(expertise_doctype):
     banner_details = {}
-    banner_details.update({
-        "banner_title": case_study_doctype.get("banner_title") or None,
-        "banner_image": case_study_doctype.get("banner_image") or None,
-        "banner_description": case_study_doctype.get("banner_description") or None
-    })
+    banner_details_default_field_values = {
+        "banner_title": None,
+        "banner_image": None,
+        "banner_description": None
+    }
+
+    # Set default values for the standard fields
+    for field, default_value in banner_details_default_field_values.items():
+        banner_details[field] = expertise_doctype.get(field, default_value)
+
+    # Handle conditional inclusion of cta_btn_url and cta_btn_text
+    cta_btn_url = expertise_doctype.get("cta_btn_url")
+    cta_btn_text = expertise_doctype.get("cta_btn_text")
+
+    if cta_btn_url and cta_btn_text:  # Include only if both are present
+        banner_details["cta_btn_url"] = cta_btn_url
+        banner_details["cta_btn_text"] = cta_btn_text
+
     return banner_details
+
 
 def get_client_details(case_study_doctype, base_url):
     client_details = {}
