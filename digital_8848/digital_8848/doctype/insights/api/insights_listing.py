@@ -2,72 +2,102 @@ import frappe
 
 @frappe.whitelist(allow_guest=True)
 def get_insights_listing(**kwargs):
+    """
+    Retrieves a list of insights with optional filters for type and handles pagination.
+    """
     try:
-        response = []
-        type = kwargs.get("type")
-        filters = {"publish_on_site" : 1}
+        limit = kwargs.get("limit")
+        page_no = kwargs.get("page_no")
+        
+        limit = int(limit) if limit and limit.isdigit() else 10  # Default limit is 10
+        page_no = int(page_no) if page_no and page_no.isdigit() and int(page_no) > 0 else 1  # Default to page 1
 
-        if type == "All" or type == "":
-            filters = {"publish_on_site" : 1}
-        elif type:
-            filters = {"publish_on_site" : 1, "type":type}
+        start = (page_no - 1) * limit
+
+        filters = {"publish_on_site": 1}
+        type_filter = kwargs.get("type")
+
+        if type_filter and type_filter != "All":
+            filters["type"] = type_filter
+
         tab_list = get_tab_details()
+        insights_list = frappe.get_all(
+            "Insights",
+            filters=filters,
+            fields=["name"],
+            order_by="published_on desc",
+            start=start,
+            limit_page_length=limit
+        )
 
-        insights_doctypes_list = frappe.get_all("Insights", filters=filters, pluck="name", order_by="published_on desc")
-        if insights_doctypes_list:
-            for doctype in insights_doctypes_list:
-                insights_doctype = frappe.get_doc("Insights", doctype)
-                insights_doctype_details = {
-                    "title": insights_doctype.get("title") or None,
-                    "publish_on_site":insights_doctype.get("publish_on_site") or None,
-                    "image": insights_doctype.get("image") or None,
-                    "type": insights_doctype.get("type") or None,
-                    "slug": insights_doctype.get("slug") or None,
-                    "url": insights_doctype.get("url") or None,
-                    "tags": get_tag_details(insights_doctype),
-                    "short_description": insights_doctype.get("short_descriptions") or None
-                }
-                response.append(insights_doctype_details)
-            return success_response(tab_list, response)
-        else:
-            return error_response("No data found.", response)
+        total_count = frappe.db.count("Insights", filters=filters)
+
+        response = []
+        for insight in insights_list:
+            insights_doc = frappe.get_doc("Insights", insight["name"])
+            response.append({
+                "title": insights_doc.get("title") or None,
+                "publish_on_site": insights_doc.get("publish_on_site") or None,
+                "image": insights_doc.get("image") or None,
+                "type": insights_doc.get("type") or None,
+                "slug": insights_doc.get("slug") or None,
+                "url": insights_doc.get("url") or None,
+                "tags": get_tag_details(insights_doc),
+                "short_description": insights_doc.get("short_descriptions") or None
+            })
+
+        return success_response(tab_list, response, total_count)
+
     except Exception as e:
-        return error_response(f"An error occurred: {str(e)}", response)
+        frappe.log_error(f"Error in get_insights_listing: {str(e)}")
+        return error_response(f"An error occurred: {str(e)}", [])
 
-def get_tag_details(insights_doctype):
-    tag_details= []
-    
-    if insights_doctype.get("tags"):
-        tag_details = [
-                {
-                    "tag_name":tag.get("tag_name") or None,
-                } 
-                for tag in insights_doctype.get("tags")
-            ]
-    return tag_details
+
+def get_tag_details(insights_doc):
+    """
+    Retrieves tag details for an insights document.
+    """
+    tags = insights_doc.get("tags") or []
+    return [{"tag_name": tag.get("tag_name") or None} for tag in tags]
+
 
 def get_tab_details():
-    tab_list = [
-            {
-                "key": "",
-                "title": "All"
-            }
-        ]
-    insights_doc = frappe.get_all("Insights", filters={"publish_on_site" : 1}, fields=["type"], order_by="published_on desc")
-    type_list = list({doc.get('type') for doc in insights_doc})
-    for insight in type_list:
-        type_detail = {
-                "key": insight,
-                "title": insight,
-            }
-        tab_list.append(type_detail)
+    """
+    Generates the tab details including unique types.
+    """
+    tab_list = [{"key": "", "title": "All"}]
+    insights_types = frappe.get_all(
+        "Insights",
+        filters={"publish_on_site": 1},
+        fields=["type"],
+        order_by="published_on desc"
+    )
+
+    unique_types = {doc["type"] for doc in insights_types if doc["type"]}
+    for insight_type in unique_types:
+        tab_list.append({"key": insight_type, "title": insight_type})
+
     return tab_list
 
-def success_response(tab_list=None, data=None):
-    response = {"status": "success"}
-    response["tab_list"] = tab_list
-    response["data"] = data
-    return response
+
+def success_response(tab_list=None, data=None, total_count=None):
+    """
+    Constructs a success response.
+    """
+    return {
+        "status": "success",
+        "total_count": total_count,
+        "tab_list": tab_list,
+        "data": data
+    }
+
 
 def error_response(err_msg, response):
-    return {"status": "Error", "msg": err_msg, "data" : response}
+    """
+    Constructs an error response.
+    """
+    return {
+        "status": "error",
+        "msg": err_msg,
+        "data": response
+    }
