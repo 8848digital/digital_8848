@@ -16,9 +16,6 @@ def get_case_study_listing(**kwargs):
                 page_no = 0
             start = page_no * limit
 
-        print("limit:", limit)
-        print("page_no:", page_no)
-
         response = []
         filters = {"publish_on_site": 1}
 
@@ -28,12 +25,10 @@ def get_case_study_listing(**kwargs):
         tab_list = get_tab_details()
 
         total_count = frappe.db.count("Case Study", filters=filters)
-        print("total_count:", total_count)
 
         case_study_doctypes_list = frappe.get_all(
             "Case Study", filters=filters, pluck="name", limit=limit, start=start
         )
-        print("case_study_doctypes_list:", case_study_doctypes_list)
 
         if case_study_doctypes_list:
             for doctype in case_study_doctypes_list:
