@@ -214,18 +214,19 @@ def get_case_study_details(expertise_doctype):
         return {"case_study_details": []}  # Return an empty dictionary under case_study_details key
 
     case_study_doc = frappe.get_doc("Case Study", case_study_title)
+    final_url = case_study_doc.get("button_url") if case_study_doc.get("use_button_url") else case_study_doc.get("url")
     case_study_doctype_details = {
         "title": case_study_doc.get("title") or None,
         "image": case_study_doc.get("image") or None,
         "short_description": case_study_doc.get("short_description") or None,
         "truncate_text": case_study_doc.get("truncate_text_1") or None,
         "slug": case_study_doc.get("slug") or None,
-        "url": case_study_doc.get("url") or None,
+        "url": final_url,  # Use the determined URL
         "type": case_study_doc.get("type") or None,
         "tag_detail": get_tag_details(case_study_doc) or []
     }
-    # Return under the single key case_study_details
     return {"case_study_details": [case_study_doctype_details]}
+
     
 
 def get_faq_details(expertise_doctype):
