@@ -32,16 +32,18 @@ def get_site_map(**kwargs):
             table = frappe.qb.DocType(doctype)
             query = frappe.qb.from_(table).select(*fields)
             results = query.run(as_dict=True)
+            filtered_results = []
 
             # Format the 'modified' field and add doctype to each result
             for result in results:
-                result["doctype"] = doctype
-                if result.get("modified"):
-                    result["modified"] = result["modified"].strftime("%d-%m-%Y")
                 if result.get("url"):
-                    result["url"] = f"{website_url}{result['url']}"
+                    result["doctype"] = doctype
+                    if result.get("modified"):
+                        result["modified"] = result["modified"].strftime("%d-%m-%Y %H:%M:%S")  # Include time
+                        result["url"] = f"{website_url}{result['url']}"
+                        filtered_results.append(result)
 
-            return results
+            return filtered_results
         except Exception as e:
             # Log errors for specific doctype processing
             frappe.log_error(f"Error fetching data from {doctype}: {str(e)}", "Get Site Map Error")
